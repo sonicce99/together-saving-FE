@@ -1,5 +1,4 @@
-const theme = {
-  // color
+const colors = {
   colorBlue1: "#2456ff",
   colorBlue2: "#3178FF",
   colorLightGray1: "#B2B2B2",
@@ -11,9 +10,20 @@ const theme = {
   colorBlack: "#000000",
   colorPink: "#EA2E50",
   colorWhite: "#FFFFFF",
-  // font size
-  // font weight
+};
+
+const fontWeights = {
   weightBold: "700",
-  // margin
+};
+
+const margins = {
   marginCenter: "0 auto",
 };
+
+const theme = {
+  colors,
+  fontWeights,
+  margins,
+};
+
+export default theme;
