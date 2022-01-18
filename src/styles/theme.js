@@ -3,7 +3,7 @@ const viewSize = {
 };
 
 const colors = {
-  colorBlue1: "#2456ff",
+  colorBlue1: "#2456FF",
   colorBlue2: "#3178FF",
   colorLightGray1: "#B2B2B2",
   colorLightGray2: "#F7F8FA",
@@ -11,6 +11,7 @@ const colors = {
   colorLightGray4: "#E3E7ED",
   colorGray1: "#737373",
   colorGray2: "#D6D8DC",
+  colorGray3: "#888888",
   colorDarkGray1: "#2D2D2D",
   colorDarkGray2: "#333333",
   colorBlack: "#000000",
@@ -26,7 +27,8 @@ const fontWeights = {
 const fontSize = {
   fontXLarge: "26px",
   fontMideum: "18px",
-  fontSmall: "14px",
+  fontSmall: "16px",
+  fontXSmall: "14px",
 };
 
 const margins = {
