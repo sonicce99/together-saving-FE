@@ -1,3 +1,7 @@
+const viewSize = {
+  mobile: "375px",
+};
+
 const colors = {
   colorBlue1: "#2456ff",
   colorBlue2: "#3178FF",
@@ -21,6 +25,7 @@ const margins = {
 };
 
 const theme = {
+  viewSize,
   colors,
   fontWeights,
   margins,
