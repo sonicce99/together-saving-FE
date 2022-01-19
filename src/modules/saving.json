@@ -1,0 +1,13 @@
+{
+  "status": "200",
+  "message": " 참여중인 첼린지 리스트 조회 성공",
+  "data": {
+    "profile_picture": "유저 프로필 사진 경로",
+    "nickname": "김보미",
+    "cma_balance": "6,000",
+    "saving_rate": "42",
+    "saving_success": "4",
+    "saving_fail": "1",
+    "saving_remain": "9"
+  }
+}
