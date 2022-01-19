@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 const SavingStartButton = () => {
   return (
     <SavingButtonContainer>
-      <Link to="/saving/deposit">
+      <Link to="/deposit">
         <Button>저축하기</Button>
       </Link>
     </SavingButtonContainer>
