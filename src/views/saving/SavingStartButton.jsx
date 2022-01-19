@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
 const SavingStartButton = () => {
   return (
     <SavingButtonContainer>
-      <Button>저축하기</Button>
+      <Link to="/saving/deposit">
+        <Button>저축하기</Button>
+      </Link>
     </SavingButtonContainer>
   );
 };
