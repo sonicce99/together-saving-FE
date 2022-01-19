@@ -5,11 +5,14 @@ import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
 import SavingMenuButton from "../../views/saving/SavingMenuButton";
 import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
 import SavingAccount from "../../views/saving/SavingAccount";
+import { Link } from "react-router-dom";
 
 const Saving = () => {
   return (
     <SavingContainer>
-      <SavingRoomInfo />
+      <Link to="/challenge">
+        <SavingRoomInfo />
+      </Link>
       <DivisionLine />
       <SavingMenuButton />
       <SavingTotalAmount />
