@@ -6,6 +6,7 @@ import SavingMenuButton from "../../views/saving/SavingMenuButton";
 import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
 import SavingAccount from "../../views/saving/SavingAccount";
 import { Link } from "react-router-dom";
+import SavingStartButton from "../../views/saving/SavingStartButton";
 
 const Saving = () => {
   return (
@@ -18,6 +19,7 @@ const Saving = () => {
       <SavingTotalAmount />
       <DivisionLine />
       <SavingAccount />
+      <SavingStartButton />
     </SavingContainer>
   );
 };
