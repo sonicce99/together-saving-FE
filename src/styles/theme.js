@@ -3,7 +3,7 @@ const viewSize = {
 };
 
 const colors = {
-  colorBlue1: "#2456FF",
+  colorBlue1: "#2557FF",
   colorBlue2: "#3178FF",
   colorLightGray1: "#B2B2B2",
   colorLightGray2: "#F7F8FA",
