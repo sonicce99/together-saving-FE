@@ -24,6 +24,7 @@ const AutoSavingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
 `;
 
 const Text = styled.p`
