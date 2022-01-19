@@ -4,6 +4,7 @@ import Main from "./pages/main/Main";
 import Challenge from "./pages/challenge/Challenge";
 import Saving from "./pages/saving/Saving";
 import styled from "styled-components";
+import SavingDeposit from "./pages/saving/SavingDeposit";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/" element={<Main />} />
           <Route path="/challenge" element={<Challenge />} />
           <Route path="/saving" element={<Saving />} />
+          <Route path="/deposit" element={<SavingDeposit />} />
         </Routes>
       </BrowserRouter>
     </Wrapper>
