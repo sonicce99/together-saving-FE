@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import SavingCount from "./SavingCount";
+import styled from "styled-components";
 
 const SavingRate = () => {
   return (
@@ -18,7 +17,6 @@ const SavingRate = () => {
         <p>현재 35%</p>
         <p>달성률 100%</p>
       </RateInfoContainer>
-      <SavingCount />
     </RateContainer>
   );
 };

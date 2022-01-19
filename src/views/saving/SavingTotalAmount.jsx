@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 
 const TotalAmount = () => {
@@ -14,6 +15,7 @@ const TotalAmount = () => {
           <p>6,000원</p>
         </AmountInfoContainer>
         <SavingRate />
+        <SavingCount />
       </AmountContainer>
     </>
   );
