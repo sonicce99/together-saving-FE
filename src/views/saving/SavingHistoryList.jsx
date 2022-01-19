@@ -7,10 +7,10 @@ const SavingHistory = () => {
     <>
       <TitleContainer>
         <Title>저축 내역</Title>
-        <SubTitleContainer>
-          <SubTitle>최근 1주일</SubTitle>
-          <SubTitle>최근 저축순</SubTitle>
-        </SubTitleContainer>
+        <HistoryButtonContainer>
+          <HistoryButton>최근 1주일</HistoryButton>
+          <HistoryButton>최근 저축순</HistoryButton>
+        </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
         <SavingHistoryItem />
@@ -25,7 +25,7 @@ const TitleContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-const SubTitleContainer = styled.div`
+const HistoryButtonContainer = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -36,7 +36,7 @@ const Title = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.weightBold};
 `;
 
-const SubTitle = styled.p`
+const HistoryButton = styled.button`
   color: ${({ theme }) => theme.colors.colorLightGray1};
   font-size: 12px;
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
@@ -47,7 +47,15 @@ const SubTitle = styled.p`
 `;
 
 const HistoryContainer = styled.ul`
+  height: 97px;
   margin-bottom: 56px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome , Safari , Opera */
+  }
 `;
 
 export default SavingHistory;

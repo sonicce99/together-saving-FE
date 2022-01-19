@@ -9,23 +9,19 @@ const SavingHistoryItem = () => {
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
+        <HistoryDate>01.06 금요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
+        <HistoryDate>01.05 금요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
+        <HistoryDate>01.04 금요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
+        <HistoryDate>01.03 금요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
     </>
@@ -33,6 +29,7 @@ const SavingHistoryItem = () => {
 };
 
 const HistoryItem = styled.li`
+  height: 23px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 14px;
