@@ -2,11 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import Home from "../../imges/Home.png";
-import Contents from "../../imges/Contents.png";
-import SaveChallenge from "../../imges/SaveChallenge.png";
-import Community from "../../imges/Community.png";
-import MyPage from "../../imges/MyPage.png";
+import Home from "../../images/Home.png";
+import Contents from "../../images/Contents.png";
+import SaveChallenge from "../../images/SaveChallenge.png";
+import Community from "../../images/Community.png";
+import MyPage from "../../images/MyPage.png";
 import styled from "styled-components";
 
 const BottomNav = () => {

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import savle from "../../imges/savle.png";
-import heart from "../../imges/heart.png";
-import bell from "../../imges/bell.png";
+import savle from "../../images/savle.png";
+import heart from "../../images/heart.png";
+import bell from "../../images/bell.png";
 
 const Header = () => {
   return (
