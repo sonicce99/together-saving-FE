@@ -17,6 +17,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  a:active, a:visited {
+    color: inherit;
+  }
+
   input, button {
     background-color: transparent;
     border: none;
