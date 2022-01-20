@@ -20,8 +20,11 @@ const DepositView = () => {
           <Text>1101-7889-128-05</Text>
         </DepositAccount>
         <Input placeholder="6000원 입력하세요" onClick={handleShowKeypad} />
-        {isShow && <Keypad />}
       </DepositViewContainer>
+      <KeypadContainer>
+        <Keypad />
+      </KeypadContainer>
+
       <DepositButtonContainer>
         <Button>저축하기</Button>
       </DepositButtonContainer>
@@ -61,6 +64,7 @@ const Input = styled.input`
   color: ${({ theme }) => theme.colors.colorDarkGray1};
   font-size: ${({ theme }) => theme.fontSize.fontXLarge};
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+  margin-bottom: 146px;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.colorLightGray1};
@@ -71,6 +75,13 @@ const DepositButtonContainer = styled.div`
   padding: 8px 16px 34px;
   position: absolute;
   bottom: 0;
+`;
+
+const KeypadContainer = styled.div`
+  padding: 8px 16px 0;
+  position: relative;
+  bottom: -13px;
+  box-shadow: inset 0px 1px 0px #e3e7ed;
 `;
 
 export default DepositView;
