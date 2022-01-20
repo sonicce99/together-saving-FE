@@ -1,1 +1,51 @@
-
+{
+  "status": "200",
+  "message": "챌린지 상세 데이터 조회 성공",
+  "data": {
+    "challenge_id": "challenge_id",
+    "tags": [
+      {
+        "tag_name": "#주 3일"
+      },
+      {
+        "tag_name": "#월수금"
+      },
+      {
+        "tag_name": "#알뜰살뜰"
+      }
+    ],
+    "is_wihsed": false,
+    "challenge_name": "커피값 저축하기",
+    "start_date": "22.01.03",
+    "end_date": "22.01.28",
+    "challenge_frequency": [
+      {
+        "day": "월"
+      },
+      {
+        "day": "수"
+      },
+      {
+        "day": "금"
+      }
+    ],
+    "challenge_payment": 6000,
+    "challenge_entry_fee": 10000,
+    "challenge_members": 1800,
+    "host_nickname": "김세이블",
+    "challenge_description": "매일매일 커피수혈로 하루를 버텨나가는 당신.. 돈 벌자고 하는 일인데 커피값으로 다 써버리고 있지는 않으신 가요? 세이블과 함께 커피값 모아 100만원 만들기에 참여해봐요! …",
+    "challenge_reviews": [
+      {
+        "nickname": "김돌돌",
+        "profile_picture": "리뷰 작성한 유저의 프로필 사진. 파일을 디비에 저장할 것인가..? 논의 필요한 부분",
+        "content": "내가 이렇게 커피를 많이 먹다니..전혀 몰랐다요ㅠ 커피값 아껴서 100만원 모으기 달성 뿌듯.. 다음 시즌 참가하시는 분들 파이팅이에요!! 생각보다 많이..."
+      },
+      {
+        "nickname": "강제임스",
+        "user_image": "리뷰 작성한 유저의 프로필 사진. 파일을 디비에 저장할 것인가..? 논의 필요한 부분",
+        "content": "무사히 완수 완료 다음 시즌분들도 파이팅 하세요~~!"
+      }
+    ],
+    "is_participated": true
+  }
+}
