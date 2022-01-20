@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
-import Keypad from "./Keypad";
+
+const PRICE = 6000;
+const defaultPrice = PRICE / 1000;
 
 const DepositView = () => {
-  const [isShow, setIsShow] = useState(false);
+  const [isUnder, setIsUnder] = useState(false);
 
-  const handleShowKeypad = () => {
-    setIsShow(true);
+  const handleInputPrice = (e) => {
+    if (e.target.value === "") return;
+
+    const inputPrice = e.target.value;
+    if (inputPrice < defaultPrice) {
+      setIsUnder(true);
+    }
   };
 
   return (
@@ -19,8 +26,17 @@ const DepositView = () => {
           </Text>
           <Text>1101-7889-128-05</Text>
         </DepositAccount>
-        <Input placeholder="6000원 입력하세요" onClick={handleShowKeypad} />
-        {isShow && <Keypad />}
+        <Input
+          placeholder={`${PRICE}원 입력하세요`}
+          onChange={handleInputPrice}
+        />
+        {isUnder && (
+          <WarningLabel>
+            <Text>
+              {defaultPrice}천원 보다 적게 저축하면 달성률이 떨어질 수 있어요
+            </Text>
+          </WarningLabel>
+        )}
       </DepositViewContainer>
       <DepositButtonContainer>
         <Button>저축하기</Button>
@@ -30,7 +46,7 @@ const DepositView = () => {
 };
 
 const DepositViewContainer = styled.div`
-  padding: 64px 16px;
+  padding: 64px 16px 0;
 `;
 
 const DepositAccount = styled.div`
@@ -38,11 +54,11 @@ const DepositAccount = styled.div`
 `;
 
 const Text = styled.p`
-  &:first-of-type {
+  &:nth-child(1) {
     margin-bottom: 8px;
   }
 
-  &:last-child {
+  &:nth-child(2) {
     color: ${({ theme }) => theme.colors.colorLightGray1};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
@@ -61,9 +77,23 @@ const Input = styled.input`
   color: ${({ theme }) => theme.colors.colorDarkGray1};
   font-size: ${({ theme }) => theme.fontSize.fontXLarge};
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+  margin-bottom: 18px;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.colorLightGray1};
+  }
+`;
+
+const WarningLabel = styled.div`
+  height: 28px;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background-color: ${({ theme }) => theme.colors.colorLightGray2};
+
+  ${Text}:nth-child(1) {
+    color: ${({ theme }) => theme.colors.colorBlue2};
+    font-size: ${({ theme }) => theme.fontSize.fontXSmall};
+    line-height: 16px;
   }
 `;
 
