@@ -1,13 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 
-const Event = () => {
-  return <Container>이벤트</Container>;
-};
-
-const Container = styled.div`
+const Event = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  height: 307px;
+  height: ${(props) => (props.main ? "307px" : "270px")};
   border: 2px solid black;
 `;
 

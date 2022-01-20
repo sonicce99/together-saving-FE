@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Tabs, Tab, Typography, Box } from "@mui/material";
-import PopularChallenge from "./PopularChallenge.jsx";
+import PopularChallenge from "../../components/PopularChallenge.jsx";
 import ParticipatingChallenge from "./ParticipatingChallenge.jsx";
 import WholeChallenge from "./WholeChallenge.jsx";
 import ParticularGroupChallenge from "./ParticularGroupChallenge.jsx";
