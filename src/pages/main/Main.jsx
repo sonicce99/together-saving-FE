@@ -1,14 +1,14 @@
 import React from "react";
-import Header from "../../views/main/Header.jsx";
-import Event from "../../views/main/Event.jsx";
+import Header from "../../components/Header.jsx";
+import Event from "../../components/Event.jsx";
 import MainTabs from "../../views/main/MainTabs.jsx";
-import BottomNav from "../../views/main/BottomNav.jsx";
+import BottomNav from "../../components/BottomNav.jsx";
 
 const Main = () => {
   return (
     <>
       <Header />
-      <Event />
+      <Event main>이벤트</Event>
       <MainTabs />
       <BottomNav />
     </>
