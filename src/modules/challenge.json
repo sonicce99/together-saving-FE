@@ -31,7 +31,7 @@
     ],
     "challenge_payment": 6000,
     "challenge_entry_fee": 10000,
-    "challenge_members": 1800,
+    "challenge_members": 1892,
     "host_nickname": "김세이블",
     "challenge_description": "매일매일 커피수혈로 하루를 버텨나가는 당신.. 돈 벌자고 하는 일인데 커피값으로 다 써버리고 있지는 않으신 가요? 세이블과 함께 커피값 모아 100만원 만들기에 참여해봐요! …",
     "challenge_reviews": [
@@ -44,6 +44,11 @@
         "nickname": "강제임스",
         "user_image": "리뷰 작성한 유저의 프로필 사진. 파일을 디비에 저장할 것인가..? 논의 필요한 부분",
         "content": "무사히 완수 완료 다음 시즌분들도 파이팅 하세요~~!"
+      },
+      {
+        "nickname": "동수",
+        "user_image": "리뷰 작성한 유저의 프로필 사진. 파일을 디비에 저장할 것인가..? 논의 필요한 부분",
+        "content": "ㅁ나ㅓㅗㅁㄴ아ㅓㅁ노아ㅓㅁㄴ옴나ㅓ옴나ㅓ옴너ㅏ옴ㄴ아ㅓ몽"
       }
     ],
     "is_participated": true
