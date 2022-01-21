@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import DivisionLine from "../../components/DivisionLine";
 import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
@@ -7,8 +7,24 @@ import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
 import SavingAccount from "../../views/saving/SavingAccount";
 import { Link } from "react-router-dom";
 import SavingStartButton from "../../views/saving/SavingStartButton";
+import { useSelector, useDispatch } from "react-redux";
+import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 
 const Saving = () => {
+  const { data, loading, error } = useSelector(
+    (state) => state.savingInfoReducer.savingInfo
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSavingInfo());
+  }, [dispatch]);
+
+  if (loading) return <div>로딩중</div>;
+  if (error) return <div>에러 발생</div>;
+  if (!data) return null;
+
   return (
     <SavingContainer>
       <Link to="/challenge">
@@ -16,7 +32,7 @@ const Saving = () => {
       </Link>
       <DivisionLine />
       <SavingMenuButton />
-      <SavingTotalAmount />
+      <SavingTotalAmount savingInfo={data} />
       <DivisionLine />
       <SavingAccount />
       <SavingStartButton />
