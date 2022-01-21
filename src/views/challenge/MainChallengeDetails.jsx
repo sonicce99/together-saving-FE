@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Mockdata from "../../modules/challenge.json";
+import Mockdata from "/public/modules/challenge.json";
 import Tags from "./Tags";
 import ChallengeSummary from "./ChallengeSummary.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
@@ -11,7 +11,7 @@ import PopularChallenge from "../../components/PopularChallenge.jsx";
 import Button from "../../components/Button.jsx";
 
 const ChallengeDetails = () => {
-  //   const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   //   // const [loading, setLoading] = useState(false);
 
   //   // useEffect(() => {
@@ -35,10 +35,10 @@ const ChallengeDetails = () => {
   //   // if(loading) {
   //   //   return <h2>로딩중...</h2>
   //   // }
-  //   useEffect(() => {
-  //     setData(Mockdata.data);
-  //     console.log(Mockdata.data);
-  //   }, []);
+  useEffect(() => {
+    setData(Mockdata.data);
+    console.log(Mockdata.data);
+  }, []);
 
   return (
     <Container>
