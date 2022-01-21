@@ -1,7 +1,7 @@
 ---
 name: Error handling
 about: To check and share errors that have occurred
-title: "[\U0001F6A8 ERROR]"
+title: "[\U0001F6A8 ERROR] 에러 내용 간략히 작성"
 labels: ''
 assignees: ''
 
