@@ -11,7 +11,7 @@ const WholeChallenge = () => {
 
 const Container = styled.div`
   height: 214px;
-  margin: 55px 0;
+  margin: 40px 0;
   border: 2px solid black;
 `;
 
