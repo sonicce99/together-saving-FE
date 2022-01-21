@@ -22,7 +22,6 @@ const TagBox = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
-  border: 2px solid red;
 `;
 
 const TagDesign = styled.div`
@@ -50,6 +49,7 @@ const LikeBtn = styled.img`
   width: 22px;
   height: 22px;
   margin-left: 113px;
+  cursor: pointer;
 `;
 
 export default Tags;

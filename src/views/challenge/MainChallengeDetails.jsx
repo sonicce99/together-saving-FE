@@ -3,6 +3,12 @@ import styled from "styled-components";
 import Mockdata from "../../modules/challenge.json";
 import Tags from "./Tags";
 import ChallengeSummary from "./ChallengeSummary.jsx";
+import DivisionLine from "../../components/DivisionLine.jsx";
+import ChallengeDescription from "./ChallengeDescription.jsx";
+import ChallengeReview from "./ChallengeReview.jsx";
+import RefundAndCaution from "./RefundAndCaution.jsx";
+import PopularChallenge from "../../components/PopularChallenge.jsx";
+import Button from "../../components/Button.jsx";
 
 const ChallengeDetails = () => {
   const [data, setData] = useState([]);
@@ -48,19 +54,28 @@ const ChallengeDetails = () => {
           challenge_members={data.challenge_members}
         />
       </Inner>
+      <DivisionLine />
+      <Inner>
+        <ChallengeDescription
+          host_nickname={data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
+          challenge_description={data.challenge_description}
+        />
+        <ChallengeReview challenge_reviews={data.challenge_reviews} />
+        <RefundAndCaution />
+        <PopularChallenge />
+        <Button>챌린지 함께하기</Button>
+      </Inner>
     </Container>
   );
 };
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  height: 1000px;
   border: 2px solid black;
 `;
 
 const Inner = styled.div`
   width: 343px;
-  border: 2px solid black;
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 
