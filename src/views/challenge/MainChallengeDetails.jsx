@@ -11,34 +11,34 @@ import PopularChallenge from "../../components/PopularChallenge.jsx";
 import Button from "../../components/Button.jsx";
 
 const ChallengeDetails = () => {
-  const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  //   const [data, setData] = useState([]);
+  //   // const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       setLoading(true);
-  //       const challengeData = await axios.post("api/v1/auth/challenges", {
-  //         challenge_id : "challenge_id"
-  //       })
-  //       if(challengeData.status === 200) {
-  //         setData([challengeData.data]);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   })();
-  // },[])
+  //   // useEffect(() => {
+  //   //   (async () => {
+  //   //     try {
+  //   //       setLoading(true);
+  //   //       const challengeData = await axios.post("api/v1/auth/challenges", {
+  //   //         challenge_id : "challenge_id"
+  //   //       })
+  //   //       if(challengeData.status === 200) {
+  //   //         setData([challengeData.data]);
+  //   //       }
+  //   //     } catch (error) {
+  //   //       console.log(error);
+  //   //     } finally {
+  //   //       setLoading(false);
+  //   //     }
+  //   //   })();
+  //   // },[])
 
-  // if(loading) {
-  //   return <h2>로딩중...</h2>
-  // }
-  useEffect(() => {
-    setData(Mockdata.data);
-    console.log(Mockdata.data);
-  }, []);
+  //   // if(loading) {
+  //   //   return <h2>로딩중...</h2>
+  //   // }
+  //   useEffect(() => {
+  //     setData(Mockdata.data);
+  //     console.log(Mockdata.data);
+  //   }, []);
 
   return (
     <Container>

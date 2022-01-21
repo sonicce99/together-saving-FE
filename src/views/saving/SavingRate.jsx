@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SavingRate = () => {
+const SavingRate = ({ rate }) => {
   return (
     <RateContainer>
       <p>저축률</p>
@@ -11,10 +11,10 @@ const SavingRate = () => {
         100% 달성 시 상금을 획득할 수 있어요
       </p>
       <ProgressContainer>
-        <Progress width={35 + "%"} />
+        <Progress width={rate + "%"} />
       </ProgressContainer>
       <RateInfoContainer>
-        <p>현재 35%</p>
+        <p>현재 {rate}%</p>
         <p>달성률 100%</p>
       </RateInfoContainer>
     </RateContainer>

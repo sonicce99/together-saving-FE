@@ -1,26 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import success from "../../images/save_success.png";
-import fail from "../../images/save_fail.png";
-import remain from "../../images/save_remain.png";
+import save_success from "../../images/save_success.png";
+import save_fail from "../../images/save_fail.png";
+import save_remain from "../../images/save_remain.png";
 
-const SavingCount = () => {
+const SavingCount = ({ success, fail, remain }) => {
   return (
     <CountInfoList>
       <CountInfo>
-        <Img src={success} alt="success" />
+        <Img src={save_success} alt="success" />
         <Text>저축성공</Text>
-        <Text>3번</Text>
+        <Text>{success}번</Text>
       </CountInfo>
       <CountInfo>
-        <Img src={fail} alt="fail" />
+        <Img src={save_fail} alt="fail" />
         <Text>저축실패</Text>
-        <Text>3번</Text>
+        <Text>{fail}번</Text>
       </CountInfo>
       <CountInfo>
-        <Img src={remain} alt="remain" />
+        <Img src={save_remain} alt="remain" />
         <Text>남은저축</Text>
-        <Text>13번</Text>
+        <Text>{remain}번</Text>
       </CountInfo>
     </CountInfoList>
   );
