@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
-const SavingFilterPopUp = () => {
+const SavingFilterPopUp = ({ onClose }) => {
+  const handleLookup = (e) => {};
+
+  const handleSort = (e) => {};
+
+  const handleSubmit = () => {
+    onClose();
+  };
+
   return (
     <PopupBackground>
       <PopupContainer>
@@ -10,36 +18,68 @@ const SavingFilterPopUp = () => {
           <Title>조회기간</Title>
           <FilterContainer>
             <Label>
-              <Input type="radio" name="lookup" value="today" />
+              <Input
+                type="radio"
+                name="lookup"
+                value="당일"
+                onChange={handleLookup}
+              />
               <Text>당일</Text>
             </Label>
             <Label>
-              <Input type="radio" name="lookup" value="week" />
+              <Input
+                type="radio"
+                name="lookup"
+                value="1주일"
+                onChange={handleLookup}
+                defaultChecked
+              />
               <Text>1주일</Text>
             </Label>
             <Label>
-              <Input type="radio" name="lookup" value="one_month" />
+              <Input
+                type="radio"
+                name="lookup"
+                value="1개월"
+                onChange={handleLookup}
+              />
               <Text>1개월</Text>
             </Label>
             <Label>
-              <Input type="radio" name="lookup" value="three_month" />
+              <Input
+                type="radio"
+                name="lookup"
+                value="3개월"
+                onChange={handleLookup}
+              />
               <Text>3개월</Text>
             </Label>
           </FilterContainer>
           <Title>정렬기준</Title>
           <FilterContainer>
             <Label>
-              <Input type="radio" name="sort" value="recent" />
+              <Input
+                type="radio"
+                name="sort"
+                value="최근저축순"
+                onChange={handleSort}
+                defaultChecked
+              />
               <Text>최근저축순</Text>
             </Label>
             <Label>
-              <Input type="radio" name="sort" value="acient" />
+              <Input
+                type="radio"
+                name="sort"
+                onChange={handleSort}
+                value="과거저축순"
+              />
               <Text>과거저축순</Text>
             </Label>
           </FilterContainer>
         </SortContainer>
         <ButtonContainer>
-          <Button>조회</Button>
+          <Button onClick={handleSubmit}>조회</Button>
         </ButtonContainer>
       </PopupContainer>
     </PopupBackground>
@@ -47,9 +87,11 @@ const SavingFilterPopUp = () => {
 };
 
 const PopupBackground = styled.div`
+  width: ${({ theme }) => theme.viewSize.mobile};
   height: 100vh;
   background-color: rgba(76, 76, 76, 0.7);
-  position: relative;
+  position: fixed;
+  bottom: 0;
 `;
 
 const PopupContainer = styled.div`
@@ -59,6 +101,16 @@ const PopupContainer = styled.div`
   background-color: white;
   position: absolute;
   bottom: 0;
+  animation: fadeInUp 0.45s ease-out;
+
+  @keyframes fadeInUp {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: ${(props) => props.height};
+    }
+  }
 `;
 
 const SortContainer = styled.div`
