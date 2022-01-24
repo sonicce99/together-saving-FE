@@ -10,57 +10,65 @@ import RefundAndCaution from "./RefundAndCaution.jsx";
 import PopularChallenge from "../../components/PopularChallenge.jsx";
 import Button from "../../components/Button.jsx";
 
-const ChallengeDetails = () => {
-  const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
+import { useSelector, useDispatch } from "react-redux";
+import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer";
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       setLoading(true);
-  //       const challengeData = await axios.post("api/v1/auth/challenges", {
-  //         challenge_id : "challenge_id"
-  //       })
-  //       if(challengeData.status === 200) {
-  //         setData([challengeData.data]);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   })();
-  // },[])
+const MainChallengeDetails = () => {
+  // const [data, setData] = useState([]);
 
-  // if(loading) {
-  //   return <h2>로딩중...</h2>
-  // }
+  const { data, loading, error } = useSelector(
+    (state) => state.challengeSummaryReducer.challengeSummaryInfo
+  );
+  const dispatch = useDispatch();
+
+  // 컴포넌트 마운트 후 포스트 목록 요청
   useEffect(() => {
-    setData(Mockdata.data);
-    console.log(Mockdata.data);
-  }, []);
+    dispatch(getChallengesummaryInfo());
+  }, [dispatch]);
+
+  if (loading) return <h2>로딩중...</h2>;
+  if (error) return <h2>Error occured!</h2>;
+  if (!data) return <h2>No Data</h2>;
+
+  //   useEffect(() => {
+  //     (async () => {
+  //       try {
+  //         setLoading(true);
+  //         const challengeData = await axios.post("api/v1/auth/challenges", {
+  //           challenge_id : "challenge_id"
+  //         }
+  //         if(challengeData.status === 200) {
+  //           setData([challengeData.data]);
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //       } finally {
+  //         setLoading(false);
+  //       }
+  //     })();
+  //   },[])
 
   return (
     <Container>
       <Inner>
-        <Tags tags={data.tags} />
+        <Tags tags={data.data.tags} />
         <ChallengeSummary
-          challenge_name={data.challenge_name}
-          start_date={data.start_date}
-          end_date={data.end_date}
-          challenge_frequency={data.challenge_frequency}
-          challenge_payment={data.challenge_payment}
-          challenge_entry_fee={data.challenge_entry_fee}
-          challenge_members={data.challenge_members}
+          challenge_name={data.data.challenge_name}
+          start_date={data.data.start_date}
+          end_date={data.data.end_date}
+          challenge_frequency={data.data.challenge_frequency}
+          challenge_payment={data.data.challenge_payment}
+          challenge_entry_fee={data.data.challenge_entry_fee}
+          challenge_members={data.data.challenge_members}
         />
       </Inner>
       <DivisionLine />
       <Inner>
         <ChallengeDescription
-          host_nickname={data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
-          challenge_description={data.challenge_description}
+          host_nickname={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
+          challenge_description={data.data.challenge_description}
         />
-        <ChallengeReview challenge_reviews={data.challenge_reviews} />
+        <ChallengeReview challenge_reviews={data.data.challenge_reviews} />
         <RefundAndCaution />
         <PopularChallenge />
         <Button>챌린지 함께하기</Button>
@@ -79,4 +87,4 @@ const Inner = styled.div`
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 
-export default ChallengeDetails;
+export default MainChallengeDetails;
