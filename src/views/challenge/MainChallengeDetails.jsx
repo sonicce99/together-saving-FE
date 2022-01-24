@@ -9,7 +9,6 @@ import ChallengeReview from "./ChallengeReview.jsx";
 import RefundAndCaution from "./RefundAndCaution.jsx";
 import PopularChallenge from "../../components/ChallengeTemplate2.jsx";
 import Button from "../../components/Button.jsx";
-
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer";
 
@@ -47,6 +46,9 @@ const MainChallengeDetails = () => {
   //       }
   //     })();
   //   },[])
+  //   // if(loading) {
+  //   //   return <h2>로딩중...</h2>
+  //   // }
 
   return (
     <Container>

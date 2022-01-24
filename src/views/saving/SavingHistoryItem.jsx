@@ -9,19 +9,19 @@ const SavingHistoryItem = () => {
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.06 금요일</HistoryDate>
+        <HistoryDate>01.06 목요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.05 금요일</HistoryDate>
+        <HistoryDate>01.05 수요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.04 금요일</HistoryDate>
+        <HistoryDate>01.04 화요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
       <HistoryItem>
-        <HistoryDate>01.03 금요일</HistoryDate>
+        <HistoryDate>01.03 월요일</HistoryDate>
         <HistoryPrice>6,000원</HistoryPrice>
       </HistoryItem>
     </>
