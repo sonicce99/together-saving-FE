@@ -1,0 +1,88 @@
+{
+  "status": "200",
+  "message": "(?)가 좋아하는 챌린지 리스트 조회 성공",
+  "data": {
+    "challenges": [
+      {
+        "id": "hsAKJSDHajskdha",
+        "is_wished": false,
+        "thumbnail": "이미지 경로",
+        "title": "PC방비 모아 노트북 사기",
+        "mode": "자율",
+        "period": 4,
+        "remain_date": 5,
+        "tags": [
+          {
+            "tag_name": "#피시방"
+          },
+          {
+            "tag_name": "#맥북"
+          },
+          {
+            "tag_name": "#에이수스"
+          },
+          {
+            "tag_name": "#갤럭시북"
+          }
+        ]
+      },
+      {
+        "id": "ASJDadsasdhk",
+        "is_wished": true,
+        "thumbnail": "이미지 경로",
+        "title": "택시비",
+        "mode": "자율",
+        "period": 4,
+        "remain_date": 2,
+        "tags": [
+          {
+            "tag_name": "#택시비모아차사기"
+          }
+        ]
+      },
+      {
+        "id": "weiqrouASJDHK",
+        "is_wished": true,
+        "thumbnail": "이미지 경로",
+        "title": "치킨 값 모아 집 사기",
+        "mode": "자율",
+        "period": 4,
+        "remain_date": 2,
+        "tags": [
+          {
+            "tag_name": "#집"
+          },
+          {
+            "tag_name": "#차"
+          },
+          {
+            "tag_name": "#서울"
+          }
+        ]
+      },
+      {
+        "id": "quyiewASKLDJ",
+        "is_wished": false,
+        "thumbnail": "이미지 경로",
+        "title": "피자 값 모아 페라리 사기",
+        "mode": "자율",
+        "period": 10,
+        "remain_date": 7,
+        "tags": [
+          {
+            "tag_name": "#택시비모아차사기"
+          },
+          {
+            "tag_name": "#페라리"
+          },
+          {
+            "tag_name": "#피자"
+          },
+          {
+            "tag_name": "#2만원"
+          }
+        ]
+      }
+    ]
+  }
+}
