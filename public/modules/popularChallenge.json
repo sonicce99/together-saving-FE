@@ -1,11 +1,11 @@
 {
   "status": "200",
-  "message": " 인기 챌린지 리스트 조회 성공",
+  "message": "인기 챌린지 리스트 조회 성공",
   "data": {
     "challenges": [
       {
         "id": "jQMfKla8vOIFELA3mAXv",
-        "is_wished": false,
+        "is_wished": true,
         "thumbnail": "이미지 경로",
         "title": "담배값 저축하기",
         "mode": "경쟁",
