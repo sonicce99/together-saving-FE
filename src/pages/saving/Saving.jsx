@@ -11,9 +11,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 
 const Saving = () => {
-  const { data, loading, error } = useSelector(
+  const { loading, data, error } = useSelector(
     (state) => state.savingInfoReducer.savingInfo
   );
+
+  // const { data1, loading1, error1 } = useSelector(
+  //   (state) => state.savingHistoryReducer.savingHistory
+  // );
 
   const dispatch = useDispatch();
 

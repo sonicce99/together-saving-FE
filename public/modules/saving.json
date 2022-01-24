@@ -4,7 +4,7 @@
   "data": {
     "profile_picture": "유저 프로필 사진 경로",
     "nickname": "김보미",
-    "cma_balance": "300000",
+    "cma_balance": 300000,
     "saving_rate": "80",
     "saving_success": "4",
     "saving_fail": "1",
