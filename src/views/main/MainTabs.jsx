@@ -1,14 +1,35 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Tabs, Tab, Typography, Box } from "@mui/material";
-import PopularChallenge from "../../components/PopularChallenge.jsx";
+import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import ParticipatingChallenge from "./ParticipatingChallenge.jsx";
 import WholeChallenge from "./WholeChallenge.jsx";
-import ParticularGroupChallenge from "./ParticularGroupChallenge.jsx";
-import styled from "styled-components";
+import DivisionLine from "../../components/DivisionLine.jsx";
+import axios from "axios";
 
 const MainTabs = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0); // Tabs 관련
+
+  const [popularChallenges, setPopularChallenges] = React.useState([]); // 인기 챌린지 Data
+  const [similarityChallenge, setSimilarityChallenge] = React.useState([]); // 특정 그룹이 좋아하는 챌린지 Data
+
+  React.useEffect(() => {
+    (async () => {
+      try {
+        // 인기 챌린지 가져오기
+        const popularChallengeData = await axios.get(
+          "../../modules/popularChallenge.json"
+        );
+        setPopularChallenges(popularChallengeData.data.data.challenges);
+
+        // 특정 그룹이 좋아하는 챌린지 가져오기
+        const similarityData = await axios.get("../../modules/similarity.json");
+        setSimilarityChallenge(similarityData.data.data.challenges);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -50,14 +71,35 @@ const MainTabs = () => {
             <Tab label="개설" {...a11yProps(1)} style={{ minWidth: "50px" }} />
           </Tabs>
         </Box>
+
         <TabPanel value={value} index={0}>
           <ParticipatingChallenge />
-          <PopularChallenge />
-          <ParticularGroupChallenge />
+        </TabPanel>
+
+        {value === 0 ? <DivisionLine /> : null}
+
+        <TabPanel value={value} index={0}>
+          <ChallengeTemplate2
+            title="인기챌린지"
+            ChallengeArray={popularChallenges}
+          />
+        </TabPanel>
+
+        <TabPanel value={value} index={0}>
+          <ChallengeTemplate2
+            title="20대 남성이 좋아하는 챌린지"
+            ChallengeArray={similarityChallenge}
+          />
+        </TabPanel>
+
+        {value === 0 ? <DivisionLine /> : null}
+
+        <TabPanel value={value} index={0}>
           <WholeChallenge />
         </TabPanel>
+
         <TabPanel value={value} index={1}>
-          개설
+          방 만들기
         </TabPanel>
       </Box>
     </>
@@ -76,7 +118,11 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 2 }}>
+        <Box
+          sx={{
+            marginLeft: "16px",
+          }}
+        >
           <Typography component={"span"} variant={"body2"}>
             {children}
           </Typography>
