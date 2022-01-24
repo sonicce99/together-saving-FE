@@ -1,28 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const SavingHistoryItem = () => {
+const SavingHistoryItem = ({ lookup, sort, historyItem }) => {
+  const { date, amount } = historyItem;
   return (
     <>
       <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.06 목요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.05 수요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.04 화요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.03 월요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
+        <HistoryDate>{date}</HistoryDate>
+        <HistoryPrice>{amount}</HistoryPrice>
       </HistoryItem>
     </>
   );

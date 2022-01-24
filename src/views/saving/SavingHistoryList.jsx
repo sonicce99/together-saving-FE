@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
@@ -9,11 +9,11 @@ const PopupPortal = ({ children }) => {
   return createPortal(children, document.getElementById("pop-up"));
 };
 
-const SavingHistory = () => {
+const SavingHistory = ({ historyList }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState({
-    lookup: "당일",
-    sort: "과거저축순",
+    lookup: "1주일",
+    sort: "최근저축순",
   });
 
   const { lookup, sort } = filter;
@@ -53,7 +53,20 @@ const SavingHistory = () => {
         </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
-        <SavingHistoryItem />
+        {historyList &&
+          historyList.map(
+            (
+              history,
+              index // index말고 id요청하자
+            ) => (
+              <SavingHistoryItem
+                key={index}
+                lookup={lookup}
+                sort={sort}
+                historyItem={history}
+              />
+            )
+          )}
       </HistoryContainer>
     </>
   );
