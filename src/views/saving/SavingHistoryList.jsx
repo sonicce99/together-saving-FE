@@ -11,9 +11,23 @@ const PopupPortal = ({ children }) => {
 
 const SavingHistory = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [filter, setFilter] = useState({
+    lookup: "당일",
+    sort: "과거저축순",
+  });
+
+  const { lookup, sort } = filter;
 
   const handlePopup = () => {
     setShowPopup(!showPopup);
+  };
+
+  const handleFilter = (lookup, sort) => {
+    setFilter({
+      ...filter,
+      lookup,
+      sort,
+    });
   };
 
   return (
@@ -21,14 +35,19 @@ const SavingHistory = () => {
       <TitleContainer>
         <Title>저축 내역</Title>
         <HistoryButtonContainer>
-          <Text>최근 1주일</Text>
-          <Text>과거저축순</Text>
+          <Text>{lookup === "당일" ? lookup : `최근 ${lookup}`}</Text>
+          <Text>{sort}</Text>
           <HistoryButton>
             <HistoryIcon src={historyFilter} alt="icon" onClick={handlePopup} />
           </HistoryButton>
           {showPopup && (
             <PopupPortal>
-              <SavingFilterPopUp onClose={handlePopup} />
+              <SavingFilterPopUp
+                lookup={lookup}
+                sort={sort}
+                onClose={handlePopup}
+                onFilter={handleFilter}
+              />
             </PopupPortal>
           )}
         </HistoryButtonContainer>
