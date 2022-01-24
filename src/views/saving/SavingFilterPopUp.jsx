@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
-const SavingFilterPopUp = ({ onClose }) => {
-  const handleLookup = (e) => {};
+const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
+  const [filter, setFilter] = useState({
+    lookup,
+    sort,
+  });
 
-  const handleSort = (e) => {};
+  const handleFilter = (e) => {
+    const { name, value } = e.target;
+    setFilter({
+      ...filter,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = () => {
+    const { lookup, sort } = filter;
+    onFilter(lookup, sort);
     onClose();
   };
 
@@ -22,7 +33,8 @@ const SavingFilterPopUp = ({ onClose }) => {
                 type="radio"
                 name="lookup"
                 value="당일"
-                onChange={handleLookup}
+                checked={filter.lookup === "당일" ? true : false}
+                onChange={handleFilter}
               />
               <Text>당일</Text>
             </Label>
@@ -31,8 +43,8 @@ const SavingFilterPopUp = ({ onClose }) => {
                 type="radio"
                 name="lookup"
                 value="1주일"
-                onChange={handleLookup}
-                defaultChecked
+                checked={filter.lookup === "1주일" ? true : false}
+                onChange={handleFilter}
               />
               <Text>1주일</Text>
             </Label>
@@ -41,7 +53,8 @@ const SavingFilterPopUp = ({ onClose }) => {
                 type="radio"
                 name="lookup"
                 value="1개월"
-                onChange={handleLookup}
+                checked={filter.lookup === "1개월" ? true : false}
+                onChange={handleFilter}
               />
               <Text>1개월</Text>
             </Label>
@@ -50,7 +63,8 @@ const SavingFilterPopUp = ({ onClose }) => {
                 type="radio"
                 name="lookup"
                 value="3개월"
-                onChange={handleLookup}
+                checked={filter.lookup === "3개월" ? true : false}
+                onChange={handleFilter}
               />
               <Text>3개월</Text>
             </Label>
@@ -62,8 +76,8 @@ const SavingFilterPopUp = ({ onClose }) => {
                 type="radio"
                 name="sort"
                 value="최근저축순"
-                onChange={handleSort}
-                defaultChecked
+                checked={filter.sort === "최근저축순" ? true : false}
+                onChange={handleFilter}
               />
               <Text>최근저축순</Text>
             </Label>
@@ -71,8 +85,9 @@ const SavingFilterPopUp = ({ onClose }) => {
               <Input
                 type="radio"
                 name="sort"
-                onChange={handleSort}
                 value="과거저축순"
+                checked={filter.sort === "과거저축순" ? true : false}
+                onChange={handleFilter}
               />
               <Text>과거저축순</Text>
             </Label>
