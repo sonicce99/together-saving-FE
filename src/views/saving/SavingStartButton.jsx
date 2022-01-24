@@ -14,6 +14,7 @@ const SavingStartButton = () => {
 };
 
 const SavingButtonContainer = styled.div`
+  height: 90px;
   padding: 8px 16px 34px;
   box-shadow: 0px 4px 21px -1px rgba(0, 0, 0, 0.18);
 `;
