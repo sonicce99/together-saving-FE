@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
@@ -13,12 +14,14 @@ const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 ReactDom.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
