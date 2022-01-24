@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
@@ -22,7 +22,11 @@ const SavingTotalAmount = ({ savingInfo }) => {
           <Text>
             <Span>{nickname}</Span>님의 누적 저축 금액
           </Text>
-          <Text>{cma_balance}원</Text>
+          <Text>
+            {cma_balance &&
+              cma_balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            원
+          </Text>
         </AmountInfoContainer>
         <SavingRate rate={saving_rate} />
         <SavingCount
