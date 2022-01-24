@@ -2,40 +2,58 @@ import React from "react";
 import styled from "styled-components";
 
 const SavingRate = ({ rate }) => {
+  const endDate = new Date("2022-02-22");
+  const today = new Date();
+  const remainDay = endDate.getTime() - today.getTime();
+  const D_day = Math.ceil(remainDay / (1000 * 60 * 60 * 24));
+
   return (
-    <RateContainer>
-      <p>저축률</p>
-      <p>
+    <>
+      <Title>저축률</Title>
+      <Text>
         만기까지 저축률 100%을 채워보세요!
         <br />
         100% 달성 시 상금을 획득할 수 있어요
-      </p>
+      </Text>
+      <Day left={rate + "%"}>D-{D_day}</Day>
       <ProgressContainer>
         <Progress width={rate + "%"} />
       </ProgressContainer>
       <RateInfoContainer>
-        <p>현재 {rate}%</p>
-        <p>달성률 100%</p>
+        <Text>현재 {rate}%</Text>
+        <Text>달성률 100%</Text>
       </RateInfoContainer>
-    </RateContainer>
+    </>
   );
 };
 
-const RateContainer = styled.div`
-  p:nth-child(1) {
-    color: ${({ theme }) => theme.colors.colorDarkGray1};
-    font-size: ${({ theme }) => theme.fontSize.fontSmall};
-    font-weight: ${({ theme }) => theme.fontWeights.weightBold};
-    margin-bottom: 12px;
-  }
+const Title = styled.p`
+  color: ${({ theme }) => theme.colors.colorDarkGray1};
+  font-size: ${({ theme }) => theme.fontSize.fontSmall};
+  font-weight: ${({ theme }) => theme.fontWeights.weightBold};
+  margin-bottom: 12px;
+`;
 
-  p:nth-child(2) {
-    color: ${({ theme }) => theme.colors.colorDarkGray1};
-    font-size: ${({ theme }) => theme.fontSize.fontXSmall};
-    font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
-    line-height: 20px;
-    margin-bottom: 25px;
-  }
+const Text = styled.p`
+  color: ${({ theme }) => theme.colors.colorDarkGray1};
+  font-size: ${({ theme }) => theme.fontSize.fontXSmall};
+  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+  line-height: 20px;
+  margin-bottom: 35px;
+  position: relative;
+`;
+
+const Day = styled.p`
+  width: 42px;
+  height: 22px;
+  font-size: ${({ theme }) => theme.fontSize.fontXSmall};
+  text-align: center;
+  color: ${({ theme }) => theme.colors.colorWhite};
+  background-color: ${({ theme }) => theme.colors.colorBlue2};
+  border-radius: 20px;
+  position: absolute;
+  top: 465px;
+  left: ${(props) => props.left};
 `;
 
 const ProgressBar = styled.div`
@@ -70,14 +88,14 @@ const RateInfoContainer = styled.div`
   align-items: center;
   margin-bottom: 30px;
 
-  p:nth-child(1) {
+  ${Text}:nth-child(1) {
     color: ${({ theme }) => theme.colors.colorBlue2};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
     margin-bottom: 0;
   }
 
-  p:nth-child(2) {
+  ${Text}:nth-child(2) {
     color: ${({ theme }) => theme.colors.colorGray3};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
