@@ -7,7 +7,7 @@ import DivisionLine from "../../components/DivisionLine.jsx";
 import ChallengeDescription from "./ChallengeDescription.jsx";
 import ChallengeReview from "./ChallengeReview.jsx";
 import RefundAndCaution from "./RefundAndCaution.jsx";
-import PopularChallenge from "../../components/PopularChallenge.jsx";
+import PopularChallenge from "../../components/ChallengeTemplate2.jsx";
 import Button from "../../components/Button.jsx";
 
 import { useSelector, useDispatch } from "react-redux";
