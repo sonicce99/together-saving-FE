@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
@@ -8,7 +8,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
     sort,
   });
 
-  const handleFilter = (e) => {
+  const handleChangeFilter = (e) => {
     const { name, value } = e.target;
     setFilter({
       ...filter,
@@ -34,7 +34,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
                 name="lookup"
                 value="당일"
                 checked={filter.lookup === "당일" ? true : false}
-                onChange={handleFilter}
+                onChange={handleChangeFilter}
               />
               <Text>당일</Text>
             </Label>
@@ -44,7 +44,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
                 name="lookup"
                 value="1주일"
                 checked={filter.lookup === "1주일" ? true : false}
-                onChange={handleFilter}
+                onChange={handleChangeFilter}
               />
               <Text>1주일</Text>
             </Label>
@@ -54,7 +54,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
                 name="lookup"
                 value="1개월"
                 checked={filter.lookup === "1개월" ? true : false}
-                onChange={handleFilter}
+                onChange={handleChangeFilter}
               />
               <Text>1개월</Text>
             </Label>
@@ -64,7 +64,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
                 name="lookup"
                 value="3개월"
                 checked={filter.lookup === "3개월" ? true : false}
-                onChange={handleFilter}
+                onChange={handleChangeFilter}
               />
               <Text>3개월</Text>
             </Label>
@@ -77,7 +77,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
                 name="sort"
                 value="최근저축순"
                 checked={filter.sort === "최근저축순" ? true : false}
-                onChange={handleFilter}
+                onChange={handleChangeFilter}
               />
               <Text>최근저축순</Text>
             </Label>
@@ -87,7 +87,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
                 name="sort"
                 value="과거저축순"
                 checked={filter.sort === "과거저축순" ? true : false}
-                onChange={handleFilter}
+                onChange={handleChangeFilter}
               />
               <Text>과거저축순</Text>
             </Label>

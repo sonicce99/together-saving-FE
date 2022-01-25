@@ -1,28 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const SavingHistoryItem = () => {
+const SavingHistoryItem = ({ historyItem }) => {
+  const { date, amount } = historyItem;
+
+  const displayDate = date.slice(5, 15).replace("-", ".");
+
   return (
     <>
       <HistoryItem>
-        <HistoryDate>01.07 금요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.06 목요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.05 수요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.04 화요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
-      </HistoryItem>
-      <HistoryItem>
-        <HistoryDate>01.03 월요일</HistoryDate>
-        <HistoryPrice>6,000원</HistoryPrice>
+        <HistoryDate>{displayDate}</HistoryDate>
+        <HistoryPrice>
+          {amount && amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+        </HistoryPrice>
       </HistoryItem>
     </>
   );

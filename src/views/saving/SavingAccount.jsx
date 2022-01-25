@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
+import SavingStartButton from "./SavingStartButton";
 
-const SavingAccount = () => {
+const SavingAccount = ({ savingHistory }) => {
+  const challenge_price = 50000;
+  const {
+    account_number,
+    balance,
+    bank_name,
+    history,
+    is_automated,
+    thumbnail,
+  } = savingHistory.data;
+
   return (
-    <AccountContainer>
-      <Title>연결된 계좌</Title>
-      <BankInfoContainer>
-        <BankInfo>
-          <BankThumbnail />
-          <BankTextContainer>
-            <BankText>카카오뱅크</BankText>
-            <BankText>312-2652-12-05</BankText>
-          </BankTextContainer>
-          <PriceText>200,000원</PriceText>
-        </BankInfo>
-      </BankInfoContainer>
-      <SavingHistoryList />
-      <AutoSavingButton />
-    </AccountContainer>
+    <>
+      <AccountContainer>
+        <Title>연결된 계좌</Title>
+        <BankInfoContainer>
+          <BankInfo>
+            <BankThumbnail />
+            <BankTextContainer>
+              <BankText>{bank_name}</BankText>
+              <BankText>{account_number}</BankText>
+            </BankTextContainer>
+            <PriceText>
+              {balance &&
+                balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              원
+            </PriceText>
+          </BankInfo>
+        </BankInfoContainer>
+        <SavingHistoryList historyList={history} />
+        <AutoSavingButton isAuto={is_automated} />
+      </AccountContainer>
+      <SavingStartButton
+        bank={bank_name}
+        account={account_number}
+        price={challenge_price}
+      />
+    </>
   );
 };
 

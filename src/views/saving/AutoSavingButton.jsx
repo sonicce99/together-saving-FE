@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
-const AutoSavingButton = () => {
-  const [isAutoSave, setIsAutoSave] = useState(false);
+const AutoSavingButton = ({ isAuto }) => {
+  const [isAutoSave, setIsAutoSave] = useState(isAuto);
 
   const handleSwitch = () => {
     setIsAutoSave(!isAutoSave);
   };
+
+  // 나중에 처리 put 404 error
+  // 백엔드 로직 잡히면 해보자
+  // axios
+  //   .put("../../modules/autoSaving.json", { isAutoSave })
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch((e) => console.log(e));
 
   return (
     <AutoSavingContainer>
