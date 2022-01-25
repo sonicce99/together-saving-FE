@@ -5,7 +5,6 @@ import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
 import SavingMenuButton from "../../views/saving/SavingMenuButton";
 import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
 import SavingAccount from "../../views/saving/SavingAccount";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
@@ -16,7 +15,7 @@ const Saving = () => {
   const history = useSelector(
     (state) => state.savingHistoryReducer.savingHistory
   );
-  const ChallengeData = useSelector(
+  const challenge = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
 
@@ -37,20 +36,24 @@ const Saving = () => {
   if (history.error) return <div>에러 발생</div>;
   if (!history.data) return null;
 
-  if (ChallengeData.loading) return <div>로딩중</div>;
-  if (ChallengeData.error) return <div>에러 발생</div>;
-  if (!ChallengeData.data) return null;
+  if (challenge.loading) return <div>로딩중</div>;
+  if (challenge.error) return <div>에러 발생</div>;
+  if (!challenge.data) return null;
 
   return (
     <SavingContainer>
-      <Link to="/challenge/:id">
-        <SavingRoomInfo summaryData={ChallengeData.data.data} />
-      </Link>
+      <SavingRoomInfo challengeData={challenge.data.data} />
       <DivisionLine />
       <SavingMenuButton />
-      <SavingTotalAmount savingInfo={info.data} />
+      <SavingTotalAmount
+        savingInfo={info.data}
+        endDate={challenge.data.data.end_date}
+      />
       <DivisionLine />
-      <SavingAccount savingHistory={history.data} />
+      <SavingAccount
+        savingHistory={history.data}
+        defaultPrice={challenge.data.data.challenge_payment}
+      />
     </SavingContainer>
   );
 };
