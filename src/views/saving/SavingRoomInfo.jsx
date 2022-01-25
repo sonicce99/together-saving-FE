@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const SavingRoomInfo = () => {
+const SavingRoomInfo = ({ summaryData }) => {
   return (
     <InfoContainer>
       <InfoThumbnail />
       <InfoTextContainer>
-        <p>커피값 저축하기</p>
-        <p>22.01.01 - 01.28 15일 뒤 종료</p>
-        <p>월,수,금 - 주3일 / 4주간</p>
+        <p>{summaryData.challenge_name}</p>
+        <p>{`${summaryData.start_date} - ${summaryData.end_date}`}</p>
       </InfoTextContainer>
     </InfoContainer>
   );
