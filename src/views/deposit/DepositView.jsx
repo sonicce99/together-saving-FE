@@ -30,23 +30,21 @@ const DepositView = () => {
           placeholder={`${PRICE}원 입력하세요`}
           onChange={handleInputPrice}
         />
-        {isUnder && (
-          <WarningLabel>
-            <Text>
-              {defaultPrice}천원 보다 적게 저축하면 달성률이 떨어질 수 있어요
-            </Text>
-          </WarningLabel>
-        )}
+        <WarningLabel>
+          <Text>
+            {defaultPrice}천원 보다 적게 저축하면 달성률이 떨어질 수 있어요
+          </Text>
+        </WarningLabel>
+        <ButtonContainer>
+          <Button>저축하기</Button>
+        </ButtonContainer>
       </DepositViewContainer>
-      <DepositButtonContainer>
-        <Button>저축하기</Button>
-      </DepositButtonContainer>
     </>
   );
 };
 
 const DepositViewContainer = styled.div`
-  padding: 64px 16px 0;
+  padding: 40px 16px 0;
 `;
 
 const DepositAccount = styled.div`
@@ -85,6 +83,7 @@ const Input = styled.input`
 `;
 
 const WarningLabel = styled.div`
+  width: 303px;
   height: 28px;
   border-radius: 6px;
   padding: 6px 8px;
@@ -97,10 +96,8 @@ const WarningLabel = styled.div`
   }
 `;
 
-const DepositButtonContainer = styled.div`
-  padding: 8px 16px 34px;
+const ButtonContainer = styled.div`
   position: absolute;
   bottom: 0;
 `;
-
 export default DepositView;
