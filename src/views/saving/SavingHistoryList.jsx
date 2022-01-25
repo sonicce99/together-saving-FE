@@ -4,6 +4,7 @@ import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
 import { createPortal } from "react-dom";
 import SavingFilterPopUp from "./SavingFilterPopUp";
+import axios from "axios";
 
 const PopupPortal = ({ children }) => {
   return createPortal(children, document.getElementById("pop-up"));
@@ -11,6 +12,7 @@ const PopupPortal = ({ children }) => {
 
 const SavingHistory = ({ historyList }) => {
   const [showPopup, setShowPopup] = useState(false);
+  const [history, setHistory] = useState(historyList);
   const [filter, setFilter] = useState({
     lookup: "1주일",
     sort: "최근저축순",
@@ -29,6 +31,13 @@ const SavingHistory = ({ historyList }) => {
       sort,
     });
   };
+
+  // console.log(lookup, sort);
+  // axios
+  //   .post("../../modules/history_acient", { period: lookup, ordering: sort })
+  //   .then((res) => {
+  //     console.log(res);
+  //   });
 
   return (
     <>
@@ -53,20 +62,10 @@ const SavingHistory = ({ historyList }) => {
         </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
-        {historyList &&
-          historyList.map(
-            (
-              history,
-              index // index말고 id요청하자
-            ) => (
-              <SavingHistoryItem
-                key={index}
-                lookup={lookup}
-                sort={sort}
-                historyItem={history}
-              />
-            )
-          )}
+        {history &&
+          Object.values(history).map((history, index) => (
+            <SavingHistoryItem key={index} historyItem={history} />
+          ))}
       </HistoryContainer>
     </>
   );

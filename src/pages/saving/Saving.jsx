@@ -24,6 +24,7 @@ const Saving = () => {
     dispatch(getSavingHistory());
   }, [dispatch]);
 
+  // 리팩토링 필요
   if (info.loading) return <div>로딩중</div>;
   if (info.error) return <div>에러 발생</div>;
   if (!info.data) return null;

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const SavingHistoryItem = ({ lookup, sort, historyItem }) => {
+const SavingHistoryItem = ({ historyItem }) => {
   const { date, amount } = historyItem;
+
+  const displayDate = date.slice(5, 15).replace("-", ".");
+
   return (
     <>
       <HistoryItem>
-        <HistoryDate>{date}</HistoryDate>
-        <HistoryPrice>{amount}</HistoryPrice>
+        <HistoryDate>{displayDate}</HistoryDate>
+        <HistoryPrice>
+          {amount && amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+        </HistoryPrice>
       </HistoryItem>
     </>
   );

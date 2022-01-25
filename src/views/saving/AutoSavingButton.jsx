@@ -10,6 +10,7 @@ const AutoSavingButton = ({ isAuto }) => {
   };
 
   // 나중에 처리 put 404 error
+  // 백엔드 로직 잡히면 해보자
   // axios
   //   .put("../../modules/autoSaving.json", { isAutoSave })
   //   .then((res) => {
