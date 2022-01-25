@@ -15,7 +15,10 @@ const Saving = () => {
   const history = useSelector(
     (state) => state.savingHistoryReducer.savingHistory
   );
-
+  const ChallengeData = useSelector(
+    (state) => state.challengeSummaryReducer.challengeSummaryInfo
+  );
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,8 +37,8 @@ const Saving = () => {
 
   return (
     <SavingContainer>
-      <Link to="/challenge">
-        <SavingRoomInfo />
+      <Link to="/challenge/:id">
+        <SavingRoomInfo summaryData={ChallengeData.data.data} />
       </Link>
       <DivisionLine />
       <SavingMenuButton />

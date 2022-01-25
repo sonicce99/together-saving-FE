@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import H3 from "./H3.jsx";
-import LikeButton from "./LikeButton.jsx";
 import { useNavigate } from "react-router-dom";
 
-const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
+const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
   const navigate = useNavigate();
 
   return (
@@ -21,21 +20,13 @@ const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
                       navigate(`/challenge/${EachChallenge.id}`);
                     }}
                   >
-                    챌린지이미지
+                    챌린지 이미지
                   </Image>
                   <Div2>
                     <Period>{EachChallenge.period}주 저축</Period>
-                    <Period>{EachChallenge.remain_date}일 뒤 시작</Period>
+                    <Period>{EachChallenge.date}일 뒤 종료</Period>
                   </Div2>
                   <ChallengeName>{EachChallenge.title}</ChallengeName>
-                  <Div3>
-                    <Div4>
-                      {EachChallenge.tags.map((tag, index) => {
-                        return <Tags key={index}>{tag.tag_name}</Tags>;
-                      })}
-                    </Div4>
-                    <LikeButton is_wished={EachChallenge.is_wished} />
-                  </Div3>
                 </Content>
               );
             })}
@@ -46,7 +37,7 @@ const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
 };
 
 const Container = styled.div`
-  height: 315px;
+  height: 214px;
   margin: 40px 0;
   border: 2px solid black;
 `;
@@ -60,8 +51,7 @@ const Title = styled(H3)`
 `;
 
 const Contents = styled.div`
-  /* border: 2px solid royalblue; */
-  height: 280px;
+  height: 177px;
 `;
 
 const Div = styled.div`
@@ -71,14 +61,14 @@ const Div = styled.div`
 `;
 
 const Content = styled.div`
-  width: 253px;
+  width: 164px;
   border: 1px solid red;
-  margin-right: 16px;
+  margin-right: 9px;
 `;
 
 const Image = styled.div`
-  width: 253px;
-  height: 200px;
+  width: 164px;
+  height: 132px;
   border: 2px solid green;
   /* background: url(image.png); */
   cursor: pointer;
@@ -102,23 +92,8 @@ const Period = styled.div`
 
 const ChallengeName = styled(H3)`
   color: ${({ theme }) => theme.colors.colorDarkGray2};
-  font-size: 16px;
-  margin-bottom: 6px;
-`;
-
-const Div3 = styled(Div2)`
   font-size: 14px;
   margin-bottom: 0;
 `;
 
-const Div4 = styled.div`
-  display: flex;
-`;
-
-const Tags = styled.div`
-  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.colorGray1};
-`;
-
-export default ChallengeTemplate2;
+export default ChallengeTemplate1;

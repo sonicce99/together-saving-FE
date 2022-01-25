@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import H3 from "../../components/H3.jsx";
-import GrayBackground from "../../components/GrayBackground.jsx";
+import H3 from "./H3.jsx";
+import GrayBackground from "./GrayBackground.jsx";
 
 const RefundAndCaution = () => {
   return (

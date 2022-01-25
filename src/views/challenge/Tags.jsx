@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import Like from "../../images/Like.png";
+import LikeButton from "../../components/LikeButton";
 
-const Tags = ({ tags }) => {
+const Tags = ({ is_wished, tags }) => {
   return (
     <TagBox>
-      {tags &&
-        tags.map((tag, index) => {
-          return (
-            <TagDesign key={index}>
-              <Title>{tag.tag_name}</Title>
-            </TagDesign>
-          );
-        })}
-      <LikeBtn src={Like} />
+      <Div>
+        {tags &&
+          tags.map((tag, index) => {
+            return (
+              <TagDesign key={index}>
+                <Title>{tag.tag_name}</Title>
+              </TagDesign>
+            );
+          })}
+      </Div>
+      <LikeButton is_wished={is_wished} />
     </TagBox>
   );
 };
@@ -22,6 +24,11 @@ const TagBox = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const Div = styled.div`
+  display: flex;
 `;
 
 const TagDesign = styled.div`
@@ -43,13 +50,6 @@ const Title = styled.p`
   order: 0;
   flex-grow: 0;
   color: ${({ theme }) => theme.colors.colorDarkGray1};
-`;
-
-const LikeBtn = styled.img`
-  width: 22px;
-  height: 22px;
-  margin-left: 113px;
-  cursor: pointer;
 `;
 
 export default Tags;
