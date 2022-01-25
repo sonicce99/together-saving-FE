@@ -68,7 +68,7 @@ const Day = styled.p`
   border-radius: 20px;
   padding: 1px 6px;
   position: relative;
-  left: ${(props) => 0 + props.left};
+  left: ${(props) => props.left};
 `;
 
 const ProgressBar = styled.div`
