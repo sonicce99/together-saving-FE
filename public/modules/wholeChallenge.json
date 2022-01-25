@@ -1,0 +1,76 @@
+{
+  "status": "200",
+  "message": "시작하지 않은 전체 챌린지 리스트 조회 성공",
+  "data": {
+    "challenges": [
+      {
+        "id": "asdkjdashQWERU",
+        "thumbnail": "이미지 경로",
+        "title": "술값 저축하기",
+        "is_wished": false,
+        "mode": "경쟁",
+        "period": 4,
+        "date": 7,
+        "tags": [
+          {
+            "tag_name": "#그냥 저축"
+          },
+          {
+            "tag_name": "#잘 저축"
+          }
+        ]
+      },
+      {
+        "id": "EFHKASDFHSJK",
+        "thumbnail": "이미지 경로",
+        "title": "외식비 저축 챌린지",
+        "is_wished": false,
+        "mode": "자율",
+        "period": 6,
+        "date": 7,
+        "tags": [
+          {
+            "tag_name": "#그냥 저축"
+          },
+          {
+            "tag_name": "#잘 저축"
+          }
+        ]
+      },
+      {
+        "id": "ashjdasjkd",
+        "thumbnail": "이미지 경로",
+        "title": "담배값 저축 챌린지",
+        "is_wished": false,
+        "mode": "자율",
+        "period": 6,
+        "date": 7,
+        "tags": [
+          {
+            "tag_name": "#그냥 저축"
+          },
+          {
+            "tag_name": "#잘 저축"
+          }
+        ]
+      },
+      {
+        "id": "EFHKASDFHSJK",
+        "thumbnail": "이미지 경로",
+        "title": "기름값 저축 챌린지",
+        "is_wished": false,
+        "mode": "자율",
+        "period": 6,
+        "date": 7,
+        "tags": [
+          {
+            "tag_name": "#그냥 저축"
+          },
+          {
+            "tag_name": "#잘 저축"
+          }
+        ]
+      }
+    ]
+  }
+}

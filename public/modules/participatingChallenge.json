@@ -1,0 +1,72 @@
+{
+  "status": "200",
+  "message": " 참여중인 첼린지 리스트 조회 성공",
+  "data": {
+    "challenges": [
+      {
+        "id": "akdhsjJASDKH",
+        "thumbnail": "이미지 경로",
+        "title": "배달비 저축 챌린지",
+        "mode": "경쟁",
+        "period": 4,
+        "date": 3,
+        "tags": [
+          {
+            "tag_name": "#슬금슬금 저축하기"
+          },
+          {
+            "tag_name": "#담배저축"
+          }
+        ]
+      },
+      {
+        "id": "ALKSDJjsdahljh",
+        "thumbnail": "이미지 경로",
+        "title": "커피값 저축하기",
+        "mode": "경쟁",
+        "period": 4,
+        "date": 14,
+        "tags": [
+          {
+            "tag_name": "#슬금슬금 저축하기"
+          },
+          {
+            "tag_name": "#담배저축"
+          }
+        ]
+      },
+      {
+        "id": "ajklfhadASJDKH",
+        "thumbnail": "이미지 경로",
+        "title": "스타벅스 안가기",
+        "mode": "경쟁",
+        "period": 7,
+        "date": 10,
+        "tags": [
+          {
+            "tag_name": "#슬금슬금 저축하기"
+          },
+          {
+            "tag_name": "#담배저축"
+          }
+        ]
+      },
+      {
+        "id": "asdjhAHJSKD",
+        "thumbnail": "이미지 경로",
+        "title": "국 끓여 먹기",
+        "mode": "경쟁",
+        "period": 6,
+        "date": 9,
+        "tags": [
+          {
+            "tag_name": "#슬금슬금 저축하기"
+          },
+          {
+            "tag_name": "#담배저축"
+          }
+        ]
+      }
+    ]
+  }
+}
