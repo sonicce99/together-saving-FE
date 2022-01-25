@@ -1,21 +1,30 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Tabs, Tab, Typography, Box } from "@mui/material";
+import ChallengeTemplate1 from "../../components/ChallengeTemplate1.jsx";
 import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
-import ParticipatingChallenge from "./ParticipatingChallenge.jsx";
-import WholeChallenge from "./WholeChallenge.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
 import axios from "axios";
 
 const MainTabs = () => {
   const [value, setValue] = React.useState(0); // Tabs 관련
 
+  const [participatingChallenges, setParticipatingChallenges] = React.useState(
+    []
+  ); // 참여 중인 챌린지 Data
   const [popularChallenges, setPopularChallenges] = React.useState([]); // 인기 챌린지 Data
   const [similarityChallenge, setSimilarityChallenge] = React.useState([]); // 특정 그룹이 좋아하는 챌린지 Data
+  const [wholeChallenge, setWholeChallenge] = React.useState([]); // 전체 챌린지 Data
 
   React.useEffect(() => {
     (async () => {
       try {
+        // 참여 중인 챌린지 가져오기
+        const participatingData = await axios.get(
+          "../../modules/participatingChallenge.json"
+        );
+        setParticipatingChallenges(participatingData.data.data.challenges);
+
         // 인기 챌린지 가져오기
         const popularChallengeData = await axios.get(
           "../../modules/popularChallenge.json"
@@ -25,6 +34,10 @@ const MainTabs = () => {
         // 특정 그룹이 좋아하는 챌린지 가져오기
         const similarityData = await axios.get("../../modules/similarity.json");
         setSimilarityChallenge(similarityData.data.data.challenges);
+
+        // 전체 챌린지 가져오기
+        const wholeData = await axios.get("../../modules/wholeChallenge.json");
+        setWholeChallenge(wholeData.data.data.challenges);
       } catch (error) {
         console.log(error);
       }
@@ -73,14 +86,17 @@ const MainTabs = () => {
         </Box>
 
         <TabPanel value={value} index={0}>
-          <ParticipatingChallenge />
+          <ChallengeTemplate1
+            title="참여중인 챌린지"
+            ChallengeArray={participatingChallenges}
+          />
         </TabPanel>
 
         {value === 0 ? <DivisionLine /> : null}
 
         <TabPanel value={value} index={0}>
           <ChallengeTemplate2
-            title="인기챌린지"
+            title="인기 챌린지"
             ChallengeArray={popularChallenges}
           />
         </TabPanel>
@@ -95,7 +111,10 @@ const MainTabs = () => {
         {value === 0 ? <DivisionLine /> : null}
 
         <TabPanel value={value} index={0}>
-          <WholeChallenge />
+          <ChallengeTemplate1
+            title="전체 챌린지"
+            ChallengeArray={wholeChallenge}
+          />
         </TabPanel>
 
         <TabPanel value={value} index={1}>
