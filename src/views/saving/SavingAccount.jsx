@@ -4,8 +4,7 @@ import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
 
-const SavingAccount = ({ savingHistory }) => {
-  const challenge_price = 50000;
+const SavingAccount = ({ savingHistory, defaultPrice }) => {
   const {
     account_number,
     balance,
@@ -39,7 +38,7 @@ const SavingAccount = ({ savingHistory }) => {
       <SavingStartButton
         bank={bank_name}
         account={account_number}
-        price={challenge_price}
+        defaultPrice={defaultPrice}
       />
     </>
   );

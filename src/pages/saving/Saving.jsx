@@ -15,7 +15,7 @@ const Saving = () => {
   const history = useSelector(
     (state) => state.savingHistoryReducer.savingHistory
   );
-  const ChallengeData = useSelector(
+  const challenge = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
 
@@ -36,18 +36,24 @@ const Saving = () => {
   if (history.error) return <div>에러 발생</div>;
   if (!history.data) return null;
 
-  if (ChallengeData.loading) return <div>로딩중</div>;
-  if (ChallengeData.error) return <div>에러 발생</div>;
-  if (!ChallengeData.data) return null;
+  if (challenge.loading) return <div>로딩중</div>;
+  if (challenge.error) return <div>에러 발생</div>;
+  if (!challenge.data) return null;
 
   return (
     <SavingContainer>
-      <SavingRoomInfo summaryData={ChallengeData.data.data} />
+      <SavingRoomInfo challengeData={challenge.data.data} />
       <DivisionLine />
       <SavingMenuButton />
-      <SavingTotalAmount savingInfo={info.data} />
+      <SavingTotalAmount
+        savingInfo={info.data}
+        endDate={challenge.data.data.end_date}
+      />
       <DivisionLine />
-      <SavingAccount savingHistory={history.data} />
+      <SavingAccount
+        savingHistory={history.data}
+        defaultPrice={challenge.data.data.challenge_payment}
+      />
     </SavingContainer>
   );
 };

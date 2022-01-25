@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 
-const SavingTotalAmount = ({ savingInfo }) => {
+const SavingTotalAmount = ({ savingInfo, endDate }) => {
   const {
     nickname,
     profile_picture,
@@ -28,7 +28,7 @@ const SavingTotalAmount = ({ savingInfo }) => {
             원
           </Text>
         </AmountInfoContainer>
-        <SavingRate rate={saving_rate} />
+        <SavingRate rate={saving_rate} endDate={endDate} />
         <SavingCount
           success={saving_success}
           fail={saving_fail}

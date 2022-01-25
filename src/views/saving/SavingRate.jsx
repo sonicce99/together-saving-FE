@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const SavingRate = ({ rate }) => {
-  const endDate = new Date("2022-02-20");
+const SavingRate = ({ rate, endDate }) => {
+  const endDay = new Date(endDate);
   const today = new Date();
-  const remainDay = endDate.getTime() - today.getTime();
-  const D_day = Math.ceil(remainDay / (1000 * 60 * 60 * 24));
+  const remainTime = endDay.getTime() - today.getTime();
+  const remainDay = Math.ceil(remainTime / (1000 * 60 * 60 * 24));
 
   return (
     <>
@@ -15,7 +15,9 @@ const SavingRate = ({ rate }) => {
         <br />
         100% 달성 시 상금을 획득할 수 있어요
       </Text>
-      <Day left={`${rate}%`}>{D_day === 0 ? "D-day" : `D-${D_day}`}</Day>
+      <Day left={`${rate}%`}>
+        {remainDay === 0 ? "D-day" : `D-${remainDay}`}
+      </Day>
       <ProgressContainer>
         <Progress width={`${rate}%`} />
       </ProgressContainer>

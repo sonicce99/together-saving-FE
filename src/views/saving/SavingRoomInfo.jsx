@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const SavingRoomInfo = ({ summaryData }) => {
+const SavingRoomInfo = ({ challengeData }) => {
   // 챌린지 아이디 업데이트 필요 (저축 시 식별자 역할)
   const {
     challenge_id,
@@ -10,8 +10,9 @@ const SavingRoomInfo = ({ summaryData }) => {
     challenge_frequency,
     end_date,
     start_date,
-  } = summaryData;
+  } = challengeData;
 
+  // 1. useState
   const [period, setPeriod] = useState({ startDay: "", endDay: "" });
   const [timeRemain, setTimeRemain] = useState("");
   const [depositInfo, setDepositInfo] = useState({
@@ -20,9 +21,11 @@ const SavingRoomInfo = ({ summaryData }) => {
     week: "",
   });
 
+  // 2. 구조분해
   const { startDay, endDay } = period;
   const { days, times, week } = depositInfo;
 
+  // 3. useEffect
   useEffect(() => {
     const startDay = start_date.slice(2, 10).replaceAll("-", ".");
     const endDay = end_date.slice(5, 10).replaceAll("-", ".");
@@ -44,12 +47,10 @@ const SavingRoomInfo = ({ summaryData }) => {
   useEffect(() => {
     const days = challenge_frequency.map((item) => item.day).join(",");
     const times = challenge_frequency.length;
-
     const startWeek = new Date(start_date);
     const endWeek = new Date(end_date);
     const remainTime = endWeek.getTime() - startWeek.getTime();
     const remainWeek = Math.ceil(remainTime / (1000 * 60 * 60 * 30 * 5));
-
     setDepositInfo({
       ...depositInfo,
       days,
@@ -66,7 +67,7 @@ const SavingRoomInfo = ({ summaryData }) => {
           <Title>{challenge_name}</Title>
         </Link>
         <Text>{`${startDay} - ${endDay} ${timeRemain}일 뒤 종료`}</Text>
-        <Text>{`${days} - 주${times}일 / ${depositInfo.week}주차`}</Text>
+        <Text>{`${days} - 주${times}일 / ${week}주차`}</Text>
       </InfoTextContainer>
     </InfoContainer>
   );
