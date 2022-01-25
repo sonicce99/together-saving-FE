@@ -6,7 +6,6 @@ import SavingMenuButton from "../../views/saving/SavingMenuButton";
 import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
 import SavingAccount from "../../views/saving/SavingAccount";
 import { Link } from "react-router-dom";
-import SavingStartButton from "../../views/saving/SavingStartButton";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
@@ -43,7 +42,6 @@ const Saving = () => {
       <SavingTotalAmount savingInfo={info.data} />
       <DivisionLine />
       <SavingAccount savingHistory={history.data} />
-      <SavingStartButton />
     </SavingContainer>
   );
 };

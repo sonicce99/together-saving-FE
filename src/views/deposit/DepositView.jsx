@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+// import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
-
-const PRICE = 6000;
-const defaultPrice = PRICE / 1000;
+import { useLocation } from "react-router-dom";
 
 const DepositView = () => {
   const [isUnder, setIsUnder] = useState(false);
+  const inputRef = useRef();
 
-  const handleInputPrice = (e) => {
-    if (e.target.value === "") return;
+  const location = useLocation();
+  const { bank, account, price } = location.state;
 
-    const inputPrice = e.target.value;
-    if (inputPrice < defaultPrice) {
-      setIsUnder(true);
-    }
+  const handleSavingSubmit = () => {
+    // const savingPrice = inputRef.current.value;
+    // axios.post('url', { challenge_payment: savingPrice, physical_account_number: })
   };
 
   return (
@@ -22,21 +21,28 @@ const DepositView = () => {
       <DepositViewContainer>
         <DepositAccount>
           <Text>
-            <Span>내 신한은행(CMA) 계좌</Span>로
+            <Span>내 {bank}(CMA) 계좌</Span>로
           </Text>
-          <Text>1101-7889-128-05</Text>
+          <Text>{account}</Text>
         </DepositAccount>
         <Input
-          placeholder={`${PRICE}원 입력하세요`}
-          onChange={handleInputPrice}
+          ref={inputRef}
+          type="number"
+          placeholder={`${
+            price && price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }원 입력하세요`}
+          max="5"
         />
-        <WarningLabel>
-          <Text>
-            {defaultPrice}천원 보다 적게 저축하면 달성률이 떨어질 수 있어요
-          </Text>
-        </WarningLabel>
+        {isUnder && (
+          <WarningLabel>
+            <Text>
+              {price > 10000 ? `${price / 10000}만원 ` : `${price / 1000}천원 `}
+              보다 적게 저축하면 달성률이 떨어질 수 있어요
+            </Text>
+          </WarningLabel>
+        )}
         <ButtonContainer>
-          <Button>저축하기</Button>
+          <Button onClick={handleSavingSubmit}>저축하기</Button>
         </ButtonContainer>
       </DepositViewContainer>
     </>
@@ -83,13 +89,13 @@ const Input = styled.input`
 `;
 
 const WarningLabel = styled.div`
-  width: 303px;
   height: 28px;
   border-radius: 6px;
   padding: 6px 8px;
   background-color: ${({ theme }) => theme.colors.colorLightGray2};
 
   ${Text}:nth-child(1) {
+    width: 300px;
     color: ${({ theme }) => theme.colors.colorBlue2};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     line-height: 16px;
