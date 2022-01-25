@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
+import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
 
 const Saving = () => {
   const info = useSelector((state) => state.savingInfoReducer.savingInfo);
@@ -18,12 +19,13 @@ const Saving = () => {
   const ChallengeData = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSavingInfo());
     dispatch(getSavingHistory());
+    dispatch(getChallengesummaryInfo());
   }, [dispatch]);
 
   // 리팩토링 필요
@@ -34,6 +36,10 @@ const Saving = () => {
   if (history.loading) return <div>로딩중</div>;
   if (history.error) return <div>에러 발생</div>;
   if (!history.data) return null;
+
+  if (ChallengeData.loading) return <div>로딩중</div>;
+  if (ChallengeData.error) return <div>에러 발생</div>;
+  if (!ChallengeData.data) return null;
 
   return (
     <SavingContainer>
