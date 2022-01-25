@@ -1,24 +1,34 @@
 {
-  "status": "200",
-  "message": " 저축내역 조회 성공",
   "data": {
     "thumbnail": "은행 아이콘 경로",
     "bank_name": "카카오뱅크",
-    "account_number": "312-2652-12-05",
+    "account_number": "312-2652-12-25",
     "balance": 40000000,
     "is_automated": false,
     "history": [
       {
-        "date": "01.07.금요일",
-        "amount": "6000원"
+        "date": "2022-01-24 월요일",
+        "amount": 6000
       },
       {
-        "date": "01.05.수요일",
-        "amount": "6000원"
+        "date": "2022-01-23 일요일",
+        "amount": 6000
       },
       {
-        "date": "01.03.월요일",
-        "amount": "6000원"
+        "date": "2022-01-22 토요일",
+        "amount": 6000
+      },
+      {
+        "date": "2022-01-21 금요일",
+        "amount": 6000
+      },
+      {
+        "date": "2022-01-20 목요일",
+        "amount": 6000
+      },
+      {
+        "date": "2022-01-19 수요일",
+        "amount": 6000
       }
     ]
   }

@@ -16,7 +16,7 @@ export const getSavingInfo = () => async (dispatch) => {
     const { data } = await getAPI();
     dispatch({
       type: GET_SAVING_INFO_SUCCESS,
-      data,
+      data: data,
     });
   } catch (error) {
     dispatch({

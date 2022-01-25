@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 
-const SavingAccount = () => {
+const SavingAccount = ({ savingHistory }) => {
+  const {
+    account_number,
+    balance,
+    bank_name,
+    history,
+    is_automated,
+    thumbnail,
+  } = savingHistory.data;
+
   return (
     <AccountContainer>
       <Title>연결된 계좌</Title>
@@ -11,14 +20,18 @@ const SavingAccount = () => {
         <BankInfo>
           <BankThumbnail />
           <BankTextContainer>
-            <BankText>카카오뱅크</BankText>
-            <BankText>312-2652-12-05</BankText>
+            <BankText>{bank_name}</BankText>
+            <BankText>{account_number}</BankText>
           </BankTextContainer>
-          <PriceText>200,000원</PriceText>
+          <PriceText>
+            {balance &&
+              balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            원
+          </PriceText>
         </BankInfo>
       </BankInfoContainer>
-      <SavingHistoryList />
-      <AutoSavingButton />
+      <SavingHistoryList historyList={history} />
+      <AutoSavingButton isAuto={is_automated} />
     </AccountContainer>
   );
 };
