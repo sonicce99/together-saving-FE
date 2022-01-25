@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import H3 from "./H3.jsx";
 import LikeButton from "./LikeButton.jsx";
+import { useNavigate } from "react-router-dom";
 
 const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Title>{title}</Title>
@@ -13,7 +16,13 @@ const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
             ChallengeArray.map((EachChallenge, index) => {
               return (
                 <Content key={index}>
-                  <Image>챌린지이미지</Image>
+                  <Image
+                    onClick={() => {
+                      navigate(`/challenge/${EachChallenge.id}`);
+                    }}
+                  >
+                    챌린지이미지
+                  </Image>
                   <Div2>
                     <Period>{EachChallenge.period}주 저축</Period>
                     <Period>{EachChallenge.remain_date}일 뒤 시작</Period>
@@ -51,8 +60,8 @@ const Title = styled(H3)`
 `;
 
 const Contents = styled.div`
-  /* border: 2px solid red; */
-  height: 278px;
+  /* border: 2px solid royalblue; */
+  height: 280px;
 `;
 
 const Div = styled.div`
@@ -63,8 +72,7 @@ const Div = styled.div`
 
 const Content = styled.div`
   width: 253px;
-  height: 280px;
-  border: 1px solid black;
+  border: 1px solid red;
   margin-right: 16px;
 `;
 
@@ -73,6 +81,7 @@ const Image = styled.div`
   height: 200px;
   border: 2px solid green;
   /* background: url(image.png); */
+  cursor: pointer;
   border-radius: 6px;
 `;
 
