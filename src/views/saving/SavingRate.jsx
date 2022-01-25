@@ -15,9 +15,15 @@ const SavingRate = ({ rate, endDate }) => {
         <br />
         100% 달성 시 상금을 획득할 수 있어요
       </Text>
-      <Day left={`${rate}%`}>
-        {remainDay === 0 ? "D-day" : `D-${remainDay}`}
-      </Day>
+      <RemainDayContainer>
+        {rate >= 92 ? (
+          <Day left="87%">{remainDay === 0 ? "D-day" : `D-${remainDay}`}</Day>
+        ) : (
+          <Day left={`${rate - 6}%`}>
+            {remainDay === 0 ? "D-day" : `D-${remainDay}`}
+          </Day>
+        )}
+      </RemainDayContainer>
       <ProgressContainer>
         <Progress width={`${rate}%`} />
       </ProgressContainer>
@@ -41,8 +47,15 @@ const Text = styled.p`
   font-size: ${({ theme }) => theme.fontSize.fontXSmall};
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
   line-height: 20px;
-  margin-bottom: 35px;
-  position: relative;
+  margin-bottom: 30px;
+
+  &:nth-child(3) {
+    margin-bottom: 7px;
+  }
+`;
+
+const RemainDayContainer = styled.div`
+  margin-bottom: 7px;
 `;
 
 const Day = styled.p`
@@ -54,9 +67,8 @@ const Day = styled.p`
   background-color: ${({ theme }) => theme.colors.colorBlue2};
   border-radius: 20px;
   padding: 1px 6px;
-  position: absolute;
-  top: 465px;
-  left: ${(props) => props.left};
+  position: relative;
+  left: ${(props) => 0 + props.left};
 `;
 
 const ProgressBar = styled.div`
