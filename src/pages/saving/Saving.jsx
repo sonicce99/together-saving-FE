@@ -6,32 +6,34 @@ import SavingMenuButton from "../../views/saving/SavingMenuButton";
 import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
 import SavingAccount from "../../views/saving/SavingAccount";
 import { Link } from "react-router-dom";
-import SavingStartButton from "../../views/saving/SavingStartButton";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
+import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
 
 const Saving = () => {
-  const { loading, data, error } = useSelector(
-    (state) => state.savingInfoReducer.savingInfo
+  const info = useSelector((state) => state.savingInfoReducer.savingInfo);
+  const history = useSelector(
+    (state) => state.savingHistoryReducer.savingHistory
   );
-
   const ChallengeData = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
-
-  // const { data1, loading1, error1 } = useSelector(
-  //   (state) => state.savingHistoryReducer.savingHistory
-  // );
-
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSavingInfo());
+    dispatch(getSavingHistory());
   }, [dispatch]);
 
-  if (loading) return <div>로딩중</div>;
-  if (error) return <div>에러 발생</div>;
-  if (!data) return null;
+  // 리팩토링 필요
+  if (info.loading) return <div>로딩중</div>;
+  if (info.error) return <div>에러 발생</div>;
+  if (!info.data) return null;
+
+  if (history.loading) return <div>로딩중</div>;
+  if (history.error) return <div>에러 발생</div>;
+  if (!history.data) return null;
 
   return (
     <SavingContainer>
@@ -40,10 +42,9 @@ const Saving = () => {
       </Link>
       <DivisionLine />
       <SavingMenuButton />
-      <SavingTotalAmount savingInfo={data} />
+      <SavingTotalAmount savingInfo={info.data} />
       <DivisionLine />
-      <SavingAccount />
-      <SavingStartButton />
+      <SavingAccount savingHistory={history.data} />
     </SavingContainer>
   );
 };

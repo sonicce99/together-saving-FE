@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
-const SavingStartButton = () => {
+const SavingStartButton = ({ bank, account, price }) => {
   return (
     <SavingButtonContainer>
-      <Link to="/deposit">
+      <Link to={"/deposit"} state={{ bank, account, price }}>
         <Button>저축하기</Button>
       </Link>
     </SavingButtonContainer>
