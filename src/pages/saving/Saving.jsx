@@ -1,32 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DivisionLine from "../../components/DivisionLine";
 import SavingTabMenu from "../../views/saving/SavingTabMenu";
-import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
+import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 
 const SavingMain = () => {
-  const challenge = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo
-  );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getChallengesummaryInfo());
-  }, [dispatch]);
-
-  if (challenge.loading) return <div>로딩중</div>;
-  if (challenge.error) return <div>에러 발생</div>;
-  if (!challenge.data) return null;
+  const [currentTab, setCurrentTab] = useState(0);
+  const handleChangeTab = (current) => setCurrentTab(current);
 
   return (
     <SavingContainer>
-      <SavingRoomInfo challengeData={challenge.data.data} />
-      <DivisionLine />
-      <SavingTabMenu endDate={challenge.data.data.end_date} />
+      {currentTab === 0 && (
+        <>
+          <SavingRoomInfoContainer />
+          <DivisionLine />
+        </>
+      )}
+      <SavingTabMenu currentTab={currentTab} onChangeTab={handleChangeTab} />
     </SavingContainer>
   );
 };

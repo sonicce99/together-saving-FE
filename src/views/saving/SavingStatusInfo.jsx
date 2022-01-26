@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 
-const SavingTotalAmount = ({ savingInfo, endDate }) => {
+const SavingStatusInfo = ({ savingStatus }) => {
   const {
     nickname,
     profile_picture,
@@ -12,12 +12,13 @@ const SavingTotalAmount = ({ savingInfo, endDate }) => {
     saving_success,
     saving_fail,
     saving_remain,
-  } = savingInfo.data;
+    end_date,
+  } = savingStatus.data;
 
   return (
     <>
-      <AmountContainer>
-        <AmountInfoContainer>
+      <SavingStatusContainer>
+        <StatusInfoContainer>
           <InfoThumbnail />
           <Text>
             <Span>{nickname}</Span>님의 누적 저축 금액
@@ -27,23 +28,23 @@ const SavingTotalAmount = ({ savingInfo, endDate }) => {
               cma_balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             원
           </Text>
-        </AmountInfoContainer>
-        <SavingRate rate={saving_rate} endDate={endDate} />
+        </StatusInfoContainer>
+        <SavingRate rate={saving_rate} endDate={end_date} />
         <SavingCount
           success={saving_success}
           fail={saving_fail}
           remain={saving_remain}
         />
-      </AmountContainer>
+      </SavingStatusContainer>
     </>
   );
 };
 
-const AmountContainer = styled.div`
+const SavingStatusContainer = styled.div`
   padding: 30px 16px;
 `;
 
-const AmountInfoContainer = styled.div`
+const StatusInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,4 +78,4 @@ const Span = styled.span`
   color: ${({ theme }) => theme.colors.colorBlue2};
 `;
 
-export default SavingTotalAmount;
+export default SavingStatusInfo;

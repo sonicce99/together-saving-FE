@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SavingStatus from "../../pages/saving/SavingStatus";
+import SavingStatusContainer from "../../pages/saving/SavingStatusContainer";
+import DivisionLine from "../../components/DivisionLine";
+import SavingHistoryContainer from "../../pages/saving/SavingHistoryContainer";
 
-const SavingTabMenu = ({ endDate }) => {
-  const [currentTab, setCurrentTab] = useState(0);
+const SavingTabMenu = ({ currentTab, onChangeTab }) => {
   const components = {
-    0: <SavingStatus endDate={endDate} />,
+    0: (
+      <>
+        <SavingStatusContainer />
+        <DivisionLine />
+        <SavingHistoryContainer />
+      </>
+    ),
     1: "소통",
   };
 
   const handleTabMenu = (e) => {
-    setCurrentTab(e.target.value);
+    onChangeTab(e.target.value);
   };
 
   return (
@@ -23,7 +30,9 @@ const SavingTabMenu = ({ endDate }) => {
           소통
         </MenuList>
       </MenuListContainer>
-      <MenuContentContainer>{components[currentTab]}</MenuContentContainer>
+      <MenuContentContainer>
+        {currentTab === 0 ? components[0] : components[1]}
+      </MenuContentContainer>
     </>
   );
 };
