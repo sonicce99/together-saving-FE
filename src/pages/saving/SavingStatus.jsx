@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
 
-const Saving = ({ endDate }) => {
+const SavingStatus = ({ endDate }) => {
   const info = useSelector((state) => state.savingInfoReducer.savingInfo);
   const history = useSelector(
     (state) => state.savingHistoryReducer.savingHistory
@@ -37,4 +37,4 @@ const Saving = ({ endDate }) => {
   );
 };
 
-export default Saving;
+export default SavingStatus;
