@@ -43,7 +43,7 @@ const SavingHistory = ({ savingHistory }) => {
       <SavingStartButton
         bank={bank_name}
         account={account_number}
-        defaultPrice={challenge_payment}
+        price={challenge_payment}
       />
     </>
   );

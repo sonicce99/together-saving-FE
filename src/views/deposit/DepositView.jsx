@@ -10,7 +10,7 @@ const DepositView = () => {
 
   const inputRef = useRef();
   const location = useLocation();
-  const { bank, account, defaultPrice, id } = location.state;
+  const { bank, account, price, id } = location.state;
 
   const handleInputPrice = (e) => {
     e.target.value !== "" ? setIsNull(false) : setIsNull(true);
@@ -40,16 +40,13 @@ const DepositView = () => {
           onChange={handleInputPrice}
           value={inputPrice}
           placeholder={`${
-            defaultPrice &&
-            defaultPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            price && price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }원 입력하세요`}
         />
-        {inputPrice !== "" && inputPrice < defaultPrice && (
+        {inputPrice !== "" && inputPrice < price && (
           <WarningLabel>
             <Text>
-              {defaultPrice > 10000
-                ? `${defaultPrice / 10000}만원 `
-                : `${defaultPrice / 1000}천원 `}
+              {price > 10000 ? `${price / 10000}만원 ` : `${price / 1000}천원 `}
               보다 적게 저축하면 달성률이 떨어질 수 있어요
             </Text>
           </WarningLabel>
