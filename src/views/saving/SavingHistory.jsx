@@ -6,9 +6,9 @@ import SavingStartButton from "./SavingStartButton";
 import { useSelector } from "react-redux";
 
 const SavingHistory = ({ savingHistory }) => {
-  const { challenge_payment } = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
-  );
+  // const { challenge_payment } = useSelector(
+  //   (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
+  // );
 
   const {
     account_number,
@@ -43,7 +43,7 @@ const SavingHistory = ({ savingHistory }) => {
       <SavingStartButton
         bank={bank_name}
         account={account_number}
-        defaultPrice={challenge_payment}
+        // defaultPrice={challenge_payment}
       />
     </>
   );

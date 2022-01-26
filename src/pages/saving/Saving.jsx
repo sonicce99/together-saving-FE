@@ -4,7 +4,7 @@ import DivisionLine from "../../components/DivisionLine";
 import SavingTabMenu from "../../views/saving/SavingTabMenu";
 import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 
-const SavingMain = () => {
+const Saving = () => {
   const [currentTab, setCurrentTab] = useState(0);
   const handleChangeTab = (current) => setCurrentTab(current);
 
@@ -26,4 +26,4 @@ const SavingContainer = styled.div`
   flex-direction: column;
 `;
 
-export default SavingMain;
+export default Saving;
