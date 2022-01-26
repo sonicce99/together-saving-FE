@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import success_boo from "../../images/success_boo.png";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const SavingSuccess = () => {
   return (
@@ -12,7 +13,10 @@ const SavingSuccess = () => {
         <SubText>앞으로 9번의 저축이 남았어요!</SubText>
       </SuccessContainer>
       <SuccessButtonContainer>
-        <Button>확인</Button>
+        {/* 해당 챌린지 방으로 이동 시 id 값 필요 */}
+        <Link to="/saving">
+          <Button>확인</Button>
+        </Link>
       </SuccessButtonContainer>
     </>
   );
