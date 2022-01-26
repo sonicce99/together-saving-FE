@@ -3,6 +3,7 @@
   "message": "챌린지 상세 데이터 조회 성공",
   "data": {
     "challenge_id": "challenge_id",
+    "thumbnail": "이미지 경로",
     "tags": [
       {
         "tag_name": "#주 3일"
@@ -20,7 +21,7 @@
     "end_date": "22.01.28",
     "challenge_frequency": [
       {
-        "day": "월"
+        "day": "화"
       },
       {
         "day": "수"
@@ -51,6 +52,6 @@
         "content": "ㅁ나ㅓㅗㅁㄴ아ㅓㅁ노아ㅓㅁㄴ옴나ㅓ옴나ㅓ옴너ㅏ옴ㄴ아ㅓ몽"
       }
     ],
-    "is_participated": true
+    "is_participated": false
   }
 }
