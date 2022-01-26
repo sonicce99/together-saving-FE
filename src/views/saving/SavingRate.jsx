@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Portal from "../../components/Portal";
+import SavingFinishPopUp from "./SavingFinishPopUp";
 
 const SavingRate = ({ rate, endDate }) => {
   const endDay = new Date(endDate);
@@ -25,6 +27,11 @@ const SavingRate = ({ rate, endDate }) => {
         )}
       </RemainDayContainer>
       <ProgressContainer>
+        {rate === "100" && remainDay === 0 && (
+          <Portal>
+            <SavingFinishPopUp />
+          </Portal>
+        )}
         <Progress width={`${rate}%`} />
       </ProgressContainer>
       <RateInfoContainer>
@@ -59,7 +66,7 @@ const RemainDayContainer = styled.div`
 `;
 
 const Day = styled.p`
-  width: 45px;
+  width: 50px;
   height: 24px;
   font-size: ${({ theme }) => theme.fontSize.fontXSmall};
   text-align: center;

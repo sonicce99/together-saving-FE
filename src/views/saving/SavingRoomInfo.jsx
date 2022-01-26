@@ -66,7 +66,11 @@ const SavingRoomInfo = ({ challengeData }) => {
         <Link to="/challenge/:id">
           <Title>{challenge_name}</Title>
         </Link>
-        <Text>{`${startDay} - ${endDay} ${timeRemain}일 뒤 종료`}</Text>
+        {timeRemain === 0 ? (
+          <Text>챌린지 종료날입니다</Text>
+        ) : (
+          <Text>{`${startDay} - ${endDay} ${timeRemain}일 뒤 종료`}</Text>
+        )}
         <Text>{`${days} - 주${times}일 / ${week}주차`}</Text>
       </InfoTextContainer>
     </InfoContainer>
