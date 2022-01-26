@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const SavingRate = ({ rate }) => {
-  const endDate = new Date("2022-02-20");
+const SavingRate = ({ rate, endDate }) => {
+  const endDay = new Date(endDate);
   const today = new Date();
-  const remainDay = endDate.getTime() - today.getTime();
-  const D_day = Math.ceil(remainDay / (1000 * 60 * 60 * 24));
+  const remainTime = endDay.getTime() - today.getTime();
+  const remainDay = Math.ceil(remainTime / (1000 * 60 * 60 * 24));
 
   return (
     <>
@@ -15,7 +15,15 @@ const SavingRate = ({ rate }) => {
         <br />
         100% 달성 시 상금을 획득할 수 있어요
       </Text>
-      <Day left={`${rate}%`}>{D_day === 0 ? "D-day" : `D-${D_day}`}</Day>
+      <RemainDayContainer>
+        {rate >= 92 ? (
+          <Day left="87%">{remainDay === 0 ? "D-day" : `D-${remainDay}`}</Day>
+        ) : (
+          <Day left={`${rate - 6}%`}>
+            {remainDay === 0 ? "D-day" : `D-${remainDay}`}
+          </Day>
+        )}
+      </RemainDayContainer>
       <ProgressContainer>
         <Progress width={`${rate}%`} />
       </ProgressContainer>
@@ -39,8 +47,15 @@ const Text = styled.p`
   font-size: ${({ theme }) => theme.fontSize.fontXSmall};
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
   line-height: 20px;
-  margin-bottom: 35px;
-  position: relative;
+  margin-bottom: 30px;
+
+  &:nth-child(3) {
+    margin-bottom: 7px;
+  }
+`;
+
+const RemainDayContainer = styled.div`
+  margin-bottom: 7px;
 `;
 
 const Day = styled.p`
@@ -52,8 +67,7 @@ const Day = styled.p`
   background-color: ${({ theme }) => theme.colors.colorBlue2};
   border-radius: 20px;
   padding: 1px 6px;
-  position: absolute;
-  top: 465px;
+  position: relative;
   left: ${(props) => props.left};
 `;
 
