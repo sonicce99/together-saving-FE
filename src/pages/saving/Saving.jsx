@@ -1,20 +1,13 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import DivisionLine from "../../components/DivisionLine";
+import SavingTabMenu from "../../views/saving/SavingTabMenu";
 import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
-import SavingMenuButton from "../../views/saving/SavingMenuButton";
-import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
-import SavingAccount from "../../views/saving/SavingAccount";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
-import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
 
-const Saving = () => {
-  const info = useSelector((state) => state.savingInfoReducer.savingInfo);
-  const history = useSelector(
-    (state) => state.savingHistoryReducer.savingHistory
-  );
+const SavingMain = () => {
   const challenge = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
@@ -22,19 +15,8 @@ const Saving = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSavingInfo());
-    dispatch(getSavingHistory());
     dispatch(getChallengesummaryInfo());
   }, [dispatch]);
-
-  // 리팩토링 필요
-  if (info.loading) return <div>로딩중</div>;
-  if (info.error) return <div>에러 발생</div>;
-  if (!info.data) return null;
-
-  if (history.loading) return <div>로딩중</div>;
-  if (history.error) return <div>에러 발생</div>;
-  if (!history.data) return null;
 
   if (challenge.loading) return <div>로딩중</div>;
   if (challenge.error) return <div>에러 발생</div>;
@@ -44,16 +26,7 @@ const Saving = () => {
     <SavingContainer>
       <SavingRoomInfo challengeData={challenge.data.data} />
       <DivisionLine />
-      <SavingMenuButton />
-      <SavingTotalAmount
-        savingInfo={info.data}
-        endDate={challenge.data.data.end_date}
-      />
-      <DivisionLine />
-      <SavingAccount
-        savingHistory={history.data}
-        defaultPrice={challenge.data.data.challenge_payment}
-      />
+      <SavingTabMenu endDate={challenge.data.data.end_date} />
     </SavingContainer>
   );
 };
@@ -63,4 +36,4 @@ const SavingContainer = styled.div`
   flex-direction: column;
 `;
 
-export default Saving;
+export default SavingMain;

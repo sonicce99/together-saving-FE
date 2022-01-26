@@ -2,11 +2,11 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./pages/main/Main";
 import Challenge from "./pages/challenge/Challenge";
-import Saving from "./pages/saving/Saving";
 import styled from "styled-components";
 import SavingDeposit from "./pages/saving/SavingDeposit";
 import SavingSuccess from "./views/deposit/SavingSuccess";
 import ChallengePayment from "./pages/challenge/ChallengePayment";
+import Saving from "./pages/saving/Saving";
 
 const App = () => {
   return (
