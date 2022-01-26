@@ -24,7 +24,6 @@ const MainChallengeDetails = () => {
   let {
     params: { id },
   } = useMatch("/challenge/:id/");
-  console.log(id);
 
   // 나중에 id 넣어서 post 요청 하기
   useEffect(() => {

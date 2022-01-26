@@ -2,11 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
+import { useParams } from "react-router-dom";
 
-const SavingStartButton = ({ bank, account, price }) => {
+const SavingStartButton = ({ bank, account, defaultPrice }) => {
+  const { id } = useParams();
+
   return (
     <SavingButtonContainer>
-      <Link to={"/deposit"} state={{ bank, account, price }}>
+      <Link to={"/deposit"} state={{ bank, account, defaultPrice, id }}>
         <Button>저축하기</Button>
       </Link>
     </SavingButtonContainer>

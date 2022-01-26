@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import DivisionLine from "../../components/DivisionLine";
 import DepositView from "../../views/deposit/DepositView";
-import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
+import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 
 const SavingDeposit = () => {
   return (
     <DepositContainer>
-      <SavingRoomInfo />
+      <SavingRoomInfoContainer />
       <DivisionLine />
       <DepositView />
     </DepositContainer>

@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
+import { useSelector } from "react-redux";
 
-const SavingAccount = ({ savingHistory, defaultPrice }) => {
+const SavingHistory = ({ savingHistory }) => {
+  const { challenge_payment } = useSelector(
+    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
+  );
+
   const {
     account_number,
     balance,
@@ -16,35 +21,35 @@ const SavingAccount = ({ savingHistory, defaultPrice }) => {
 
   return (
     <>
-      <AccountContainer>
+      <SavingHistoryContainer>
         <Title>연결된 계좌</Title>
-        <BankInfoContainer>
-          <BankInfo>
+        <AccountInfoContainer>
+          <AccountInfo>
             <BankThumbnail />
-            <BankTextContainer>
-              <BankText>{bank_name}</BankText>
-              <BankText>{account_number}</BankText>
-            </BankTextContainer>
+            <AccountTextContainer>
+              <AccountText>{bank_name}</AccountText>
+              <AccountText>{account_number}</AccountText>
+            </AccountTextContainer>
             <PriceText>
               {balance &&
                 balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               원
             </PriceText>
-          </BankInfo>
-        </BankInfoContainer>
+          </AccountInfo>
+        </AccountInfoContainer>
         <SavingHistoryList historyList={history} />
         <AutoSavingButton isAuto={is_automated} />
-      </AccountContainer>
+      </SavingHistoryContainer>
       <SavingStartButton
         bank={bank_name}
         account={account_number}
-        defaultPrice={defaultPrice}
+        defaultPrice={challenge_payment}
       />
     </>
   );
 };
 
-const AccountContainer = styled.div`
+const SavingHistoryContainer = styled.div`
   padding: 30px 16px;
 `;
 
@@ -55,7 +60,7 @@ const Title = styled.p`
   margin-bottom: 8px;
 `;
 
-const BankInfoContainer = styled.div`
+const AccountInfoContainer = styled.div`
   height: 96px;
   display: flex;
   align-items: center;
@@ -63,7 +68,7 @@ const BankInfoContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const BankInfo = styled.div`
+const AccountInfo = styled.div`
   width: 100%;
   display: flex;
 `;
@@ -76,11 +81,11 @@ const BankThumbnail = styled.img`
   margin-right: 16px;
 `;
 
-const BankTextContainer = styled.div`
+const AccountTextContainer = styled.div`
   flex-grow: 1;
 `;
 
-const BankText = styled.p`
+const AccountText = styled.p`
   &:first-child {
     color: ${({ theme }) => theme.colors.colorBlack};
     font-size: ${({ theme }) => theme.fontSize.fontSmall};
@@ -109,4 +114,4 @@ const PriceText = styled.p`
   }
 `;
 
-export default SavingAccount;
+export default SavingHistory;
