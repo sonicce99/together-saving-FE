@@ -55,7 +55,7 @@ const DepositView = () => {
           </WarningLabel>
         )}
         <ButtonContainer>
-          <Link to="/success">
+          <Link to="/saving/success">
             <Button isNull={isNull} disabled={isNull} onClick={handleSubmit}>
               저축하기
             </Button>

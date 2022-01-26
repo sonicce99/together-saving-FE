@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
@@ -6,9 +6,9 @@ import SavingStartButton from "./SavingStartButton";
 import { useSelector } from "react-redux";
 
 const SavingHistory = ({ savingHistory }) => {
-  const { challenge_payment } = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
-  );
+  // const { challenge_payment } = useSelector(
+  //   (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
+  // );
 
   const {
     account_number,
@@ -18,6 +18,12 @@ const SavingHistory = ({ savingHistory }) => {
     is_automated,
     thumbnail,
   } = savingHistory.data;
+
+  const [isAuto, setIsAuto] = useState(is_automated);
+
+  const handleAuto = (auto) => {
+    setIsAuto(auto);
+  };
 
   return (
     <>
@@ -38,12 +44,13 @@ const SavingHistory = ({ savingHistory }) => {
           </AccountInfo>
         </AccountInfoContainer>
         <SavingHistoryList historyList={history} />
-        <AutoSavingButton isAuto={is_automated} />
+        <AutoSavingButton isAuto={isAuto} onHandleAuto={handleAuto} />
       </SavingHistoryContainer>
       <SavingStartButton
         bank={bank_name}
         account={account_number}
-        defaultPrice={challenge_payment}
+        isAuto={isAuto}
+        // defaultPrice={challenge_payment}
       />
     </>
   );

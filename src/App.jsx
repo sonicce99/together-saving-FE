@@ -21,8 +21,8 @@ const App = () => {
           element={<ChallengePaymentSuccess />}
         />
         <Route path="/saving" element={<Saving />} />
-        <Route path="/deposit" element={<SavingDeposit />} />
-        <Route path="/success" element={<SavingSuccess />} />
+        <Route path="/saving/deposit" element={<SavingDeposit />} />
+        <Route path="/saving/success" element={<SavingSuccess />} />
       </Routes>
     </Wrapper>
   );
