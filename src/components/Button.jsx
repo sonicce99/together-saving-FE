@@ -11,6 +11,7 @@ const Button = styled.button`
   margin-bottom: 34px;
 
   ${(props) => props.isNull && `background-color: #CDCDCD`}
+  ${(props) => props.disabled && `background-color: #CDCDCD`}
 `;
 
 export default Button;
