@@ -1,24 +1,27 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Tags from "./Tags";
+import Tags from "../../views/challenge/Tags";
 import ChallengeSummary from "../../components/ChallengeSummary.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
-import ChallengeDescription from "./ChallengeDescription.jsx";
-import ChallengeReview from "./ChallengeReview.jsx";
+import ChallengeDescription from "../../views/challenge/ChallengeDescription.jsx";
+import ChallengeReview from "../../views/challenge/ChallengeReview.jsx";
 import RefundAndCaution from "../../components/RefundAndCaution.jsx";
 import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import Button from "../../components/Button.jsx";
+import Thumbnail from "../../components/Thimbnail";
 import { useMatch, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
 
-const MainChallengeDetails = () => {
+const Challenge = () => {
   const { data, loading, error } = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
   const dispatch = useDispatch();
 
   let navigate = useNavigate();
+
+  console.log(data);
 
   // 챌린지 id 가져오기
   let {
@@ -33,8 +36,10 @@ const MainChallengeDetails = () => {
   if (loading) return <h2>로딩중...</h2>;
   if (error) return <h2>에러 발생!</h2>;
   if (!data) return <h2>No data!</h2>;
+
   return (
     <Container>
+      <Thumbnail thumbnail={data.data.thumbnail} />
       <Inner>
         <Tags is_wished={data.data.is_wished} tags={data.data.tags} />
         <ChallengeSummary
@@ -80,4 +85,4 @@ const Inner = styled.div`
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 
-export default MainChallengeDetails;
+export default Challenge;
