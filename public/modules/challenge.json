@@ -30,9 +30,9 @@
         "day": "금"
       }
     ],
-    "challenge_payment": 6000,
-    "challenge_entry_fee": 10000,
-    "challenge_members": 1892,
+    "challenge_payment": "6000",
+    "challenge_entry_fee": "10000",
+    "challenge_members": "1892",
     "host_nickname": "김세이블",
     "challenge_description": "매일매일 커피수혈로 하루를 버텨나가는 당신.. 돈 벌자고 하는 일인데 커피값으로 다 써버리고 있지는 않으신 가요? 세이블과 함께 커피값 모아 100만원 만들기에 참여해봐요! …",
     "challenge_reviews": [

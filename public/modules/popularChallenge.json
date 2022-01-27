@@ -9,8 +9,8 @@
         "thumbnail": "이미지 경로",
         "title": "담배값 저축하기",
         "mode": "경쟁",
-        "period": 4,
-        "remain_date": 3,
+        "period": "4",
+        "remain_date": "3",
         "tags": [
           {
             "tag_name": "#스x벅스"
@@ -26,8 +26,8 @@
         "thumbnail": "이미지 경로",
         "title": "돈모아 제주도 가기",
         "mode": "자율",
-        "period": 4,
-        "remain_date": 2,
+        "period": "4",
+        "remain_date": "2",
         "tags": [
           {
             "tag_name": "#혼자옵서예"

@@ -9,8 +9,8 @@
         "title": "술값 저축하기",
         "is_wished": false,
         "mode": "경쟁",
-        "period": 4,
-        "date": 7,
+        "period": "4",
+        "date": "7",
         "tags": [
           {
             "tag_name": "#그냥 저축"
@@ -26,8 +26,8 @@
         "title": "외식비 저축 챌린지",
         "is_wished": false,
         "mode": "자율",
-        "period": 6,
-        "date": 7,
+        "period": "6",
+        "date": "7",
         "tags": [
           {
             "tag_name": "#그냥 저축"
@@ -43,8 +43,8 @@
         "title": "담배값 저축 챌린지",
         "is_wished": false,
         "mode": "자율",
-        "period": 6,
-        "date": 7,
+        "period": "6",
+        "date": "7",
         "tags": [
           {
             "tag_name": "#그냥 저축"
@@ -60,8 +60,8 @@
         "title": "기름값 저축 챌린지",
         "is_wished": false,
         "mode": "자율",
-        "period": 6,
-        "date": 7,
+        "period": "6",
+        "date": "7",
         "tags": [
           {
             "tag_name": "#그냥 저축"

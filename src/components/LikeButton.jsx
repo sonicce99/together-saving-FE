@@ -4,11 +4,17 @@ import styled from "styled-components";
 
 const LikeButton = ({ is_wished }) => {
   return (
-    <FaHeart
-      size={22}
-      color={is_wished === true ? "#EA2E50" : "#B3B3B3"}
-    ></FaHeart>
+    <Div>
+      <FaHeart
+        size={22}
+        color={is_wished === true ? "#EA2E50" : "#B3B3B3"}
+      ></FaHeart>
+    </Div>
   );
 };
+
+const Div = styled.div`
+  cursor: pointer;
+`;
 
 export default LikeButton;
