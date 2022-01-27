@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Portal from "../../components/Portal";
 import DepositKeypad from "./DepositKeypad";
+import { useDispatch } from "react-redux";
+import { requestSaving } from "../../redux/reducers/savingRequestReducer";
 
 const DepositView = () => {
   const [inputPrice, setInputPrice] = useState("");
   const [isShowKeypad, setIsShowKeypad] = useState(false);
   const [isNull, setIsNull] = useState(true);
 
+  const dispatch = useDispatch();
   const location = useLocation();
   const { bank, account, defaultPrice, id } = location.state;
 
@@ -31,8 +34,12 @@ const DepositView = () => {
     setIsShowKeypad(true);
   };
 
+  useEffect(() => {
+    dispatch(requestSaving());
+  }, []);
+
   const handleSubmit = () => {
-    console.log(inputPrice);
+    if (inputPrice) dispatch(requestSaving(1, Number(inputPrice)));
   };
 
   return (
