@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import H3 from "./H3.jsx";
+import MoreShowBtn from "./MoreShowBtn.jsx";
 import { useNavigate } from "react-router-dom";
 
 const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
@@ -8,7 +9,10 @@ const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
 
   return (
     <Container>
-      <Title>{title}</Title>
+      <Div4>
+        <Title>{title}</Title>
+        <MoreShowBtn title={title} />
+      </Div4>
       <Contents>
         <Div>
           {ChallengeArray &&
@@ -48,6 +52,11 @@ const Title = styled(H3)`
   line-height: 21px;
   margin-bottom: 16px;
   color: ${({ theme }) => theme.colors.colorBlack};
+`;
+
+const Div4 = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Contents = styled.div`
