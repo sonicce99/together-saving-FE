@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Circle from "../../images/Circle.png";
 import { BsArrowRight } from "react-icons/bs";
 
-const ChallengeCreateAndEct = () => {
+const ChallengeCreateAndEct = ({ setValue }) => {
   return (
     <Container>
       <Div>
-        <Content>
+        <Content onClick={() => setValue(1)}>
           <Title>저축 챌린지 직접 개설도 가능해요!</Title>
           <Div2>
             <Title2>개설하기</Title2>
@@ -15,18 +15,43 @@ const ChallengeCreateAndEct = () => {
             <BsArrowRight
               style={{
                 position: "absolute",
-                right: "20px",
+                right: "6px",
               }}
-              color="#000000"
+              color="#3178FF"
+              size="20px"
             />
           </Div2>
         </Content>
-        <Content>
+        <Content orange>
           <Title>아쉽게 놓친 챌린지 궁금하신가요?</Title>
+          <Div2>
+            <Title2>바로가기</Title2>
+            <Image src={Circle} />
+            <BsArrowRight
+              style={{
+                position: "absolute",
+                right: "6px",
+              }}
+              color="#EEAF3E"
+              size="20px"
+            />
+          </Div2>
         </Content>
-        <Content></Content>
-        <Content></Content>
-        <Content></Content>
+        <Content sky>
+          <Title>내가 찜한 챌린지들을 보러 가요!</Title>
+          <Div2>
+            <Title2>바로가기</Title2>
+            <Image src={Circle} />
+            <BsArrowRight
+              style={{
+                position: "absolute",
+                right: "6px",
+              }}
+              color="#8FC9FF"
+              size="20px"
+            />
+          </Div2>
+        </Content>
       </Div>
     </Container>
   );
@@ -48,16 +73,16 @@ const Content = styled.div`
   width: 160px;
   height: 160px;
   margin-right: 10px;
-  background: ${({ theme }) => theme.colors.colorBlue2};
+  background: ${(props) =>
+    props.orange ? "#EEAF3E" : props.sky ? "#8FC9FF" : "#3178FF"};
   border-radius: 6px;
-  border: 2px solid red;
   padding: 16px 12px 54px 16px;
+  cursor: pointer;
 `;
 
 const Div2 = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid yellow;
   position: relative;
 `;
 
