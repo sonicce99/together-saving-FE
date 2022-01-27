@@ -8,6 +8,7 @@ import SavingDeposit from "./pages/saving/SavingDeposit";
 import SavingSuccess from "./views/deposit/SavingSuccess";
 import ChallengePayment from "./pages/challenge/ChallengePayment";
 import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
+import MoreShow from "./pages/MoreShow/MoreShow";
 
 const App = () => {
   return (
@@ -23,6 +24,8 @@ const App = () => {
         <Route path="/saving" element={<Saving />} />
         <Route path="/saving/deposit" element={<SavingDeposit />} />
         <Route path="/saving/success" element={<SavingSuccess />} />
+
+        <Route path="/moreshow/:name" element={<MoreShow />} />
       </Routes>
     </Wrapper>
   );
