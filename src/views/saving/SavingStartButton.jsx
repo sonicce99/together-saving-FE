@@ -4,13 +4,13 @@ import styled from "styled-components";
 import Button from "../../components/Button";
 import { useParams } from "react-router-dom";
 
-const SavingStartButton = ({ bank, account, defaultPrice }) => {
+const SavingStartButton = ({ bank, account, defaultPrice, isAuto }) => {
   const { id } = useParams();
 
   return (
     <SavingButtonContainer>
       <Link to={"/saving/deposit"} state={{ bank, account, defaultPrice, id }}>
-        <Button>저축하기</Button>
+        <Button disabled={isAuto}>저축하기</Button>
       </Link>
     </SavingButtonContainer>
   );

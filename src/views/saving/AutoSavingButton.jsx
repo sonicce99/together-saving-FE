@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const AutoSavingButton = ({ isAuto }) => {
-  const [isAutoSave, setIsAutoSave] = useState(isAuto);
-
-  const handleSwitch = () => {
-    setIsAutoSave(!isAutoSave);
+const AutoSavingButton = ({ isAuto, onHandleAuto }) => {
+  const handleAutoSwitch = () => {
+    onHandleAuto(!isAuto);
   };
 
   // 나중에 처리 put 404 error
@@ -22,7 +20,7 @@ const AutoSavingButton = ({ isAuto }) => {
     <AutoSavingContainer>
       <Text>자동저축하기</Text>
       <Label>
-        <Input type="checkbox" onChange={handleSwitch} checked={isAutoSave} />
+        <Input type="checkbox" onChange={handleAutoSwitch} checked={isAuto} />
         <Switch />
       </Label>
     </AutoSavingContainer>
