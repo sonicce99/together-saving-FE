@@ -8,8 +8,8 @@
         "thumbnail": "이미지 경로",
         "title": "배달비 저축 챌린지",
         "mode": "경쟁",
-        "period": 4,
-        "date": 3,
+        "period": "4",
+        "date": "3",
         "tags": [
           {
             "tag_name": "#슬금슬금 저축하기"
@@ -24,8 +24,8 @@
         "thumbnail": "이미지 경로",
         "title": "커피값 저축하기",
         "mode": "경쟁",
-        "period": 4,
-        "date": 14,
+        "period": "4",
+        "date": "14",
         "tags": [
           {
             "tag_name": "#슬금슬금 저축하기"
@@ -40,8 +40,8 @@
         "thumbnail": "이미지 경로",
         "title": "스타벅스 안가기",
         "mode": "경쟁",
-        "period": 7,
-        "date": 10,
+        "period": "7",
+        "date": "10",
         "tags": [
           {
             "tag_name": "#슬금슬금 저축하기"
@@ -56,8 +56,8 @@
         "thumbnail": "이미지 경로",
         "title": "국 끓여 먹기",
         "mode": "경쟁",
-        "period": 6,
-        "date": 9,
+        "period": "6",
+        "date": "9",
         "tags": [
           {
             "tag_name": "#슬금슬금 저축하기"
