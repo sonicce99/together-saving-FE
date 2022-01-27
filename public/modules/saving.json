@@ -5,10 +5,10 @@
     "profile_picture": "유저 프로필 사진 경로",
     "nickname": "김보미",
     "cma_balance": 300000,
-    "saving_rate": "100",
+    "saving_rate": "0",
     "saving_success": "4",
     "saving_fail": "1",
     "saving_remain": "9",
-    "end_date": "2022-01-26"
+    "end_date": "2022-01-27"
   }
 }
