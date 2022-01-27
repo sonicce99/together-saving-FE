@@ -10,7 +10,7 @@ const Button = styled.button`
   border-radius: 6px;
   margin-bottom: 34px;
 
-  ${(props) => props.isNull && `background-color: #CDCDCD`}
+  ${(props) => props.isNull && props.disabled && `background-color: #CDCDCD`}
 `;
 
 export default Button;

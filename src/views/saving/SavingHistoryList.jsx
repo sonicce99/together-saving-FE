@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Portal from "../../components/Portal";
 import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
-import { createPortal } from "react-dom";
 import SavingFilterPopUp from "./SavingFilterPopUp";
 import axios from "axios";
-
-const PopupPortal = ({ children }) => {
-  return createPortal(children, document.getElementById("pop-up"));
-};
 
 const SavingHistory = ({ historyList }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -50,14 +46,14 @@ const SavingHistory = ({ historyList }) => {
             <HistoryIcon src={historyFilter} alt="icon" onClick={handlePopup} />
           </HistoryButton>
           {showPopup && (
-            <PopupPortal>
+            <Portal>
               <SavingFilterPopUp
                 lookup={lookup}
                 sort={sort}
                 onClose={handlePopup}
                 onFilter={handleFilter}
               />
-            </PopupPortal>
+            </Portal>
           )}
         </HistoryButtonContainer>
       </TitleContainer>

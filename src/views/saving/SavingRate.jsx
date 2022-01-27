@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import Portal from "../../components/Portal";
+import SavingFinishPopUp from "./SavingFinishPopUp";
 
 const SavingRate = ({ rate, endDate }) => {
   const endDay = new Date(endDate);
@@ -16,15 +18,20 @@ const SavingRate = ({ rate, endDate }) => {
         100% 달성 시 상금을 획득할 수 있어요
       </Text>
       <RemainDayContainer>
-        {rate >= 92 ? (
-          <Day left="87%">{remainDay === 0 ? "D-day" : `D-${remainDay}`}</Day>
-        ) : (
-          <Day left={`${rate - 6}%`}>
-            {remainDay === 0 ? "D-day" : `D-${remainDay}`}
-          </Day>
-        )}
+        <Day left={rate >= 92 ? "87%" : rate < 5 ? "0%" : `${rate - 6}%`}>
+          {remainDay === 0
+            ? "D-day"
+            : remainDay < 0
+            ? "Finish"
+            : `D-${remainDay}`}
+        </Day>
       </RemainDayContainer>
       <ProgressContainer>
+        {rate === "100" && remainDay === 0 && (
+          <Portal>
+            <SavingFinishPopUp />
+          </Portal>
+        )}
         <Progress width={`${rate}%`} />
       </ProgressContainer>
       <RateInfoContainer>
@@ -59,7 +66,7 @@ const RemainDayContainer = styled.div`
 `;
 
 const Day = styled.p`
-  width: 45px;
+  width: 50px;
   height: 24px;
   font-size: ${({ theme }) => theme.fontSize.fontXSmall};
   text-align: center;
