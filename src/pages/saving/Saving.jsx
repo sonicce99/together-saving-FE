@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DivisionLine from "../../components/DivisionLine";
-import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
-import SavingMenuButton from "../../views/saving/SavingMenuButton";
-import SavingTotalAmount from "../../views/saving/SavingTotalAmount";
-import SavingAccount from "../../views/saving/SavingAccount";
-import { Link } from "react-router-dom";
+import SavingTabMenu from "../../views/saving/SavingTabMenu";
+import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 
 const Saving = () => {
+  const [currentTab, setCurrentTab] = useState(0);
+  const handleChangeTab = (current) => setCurrentTab(current);
+
   return (
     <SavingContainer>
-      <Link to="/challenge">
-        <SavingRoomInfo />
-      </Link>
-      <DivisionLine />
-      <SavingMenuButton />
-      <SavingTotalAmount />
-      <DivisionLine />
-      <SavingAccount />
+      {currentTab === 0 && (
+        <>
+          <SavingRoomInfoContainer />
+          <DivisionLine />
+        </>
+      )}
+      <SavingTabMenu currentTab={currentTab} onChangeTab={handleChangeTab} />
     </SavingContainer>
   );
 };

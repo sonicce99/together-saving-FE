@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
-const AutoSavingButton = () => {
-  const [isAutoSave, setIsAutoSave] = useState(false);
-
-  const handleSwitch = () => {
-    setIsAutoSave(!isAutoSave);
+const AutoSavingButton = ({ isAuto, onHandleAuto }) => {
+  const handleAutoSwitch = () => {
+    onHandleAuto(!isAuto);
   };
+
+  // 나중에 처리 put 404 error
+  // 백엔드 로직 잡히면 해보자
+  // axios
+  //   .put("../../modules/autoSaving.json", { isAutoSave })
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch((e) => console.log(e));
 
   return (
     <AutoSavingContainer>
       <Text>자동저축하기</Text>
       <Label>
-        <Input type="checkbox" onChange={handleSwitch} checked={isAutoSave} />
+        <Input type="checkbox" onChange={handleAutoSwitch} checked={isAuto} />
         <Switch />
       </Label>
     </AutoSavingContainer>
@@ -24,6 +32,7 @@ const AutoSavingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
 `;
 
 const Text = styled.p`

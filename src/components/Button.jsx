@@ -8,6 +8,9 @@ const Button = styled.button`
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
   background-color: ${({ theme }) => theme.colors.colorBlue1};
   border-radius: 6px;
+  margin-bottom: 34px;
+
+  ${(props) => props.isNull && props.disabled && `background-color: #CDCDCD`}
 `;
 
 export default Button;

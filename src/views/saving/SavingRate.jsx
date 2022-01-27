@@ -1,41 +1,81 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import Portal from "../../components/Portal";
+import SavingFinishPopUp from "./SavingFinishPopUp";
 
-const SavingRate = () => {
+const SavingRate = ({ rate, endDate }) => {
+  const endDay = new Date(endDate);
+  const today = new Date();
+  const remainTime = endDay.getTime() - today.getTime();
+  const remainDay = Math.ceil(remainTime / (1000 * 60 * 60 * 24));
+
   return (
-    <RateContainer>
-      <p>저축률</p>
-      <p>
+    <>
+      <Title>저축률</Title>
+      <Text>
         만기까지 저축률 100%을 채워보세요!
         <br />
         100% 달성 시 상금을 획득할 수 있어요
-      </p>
+      </Text>
+      <RemainDayContainer>
+        <Day left={rate >= 92 ? "87%" : rate < 5 ? "0%" : `${rate - 6}%`}>
+          {remainDay === 0
+            ? "D-day"
+            : remainDay < 0
+            ? "Finish"
+            : `D-${remainDay}`}
+        </Day>
+      </RemainDayContainer>
       <ProgressContainer>
-        <Progress width={35 + "%"} />
+        {rate === "100" && remainDay === 0 && (
+          <Portal>
+            <SavingFinishPopUp />
+          </Portal>
+        )}
+        <Progress width={`${rate}%`} />
       </ProgressContainer>
       <RateInfoContainer>
-        <p>현재 35%</p>
-        <p>달성률 100%</p>
+        <Text>현재 {rate}%</Text>
+        <Text>달성률 100%</Text>
       </RateInfoContainer>
-    </RateContainer>
+    </>
   );
 };
 
-const RateContainer = styled.div`
-  p:nth-child(1) {
-    color: ${({ theme }) => theme.colors.colorDarkGray1};
-    font-size: ${({ theme }) => theme.fontSize.fontSmall};
-    font-weight: ${({ theme }) => theme.fontWeights.weightBold};
-    margin-bottom: 12px;
-  }
+const Title = styled.p`
+  color: ${({ theme }) => theme.colors.colorDarkGray1};
+  font-size: ${({ theme }) => theme.fontSize.fontSmall};
+  font-weight: ${({ theme }) => theme.fontWeights.weightBold};
+  margin-bottom: 12px;
+`;
 
-  p:nth-child(2) {
-    color: ${({ theme }) => theme.colors.colorDarkGray1};
-    font-size: ${({ theme }) => theme.fontSize.fontXSmall};
-    font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
-    line-height: 20px;
-    margin-bottom: 25px;
+const Text = styled.p`
+  color: ${({ theme }) => theme.colors.colorDarkGray1};
+  font-size: ${({ theme }) => theme.fontSize.fontXSmall};
+  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+  line-height: 20px;
+  margin-bottom: 30px;
+
+  &:nth-child(3) {
+    margin-bottom: 7px;
   }
+`;
+
+const RemainDayContainer = styled.div`
+  margin-bottom: 7px;
+`;
+
+const Day = styled.p`
+  width: 50px;
+  height: 24px;
+  font-size: ${({ theme }) => theme.fontSize.fontXSmall};
+  text-align: center;
+  color: ${({ theme }) => theme.colors.colorWhite};
+  background-color: ${({ theme }) => theme.colors.colorBlue2};
+  border-radius: 20px;
+  padding: 1px 6px;
+  position: relative;
+  left: ${(props) => props.left};
 `;
 
 const ProgressBar = styled.div`
@@ -70,14 +110,14 @@ const RateInfoContainer = styled.div`
   align-items: center;
   margin-bottom: 30px;
 
-  p:nth-child(1) {
+  ${Text}:nth-child(1) {
     color: ${({ theme }) => theme.colors.colorBlue2};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
     margin-bottom: 0;
   }
 
-  p:nth-child(2) {
+  ${Text}:nth-child(2) {
     color: ${({ theme }) => theme.colors.colorGray3};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     font-weight: ${({ theme }) => theme.fontWeights.weightNormal};

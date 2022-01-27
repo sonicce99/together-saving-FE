@@ -1,20 +1,31 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from "./pages/main/Main";
-import Challenge from "./pages/challenge/Challenge";
+import ChallengeContainer from "./pages/challenge/ChallengeContainer";
 import Saving from "./pages/saving/Saving";
 import styled from "styled-components";
+import SavingDeposit from "./pages/saving/SavingDeposit";
+import SavingSuccess from "./views/deposit/SavingSuccess";
+import ChallengePayment from "./pages/challenge/ChallengePayment";
+import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
+import SavingFinishPopUp from "./views/saving/SavingFinishPopUp";
 
 const App = () => {
   return (
     <Wrapper>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/challenge" element={<Challenge />} />
-          <Route path="/saving" element={<Saving />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/challenge/:id" element={<ChallengeContainer />} />
+        <Route path="/challenge/payment" element={<ChallengePayment />} />
+        <Route
+          path="/challenge/success"
+          element={<ChallengePaymentSuccess />}
+        />
+        <Route path="/saving" element={<Saving />} />
+        <Route path="/saving/deposit" element={<SavingDeposit />} />
+        <Route path="/saving/success" element={<SavingSuccess />} />
+        <Route path="/finish" element={<SavingFinishPopUp />} />
+      </Routes>
     </Wrapper>
   );
 };

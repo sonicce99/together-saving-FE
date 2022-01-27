@@ -1,19 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Portal from "../../components/Portal";
 import SavingHistoryItem from "./SavingHistoryItem";
+import historyFilter from "../../images/history_filter.png";
+import SavingFilterPopUp from "./SavingFilterPopUp";
+import axios from "axios";
 
-const SavingHistory = () => {
+const SavingHistory = ({ historyList }) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [history, setHistory] = useState(historyList);
+  const [filter, setFilter] = useState({
+    lookup: "1주일",
+    sort: "최근저축순",
+  });
+
+  const { lookup, sort } = filter;
+
+  const handlePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+  const handleFilter = (lookup, sort) => {
+    setFilter({
+      ...filter,
+      lookup,
+      sort,
+    });
+  };
+
+  // console.log(lookup, sort);
+  // axios
+  //   .post("../../modules/history_acient", { period: lookup, ordering: sort })
+  //   .then((res) => {
+  //     console.log(res);
+  //   });
+
   return (
     <>
       <TitleContainer>
         <Title>저축 내역</Title>
         <HistoryButtonContainer>
-          <HistoryButton>최근 1주일</HistoryButton>
-          <HistoryButton>최근 저축순</HistoryButton>
+          <Text>{lookup === "당일" ? lookup : `최근 ${lookup}`}</Text>
+          <Text>{sort}</Text>
+          <HistoryButton>
+            <HistoryIcon src={historyFilter} alt="icon" onClick={handlePopup} />
+          </HistoryButton>
+          {showPopup && (
+            <Portal>
+              <SavingFilterPopUp
+                lookup={lookup}
+                sort={sort}
+                onClose={handlePopup}
+                onFilter={handleFilter}
+              />
+            </Portal>
+          )}
         </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
-        <SavingHistoryItem />
+        {history &&
+          Object.values(history).map((history, index) => (
+            <SavingHistoryItem key={index} historyItem={history} />
+          ))}
       </HistoryContainer>
     </>
   );
@@ -36,14 +84,27 @@ const Title = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.weightBold};
 `;
 
-const HistoryButton = styled.button`
+const Text = styled.p`
   color: ${({ theme }) => theme.colors.colorLightGray1};
   font-size: 12px;
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
 
-  &:last-child {
-    margin-left: 8px;
+  &:first-child {
+    margin-right: 8px;
   }
+
+  &:nth-child(2) {
+    margin-right: 4px;
+  }
+`;
+
+const HistoryButton = styled.button`
+  width: 16px;
+  height: 16px;
+`;
+
+const HistoryIcon = styled.img`
+  width: 100%;
 `;
 
 const HistoryContainer = styled.ul`
