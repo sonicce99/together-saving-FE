@@ -1,19 +1,28 @@
-// import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DepositView = () => {
-  const [isUnder, setIsUnder] = useState(false);
+  const [inputPrice, setInputPrice] = useState("");
+  const [isNull, setIsNull] = useState(true);
+
   const inputRef = useRef();
-
   const location = useLocation();
-  const { bank, account, price } = location.state;
+  const { bank, account, defaultPrice, id } = location.state;
 
-  const handleSavingSubmit = () => {
-    // const savingPrice = inputRef.current.value;
-    // axios.post('url', { challenge_payment: savingPrice, physical_account_number: })
+  const handleInputPrice = (e) => {
+    e.target.value !== "" ? setIsNull(false) : setIsNull(true);
+    setInputPrice(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    // axios.post(`http://localhost:8080/api/v1/users/challenges/${id}/saving`, {
+    //   challenge_payment: inputRef.current.value,
+    //   physical_account_number: account,
+    //   cma_account_number: CMA 계좌
+    // });
   };
 
   return (
@@ -28,21 +37,29 @@ const DepositView = () => {
         <Input
           ref={inputRef}
           type="number"
+          onChange={handleInputPrice}
+          value={inputPrice}
           placeholder={`${
-            price && price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            defaultPrice &&
+            defaultPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }원 입력하세요`}
-          max="5"
         />
-        {isUnder && (
+        {inputPrice !== "" && inputPrice < defaultPrice && (
           <WarningLabel>
             <Text>
-              {price > 10000 ? `${price / 10000}만원 ` : `${price / 1000}천원 `}
+              {defaultPrice > 10000
+                ? `${defaultPrice / 10000}만원 `
+                : `${defaultPrice / 1000}천원 `}
               보다 적게 저축하면 달성률이 떨어질 수 있어요
             </Text>
           </WarningLabel>
         )}
         <ButtonContainer>
-          <Button onClick={handleSavingSubmit}>저축하기</Button>
+          <Link to="/saving/success">
+            <Button isNull={isNull} disabled={isNull} onClick={handleSubmit}>
+              저축하기
+            </Button>
+          </Link>
         </ButtonContainer>
       </DepositViewContainer>
     </>

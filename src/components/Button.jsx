@@ -9,6 +9,8 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.colorBlue1};
   border-radius: 6px;
   margin-bottom: 34px;
+
+  ${(props) => props.isNull && `background-color: #CDCDCD`}
 `;
 
 export default Button;
