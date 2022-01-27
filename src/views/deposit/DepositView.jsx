@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { useLocation } from "react-router-dom";
@@ -133,7 +133,6 @@ const WarningLabel = styled.div`
   background-color: ${({ theme }) => theme.colors.colorLightGray2};
 
   ${Text}:nth-child(1) {
-    width: 300px;
     color: ${({ theme }) => theme.colors.colorBlue2};
     font-size: ${({ theme }) => theme.fontSize.fontXSmall};
     line-height: 16px;
