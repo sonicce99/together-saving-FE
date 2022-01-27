@@ -4,6 +4,7 @@ import { Tabs, Tab, Typography, Box } from "@mui/material";
 import ChallengeTemplate1 from "../../components/ChallengeTemplate1.jsx";
 import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
+import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import axios from "axios";
 
 const MainTabs = () => {
@@ -115,6 +116,10 @@ const MainTabs = () => {
             title="전체 챌린지"
             ChallengeArray={wholeChallenge}
           />
+        </TabPanel>
+
+        <TabPanel value={value} index={0}>
+          <ChallengeCreateAndEct />
         </TabPanel>
 
         <TabPanel value={value} index={1}>

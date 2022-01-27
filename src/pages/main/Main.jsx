@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <>
       <Header />
-      <Event main>이벤트</Event>
+      <Event>이벤트</Event>
       <MainTabs />
       <BottomNav />
     </>
