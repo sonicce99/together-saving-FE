@@ -1,28 +1,38 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Portal from "../../components/Portal";
+import DepositKeypad from "./DepositKeypad";
 
 const DepositView = () => {
   const [inputPrice, setInputPrice] = useState("");
+  const [isShowKeypad, setIsShowKeypad] = useState(false);
   const [isNull, setIsNull] = useState(true);
 
-  const inputRef = useRef();
   const location = useLocation();
   const { bank, account, defaultPrice, id } = location.state;
 
-  const handleInputPrice = (e) => {
-    e.target.value !== "" ? setIsNull(false) : setIsNull(true);
-    setInputPrice(e.target.value);
+  const handleInputPrice = (price) => {
+    {
+      price !== "" ? setIsNull(false) : setIsNull(true);
+    }
+
+    const inputLength = defaultPrice.toString().length;
+
+    if (price.length > inputLength) price = price.slice(0, inputLength);
+    if (price > defaultPrice) price = defaultPrice.toString();
+
+    setInputPrice(price);
+  };
+
+  const handleShowKeypad = () => {
+    setIsShowKeypad(true);
   };
 
   const handleSubmit = () => {
-    // axios.post(`http://localhost:8080/api/v1/users/challenges/${id}/saving`, {
-    //   challenge_payment: inputRef.current.value,
-    //   physical_account_number: account,
-    //   cma_account_number: CMA 계좌
-    // });
+    console.log(inputPrice);
   };
 
   return (
@@ -35,14 +45,17 @@ const DepositView = () => {
           <Text>{account}</Text>
         </DepositAccount>
         <Input
-          ref={inputRef}
-          type="number"
+          type="text"
+          value={
+            inputPrice &&
+            `${inputPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+          }
           onChange={handleInputPrice}
-          value={inputPrice}
           placeholder={`${
             defaultPrice &&
             defaultPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }원 입력하세요`}
+          onFocus={handleShowKeypad}
         />
         {inputPrice !== "" && inputPrice < defaultPrice && (
           <WarningLabel>
@@ -62,6 +75,14 @@ const DepositView = () => {
           </Link>
         </ButtonContainer>
       </DepositViewContainer>
+      {isShowKeypad && (
+        <Portal>
+          <DepositKeypad
+            inputPrice={inputPrice}
+            onHandleInput={handleInputPrice}
+          />
+        </Portal>
+      )}
     </>
   );
 };

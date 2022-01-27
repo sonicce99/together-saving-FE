@@ -4,7 +4,7 @@ import removeArrow from "../../images/remove_arrow.png";
 
 const DepositKeypad = ({ inputPrice, onHandleInput }) => {
   const handleInputPrice = (e) => {
-    onHandleInput(inputPrice + e.target.value);
+    onHandleInput((inputPrice + e.target.value).replace(/(^0+)/, ""));
   };
 
   const handleRemovePrice = () => {
