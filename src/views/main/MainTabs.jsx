@@ -119,7 +119,7 @@ const MainTabs = () => {
         </TabPanel>
 
         <TabPanel value={value} index={0}>
-          <ChallengeCreateAndEct />
+          <ChallengeCreateAndEct setValue={setValue} />
         </TabPanel>
 
         <TabPanel value={value} index={1}>
