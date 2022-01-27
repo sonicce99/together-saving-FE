@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Tags from "../../views/challenge/Tags";
 import ChallengeSummary from "../../components/ChallengeSummary.jsx";
@@ -12,16 +12,17 @@ import Thumbnail from "../../components/Thimbnail";
 import { useMatch, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
+import axios from "axios";
 
 const Challenge = () => {
+  const [popularChallengeData, setPopularChallengeData] = useState([]);
+
   const { data, loading, error } = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
   const dispatch = useDispatch();
 
   let navigate = useNavigate();
-
-  console.log(data);
 
   // 챌린지 id 가져오기
   let {
@@ -32,6 +33,20 @@ const Challenge = () => {
   useEffect(() => {
     dispatch(getChallengesummaryInfo());
   }, [dispatch]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        // 인기 챌린지 가져오기
+        const popularChallenge = await axios.get(
+          "../../modules/popularChallenge.json"
+        );
+        setPopularChallengeData(popularChallenge.data.data.challenges);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   if (loading) return <h2>로딩중...</h2>;
   if (error) return <h2>에러 발생!</h2>;
@@ -60,7 +75,10 @@ const Challenge = () => {
         />
         <ChallengeReview challenge_reviews={data.data.challenge_reviews} />
         <RefundAndCaution />
-        <ChallengeTemplate2 />
+        <ChallengeTemplate2
+          title="이런 챌린지도 있어요!"
+          ChallengeArray={popularChallengeData}
+        />
         <Button
           onClick={() => {
             data.data.is_participated
