@@ -11,7 +11,7 @@ const SavingHistoryItem = ({ historyItem }) => {
       <HistoryItem>
         <HistoryDate>{displayDate}</HistoryDate>
         <HistoryPrice>
-          {amount && amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+          {amount && amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
         </HistoryPrice>
       </HistoryItem>
     </>
