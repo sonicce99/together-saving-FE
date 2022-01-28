@@ -37,9 +37,7 @@ const SavingHistory = ({ savingHistory }) => {
               <AccountText>{account_number}</AccountText>
             </AccountTextContainer>
             <PriceText>
-              {balance &&
-                balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              원
+              {balance && balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
             </PriceText>
           </AccountInfo>
         </AccountInfoContainer>

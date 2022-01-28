@@ -24,9 +24,7 @@ const SavingStatusInfo = ({ savingStatus }) => {
             <Span>{nickname}</Span>님의 누적 저축 금액
           </Text>
           <Text>
-            {cma_balance &&
-              cma_balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            원
+            {cma_balance && cma_balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
           </Text>
         </StatusInfoContainer>
         <SavingRate rate={saving_rate} endDate={end_date} />

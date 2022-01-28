@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Portal from "../../components/Portal";
 import SavingFinishPopUp from "./SavingFinishPopUp";
@@ -27,7 +27,7 @@ const SavingRate = ({ rate, endDate }) => {
         </Day>
       </RemainDayContainer>
       <ProgressContainer>
-        {rate === "100" && remainDay === 0 && (
+        {(remainDay < 0 || rate === "100") && (
           <Portal>
             <SavingFinishPopUp />
           </Portal>

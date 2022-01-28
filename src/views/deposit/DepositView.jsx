@@ -39,7 +39,7 @@ const DepositView = () => {
   }, []);
 
   const handleSubmit = () => {
-    if (inputPrice) dispatch(requestSaving(1, Number(inputPrice)));
+    if (inputPrice) dispatch(requestSaving("1", Number(inputPrice)));
   };
 
   return (
