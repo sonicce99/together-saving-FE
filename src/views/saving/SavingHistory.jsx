@@ -19,8 +19,6 @@ const SavingHistory = ({ savingHistory }) => {
     thumbnail,
   } = savingHistory.data;
 
-  console.log(savingHistory.data);
-
   const [isAuto, setIsAuto] = useState(is_automated);
 
   const handleAuto = (auto) => {

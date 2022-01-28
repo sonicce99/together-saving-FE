@@ -6,9 +6,12 @@ import {
 } from "../actions/types";
 
 const getAPI = (challengeId, savingPrice) => {
-  return axios.post(`/api/v1/users/challenges/${challengeId}/saving`, {
-    saving_amount: savingPrice,
-  });
+  return axios.post(
+    `http://183.99.247.17:8881/api/v1/users/challenges/${challengeId}/saving`,
+    {
+      saving_amount: savingPrice,
+    }
+  );
 };
 
 export const requestSaving = (challengeId, savingPrice) => async (dispatch) => {
