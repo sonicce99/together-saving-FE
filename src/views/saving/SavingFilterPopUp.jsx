@@ -29,6 +29,7 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
           <Title>조회기간</Title>
           <FilterContainer>
             <Label>
+              {/* value값에 대한 상수 배열을 선언한 후 인덱스 비교해서 map 돌리자. */}
               <Input
                 type="radio"
                 name="lookup"

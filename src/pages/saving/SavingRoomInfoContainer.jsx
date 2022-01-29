@@ -3,15 +3,15 @@ import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
 import { useSelector } from "react-redux";
 
 const SavingRoomInfoContainer = () => {
-  const challenge = useSelector(
+  const challengeInfo = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
 
-  if (challenge.loading) return <div>로딩중</div>;
-  if (challenge.error) return <div>에러 발생</div>;
-  if (!challenge.data) return null;
+  if (challengeInfo.loading) return <div>로딩중</div>;
+  if (challengeInfo.error) return <div>에러 발생</div>;
+  if (!challengeInfo.data) return null;
 
-  return <SavingRoomInfo challengeData={challenge.data.data} />;
+  return <SavingRoomInfo challengeInfo={challengeInfo.data.data} />;
 };
 
 export default SavingRoomInfoContainer;
