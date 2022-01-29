@@ -9,13 +9,17 @@ import { useDispatch } from "react-redux";
 import { requestSaving } from "../../redux/reducers/savingRequestReducer";
 
 const DepositView = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const { bank, account, defaultPrice, id } = location.state;
+
   const [inputPrice, setInputPrice] = useState("");
   const [isShowKeypad, setIsShowKeypad] = useState(false);
   const [isNull, setIsNull] = useState(true);
 
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const { bank, account, defaultPrice, id } = location.state;
+  useEffect(() => {
+    dispatch(requestSaving());
+  }, []);
 
   const handleInputPrice = (price) => {
     {
@@ -33,10 +37,6 @@ const DepositView = () => {
   const handleShowKeypad = () => {
     setIsShowKeypad(true);
   };
-
-  useEffect(() => {
-    dispatch(requestSaving());
-  }, []);
 
   const handleSubmit = () => {
     if (inputPrice) dispatch(requestSaving("1", Number(inputPrice)));

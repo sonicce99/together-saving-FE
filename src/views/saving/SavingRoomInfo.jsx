@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const SavingRoomInfo = ({ challengeData }) => {
+const SavingRoomInfo = ({ challengeInfo }) => {
   // 챌린지 아이디 업데이트 필요 (저축 시 식별자 역할)
   const {
     challenge_id,
@@ -10,7 +10,7 @@ const SavingRoomInfo = ({ challengeData }) => {
     challenge_frequency,
     end_date,
     start_date,
-  } = challengeData;
+  } = challengeInfo;
 
   // 1. useState
   const [period, setPeriod] = useState({ startDay: "", endDay: "" });

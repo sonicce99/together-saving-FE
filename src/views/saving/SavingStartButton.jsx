@@ -10,7 +10,9 @@ const SavingStartButton = ({ bank, account, defaultPrice, isAuto }) => {
   return (
     <SavingButtonContainer>
       <Link to={"/saving/deposit"} state={{ bank, account, defaultPrice, id }}>
-        <Button disabled={isAuto}>저축하기</Button>
+        <Button isAuto={isAuto} disabled={isAuto}>
+          저축하기
+        </Button>
       </Link>
     </SavingButtonContainer>
   );
