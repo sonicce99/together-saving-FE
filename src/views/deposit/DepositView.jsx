@@ -7,6 +7,7 @@ import Portal from "../../components/Portal";
 import DepositKeypad from "./DepositKeypad";
 import { useDispatch } from "react-redux";
 import { requestSaving } from "../../redux/reducers/savingRequestReducer";
+import { stringRegexWithComma } from "../../utils/regex";
 
 const DepositView = () => {
   const dispatch = useDispatch();
@@ -26,13 +27,20 @@ const DepositView = () => {
       price !== "" ? setIsNull(false) : setIsNull(true);
     }
 
-    const inputLength = defaultPrice.toString().length;
+    const inputLength = defaultPrice.length;
 
     if (price.length > inputLength) price = price.slice(0, inputLength);
-    if (price > defaultPrice) price = defaultPrice.toString();
+
+    if (Number(price) > Number(defaultPrice)) price = defaultPrice;
 
     setInputPrice(price);
   };
+
+  useEffect(() => {
+    {
+      inputPrice !== "" ? setIsNull(false) : setIsNull(true);
+    }
+  }, [setIsNull]);
 
   const handleShowKeypad = () => {
     setIsShowKeypad(true);
@@ -53,15 +61,11 @@ const DepositView = () => {
         </DepositAccount>
         <Input
           type="text"
-          value={
-            inputPrice &&
-            `${inputPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
-          }
+          value={inputPrice && `${stringRegexWithComma(inputPrice)}원`}
           onChange={handleInputPrice}
-          placeholder={`${
-            defaultPrice &&
-            defaultPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-          }원 입력하세요`}
+          placeholder={
+            defaultPrice && `${stringRegexWithComma(defaultPrice)}원 입력하세요`
+          }
           onFocus={handleShowKeypad}
         />
         {inputPrice !== "" && inputPrice < defaultPrice && (
