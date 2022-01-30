@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
+import { stringRegexWithComma } from "../../utils/regex";
 
 const SavingStatusInfo = ({ savingStatus }) => {
   const {
@@ -23,9 +24,7 @@ const SavingStatusInfo = ({ savingStatus }) => {
           <Text>
             <Span>{nickname}</Span>님의 누적 저축 금액
           </Text>
-          <Text>
-            {cma_balance && cma_balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-          </Text>
+          <Text>{stringRegexWithComma(cma_balance)}원</Text>
         </StatusInfoContainer>
         <SavingRate rate={saving_rate} endDate={end_date} />
         <SavingCount
