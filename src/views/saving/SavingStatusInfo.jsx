@@ -16,6 +16,8 @@ const SavingStatusInfo = ({ savingStatus }) => {
     end_date,
   } = savingStatus.data;
 
+  const cmaBalance = stringRegexWithComma(cma_balance);
+
   return (
     <>
       <SavingStatusContainer>
@@ -24,7 +26,7 @@ const SavingStatusInfo = ({ savingStatus }) => {
           <Text>
             <Span>{nickname}</Span>님의 누적 저축 금액
           </Text>
-          <Text>{stringRegexWithComma(cma_balance)}원</Text>
+          <Text>{cmaBalance}원</Text>
         </StatusInfoContainer>
         <SavingRate rate={saving_rate} endDate={end_date} />
         <SavingCount
