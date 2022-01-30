@@ -30,10 +30,17 @@ const DepositView = () => {
     const inputLength = defaultPrice.length;
 
     if (price.length > inputLength) price = price.slice(0, inputLength);
-    if (price > defaultPrice) price = defaultPrice;
+
+    if (Number(price) > Number(defaultPrice)) price = defaultPrice;
 
     setInputPrice(price);
   };
+
+  useEffect(() => {
+    {
+      inputPrice !== "" ? setIsNull(false) : setIsNull(true);
+    }
+  }, [setIsNull]);
 
   const handleShowKeypad = () => {
     setIsShowKeypad(true);
