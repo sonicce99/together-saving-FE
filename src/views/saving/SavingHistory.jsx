@@ -6,6 +6,10 @@ import SavingStartButton from "./SavingStartButton";
 import { useSelector } from "react-redux";
 
 const SavingHistory = ({ savingHistory }) => {
+  const { challenge_payment } = useSelector(
+    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
+  );
+
   const {
     account_number,
     balance,
@@ -16,9 +20,6 @@ const SavingHistory = ({ savingHistory }) => {
   } = savingHistory.data;
 
   const [isAuto, setIsAuto] = useState(is_automated);
-  const { challenge_payment } = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
-  );
 
   const handleAuto = (auto) => {
     setIsAuto(auto);
