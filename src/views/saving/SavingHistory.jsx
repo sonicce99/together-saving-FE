@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
 import { useSelector } from "react-redux";
+import { stringRegexWithComma } from "../../utils/regex";
 
 const SavingHistory = ({ savingHistory }) => {
   const { challenge_payment } = useSelector(
@@ -21,6 +22,8 @@ const SavingHistory = ({ savingHistory }) => {
 
   const [isAuto, setIsAuto] = useState(is_automated);
 
+  const personalBalance = stringRegexWithComma(balance);
+
   const handleAuto = (auto) => {
     setIsAuto(auto);
   };
@@ -36,9 +39,7 @@ const SavingHistory = ({ savingHistory }) => {
               <AccountText>{bank_name}</AccountText>
               <AccountText>{account_number}</AccountText>
             </AccountTextContainer>
-            <PriceText>
-              {balance && balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-            </PriceText>
+            <PriceText>{personalBalance}원</PriceText>
           </AccountInfo>
         </AccountInfoContainer>
         <SavingHistoryList historyList={history} />

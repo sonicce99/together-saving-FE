@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { remainDayRegex, remainWeekRegex } from "../../utils/regex";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
   // 챌린지 아이디 업데이트 필요 (저축 시 식별자 역할)
@@ -12,52 +13,16 @@ const SavingRoomInfo = ({ challengeInfo }) => {
     start_date,
   } = challengeInfo;
 
-  // 1. useState
-  const [period, setPeriod] = useState({ startDay: "", endDay: "" });
-  const [timeRemain, setTimeRemain] = useState("");
-  const [depositInfo, setDepositInfo] = useState({
-    days: [],
-    times: "",
-    week: "",
-  });
+  const startDay = start_date.slice(2, 10).replaceAll("-", ".");
+  const endDay = end_date.slice(5, 10).replaceAll("-", ".");
 
-  // 2. 구조분해
-  const { startDay, endDay } = period;
-  const { days, times, week } = depositInfo;
+  const weeklySavingDays = challenge_frequency
+    .map((item) => item.day)
+    .join(",");
+  const weeklySavingTimes = challenge_frequency.length;
 
-  // 3. useEffect
-  useEffect(() => {
-    const startDay = start_date.slice(2, 10).replaceAll("-", ".");
-    const endDay = end_date.slice(5, 10).replaceAll("-", ".");
-    setPeriod({
-      ...period,
-      startDay,
-      endDay,
-    });
-  }, [setPeriod]);
-
-  useEffect(() => {
-    const today = new Date();
-    const endDay = new Date(end_date);
-    const remainTime = endDay.getTime() - today.getTime();
-    const remainDay = Math.ceil(remainTime / (1000 * 60 * 60 * 24));
-    setTimeRemain(remainDay);
-  }, [setTimeRemain]);
-
-  useEffect(() => {
-    const days = challenge_frequency.map((item) => item.day).join(",");
-    const times = challenge_frequency.length;
-    const startWeek = new Date(start_date);
-    const endWeek = new Date(end_date);
-    const remainTime = endWeek.getTime() - startWeek.getTime();
-    const remainWeek = Math.ceil(remainTime / (1000 * 60 * 60 * 30 * 5));
-    setDepositInfo({
-      ...depositInfo,
-      days,
-      times,
-      week: remainWeek,
-    });
-  }, [setDepositInfo]);
+  const remainDay = remainDayRegex(end_date);
+  const remainWeek = remainWeekRegex(start_date, end_date);
 
   return (
     <InfoContainer>
@@ -67,13 +32,13 @@ const SavingRoomInfo = ({ challengeInfo }) => {
           <Title>{challenge_name}</Title>
         </Link>
         <Text>
-          {timeRemain === 0
+          {remainDay === 0
             ? "챌린지 종료일입니다."
-            : timeRemain < 0
+            : remainDay < 0
             ? "종료된 챌린지입니다."
-            : `${startDay} - ${endDay} ${timeRemain}일 뒤 종료`}
+            : `${startDay} - ${endDay} ${remainDay}일 뒤 종료`}
         </Text>
-        <Text>{`${days} - 주${times}일 / ${week}주차`}</Text>
+        <Text>{`${weeklySavingDays} - 주${weeklySavingTimes}일 / ${remainWeek}주차`}</Text>
       </InfoTextContainer>
     </InfoContainer>
   );
