@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import { useLocation } from "react-router-dom";
@@ -18,32 +18,24 @@ const DepositView = () => {
   const [isShowKeypad, setIsShowKeypad] = useState(false);
   const [isNull, setIsNull] = useState(true);
 
-  useEffect(() => {
-    dispatch(requestSaving());
-  }, []);
+  const handleShowKeypad = () => {
+    setIsShowKeypad(true);
+  };
 
   const handleInputPrice = (price) => {
-    {
-      price !== "" ? setIsNull(false) : setIsNull(true);
-    }
-
-    const inputLength = defaultPrice.length;
-
-    if (price.length > inputLength) price = price.slice(0, inputLength);
+    const maxLength = defaultPrice.length;
+    price = price.slice(0, maxLength);
 
     if (Number(price) > Number(defaultPrice)) price = defaultPrice;
 
+    handleNullCheck(price);
     setInputPrice(price);
   };
 
-  useEffect(() => {
+  const handleNullCheck = (price) => {
     {
-      inputPrice !== "" ? setIsNull(false) : setIsNull(true);
+      price !== "" ? setIsNull(false) : setIsNull(true);
     }
-  }, [setIsNull]);
-
-  const handleShowKeypad = () => {
-    setIsShowKeypad(true);
   };
 
   const handleSubmit = () => {
@@ -142,6 +134,7 @@ const WarningLabel = styled.div`
   border-radius: 6px;
   padding: 6px 8px;
   background-color: ${({ theme }) => theme.colors.colorLightGray2};
+  position: absolute;
 
   ${Text}:nth-child(1) {
     color: ${({ theme }) => theme.colors.colorBlue2};
