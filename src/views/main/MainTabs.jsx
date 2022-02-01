@@ -6,12 +6,10 @@ import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
 import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 const MainTabs = () => {
   const [value, setValue] = React.useState(0); // Tabs 관련
 
-  const [dataLimit, setDataLimit] = React.useState(7);
   const [participatingChallenges, setParticipatingChallenges] = React.useState(
     []
   ); // 참여 중인 챌린지 Data
@@ -93,16 +91,10 @@ const MainTabs = () => {
         </Box>
 
         <TabPanel value={value} index={0}>
-          <InfiniteScroll
-            dataLength={participatingChallenges.length}
-            next={handlePage}
-            hasMore={true}
-          >
-            <ChallengeTemplate1
-              title="참여중인 챌린지"
-              ChallengeArray={participatingChallenges}
-            />
-          </InfiniteScroll>
+          <ChallengeTemplate1
+            title="참여중인 챌린지"
+            ChallengeArray={participatingChallenges}
+          />
         </TabPanel>
 
         {value === 0 ? <DivisionLine /> : null}
