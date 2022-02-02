@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
 
 const SavingRoomInfoContainer = () => {
+  const dispatch = useDispatch();
   const challengeInfo = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
+
+  useEffect(() => {
+    dispatch(getChallengesummaryInfo());
+  }, []);
 
   if (challengeInfo.loading) return <div>로딩중</div>;
   if (challengeInfo.error) return <div>에러 발생</div>;

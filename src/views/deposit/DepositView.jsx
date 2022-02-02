@@ -33,13 +33,11 @@ const DepositView = () => {
   };
 
   const handleNullCheck = (price) => {
-    {
-      price !== "" ? setIsNull(false) : setIsNull(true);
-    }
+    price ? setIsNull(false) : setIsNull(true);
   };
 
   const handleSubmit = () => {
-    if (inputPrice) dispatch(requestSaving("1", Number(inputPrice)));
+    inputPrice && dispatch(requestSaving("1", Number(inputPrice)));
   };
 
   return (
