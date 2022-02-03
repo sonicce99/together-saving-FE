@@ -49,10 +49,6 @@ const MainTabs = () => {
     setValue(newValue);
   };
 
-  const handlePage = () => {
-    setPage(page + 1);
-  };
-
   return (
     <>
       <Box
