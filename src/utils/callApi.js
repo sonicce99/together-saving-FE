@@ -7,11 +7,16 @@ const API_ADDRESS = "http://183.99.247.17:8881/api/v1/users/challenges";
 export const connectChallengeApi = async (challengeName, dataPage) => {
   try {
     switch (challengeName) {
-      case "participate":
-        const { data } = await axios.get(
+      case "participate": // 참여 중 (토큰 필요)
+        const participateData = await axios.get(
           "../../modules/participatingChallenge.json"
         );
-        return data.data;
+        return participateData.data;
+      case "popular": // 인기 더보기
+        const popularData = await axios.get(
+          `http://183.99.247.17:8881/api/v1/auth/challenges?criteria=popularity&page=${dataPage}`
+        );
+        return popularData.data;
       default:
         throw Error;
     }
