@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Character from "../../images/Character.png";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const ChallengePaymentSuccess = () => {
   return (
@@ -11,7 +12,9 @@ const ChallengePaymentSuccess = () => {
         <Title>참가비 결제가 완료 되었어요!</Title>
         <P>이제 챌린지를 시작해보세요!</P>
       </Inner>
-      <Button>확인</Button>
+      <Link to="/saving">
+        <Button>확인</Button>
+      </Link>
     </Container>
   );
 };
