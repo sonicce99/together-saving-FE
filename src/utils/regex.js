@@ -23,3 +23,23 @@ export const remainWeekRegex = (startDate, endDate) => {
 
   return remainWeek;
 };
+
+// 챌린지 더보기 페이지 타이틀
+export const showMoreTitle = (challengeName) => {
+  switch (challengeName) {
+    case "participate":
+      const join = "참여중인 챌린지";
+      return join;
+    case "popular":
+      const popluar = "인기 챌린지";
+      return popluar;
+    case "particular":
+      const similar = "나와 비슷한 사람들 챌린지";
+      return similar;
+    case "all":
+      const all = "전체 챌린지";
+      return all;
+    default:
+      throw Error;
+  }
+};
