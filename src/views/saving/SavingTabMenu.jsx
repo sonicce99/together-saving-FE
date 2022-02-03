@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import SavingStatusContainer from "../../pages/saving/SavingStatusContainer";
 import DivisionLine from "../../components/DivisionLine";
@@ -16,17 +16,17 @@ const SavingTabMenu = ({ currentTab, onChangeTab }) => {
     1: "소통",
   };
 
-  const handleTabMenu = (e) => {
+  const handleChangeTab = (e) => {
     onChangeTab(e.target.value);
   };
 
   return (
     <>
       <MenuListContainer>
-        <MenuList onClick={handleTabMenu} value={0} current={currentTab}>
+        <MenuList onClick={handleChangeTab} value={0} current={currentTab}>
           내 저축현황
         </MenuList>
-        <MenuList onClick={handleTabMenu} value={1} current={currentTab}>
+        <MenuList onClick={handleChangeTab} value={1} current={currentTab}>
           소통
         </MenuList>
       </MenuListContainer>

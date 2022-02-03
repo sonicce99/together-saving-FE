@@ -9,7 +9,7 @@ import SavingSuccess from "./views/deposit/SavingSuccess";
 import ChallengePayment from "./pages/challenge/ChallengePayment";
 import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
 import MoreShow from "./pages/MoreShow/MoreShow";
-import SavingFinishPopUp from "./views/saving/SavingFinishPopUp";
+import DepositKeypad from "./views/deposit/DepositKeypad";
 
 const App = () => {
   return (

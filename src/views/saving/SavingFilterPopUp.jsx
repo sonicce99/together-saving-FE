@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
+const LOOKUP_PERIODS = ["당일", "1주일", "1개월", "3개월"];
+const SORT_BY_VALUE = ["최근저축순", "과거저축순"];
+
 const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
   const [filter, setFilter] = useState({
     lookup,
@@ -28,69 +31,33 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
         <SortContainer>
           <Title>조회기간</Title>
           <FilterContainer>
-            <Label>
-              <Input
-                type="radio"
-                name="lookup"
-                value="당일"
-                checked={filter.lookup === "당일" ? true : false}
-                onChange={handleChangeFilter}
-              />
-              <Text>당일</Text>
-            </Label>
-            <Label>
-              <Input
-                type="radio"
-                name="lookup"
-                value="1주일"
-                checked={filter.lookup === "1주일" ? true : false}
-                onChange={handleChangeFilter}
-              />
-              <Text>1주일</Text>
-            </Label>
-            <Label>
-              <Input
-                type="radio"
-                name="lookup"
-                value="1개월"
-                checked={filter.lookup === "1개월" ? true : false}
-                onChange={handleChangeFilter}
-              />
-              <Text>1개월</Text>
-            </Label>
-            <Label>
-              <Input
-                type="radio"
-                name="lookup"
-                value="3개월"
-                checked={filter.lookup === "3개월" ? true : false}
-                onChange={handleChangeFilter}
-              />
-              <Text>3개월</Text>
-            </Label>
+            {LOOKUP_PERIODS.map((period, index) => (
+              <Label key={index}>
+                <Input
+                  type="radio"
+                  name="lookup"
+                  value={period}
+                  checked={filter.lookup === period ? true : false}
+                  onChange={handleChangeFilter}
+                />
+                <Text>{period}</Text>
+              </Label>
+            ))}
           </FilterContainer>
           <Title>정렬기준</Title>
           <FilterContainer>
-            <Label>
-              <Input
-                type="radio"
-                name="sort"
-                value="최근저축순"
-                checked={filter.sort === "최근저축순" ? true : false}
-                onChange={handleChangeFilter}
-              />
-              <Text>최근저축순</Text>
-            </Label>
-            <Label>
-              <Input
-                type="radio"
-                name="sort"
-                value="과거저축순"
-                checked={filter.sort === "과거저축순" ? true : false}
-                onChange={handleChangeFilter}
-              />
-              <Text>과거저축순</Text>
-            </Label>
+            {SORT_BY_VALUE.map((sort, index) => (
+              <Label key={index}>
+                <Input
+                  type="radio"
+                  name="sort"
+                  value={sort}
+                  checked={filter.sort === sort ? true : false}
+                  onChange={handleChangeFilter}
+                />
+                <Text>{sort}</Text>
+              </Label>
+            ))}
           </FilterContainer>
         </SortContainer>
         <ButtonContainer>

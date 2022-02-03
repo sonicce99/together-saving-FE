@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { stringRegexWithComma } from "../../utils/regex";
 
 const SavingHistoryItem = ({ historyItem }) => {
+  const week = [
+    "일요일",
+    "월요일",
+    "화요일",
+    "수요일",
+    "목요일",
+    "금요일",
+    "토요일",
+  ];
+
   const { date, amount } = historyItem;
 
   const displayDate = date.slice(5, 15).replace("-", ".");
@@ -9,10 +20,10 @@ const SavingHistoryItem = ({ historyItem }) => {
   return (
     <>
       <HistoryItem>
-        <HistoryDate>{displayDate}</HistoryDate>
-        <HistoryPrice>
-          {amount && amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-        </HistoryPrice>
+        <HistoryDate>
+          {displayDate} {week[new Date(date).getDay()]}
+        </HistoryDate>
+        <HistoryPrice>{stringRegexWithComma(amount)}원</HistoryPrice>
       </HistoryItem>
     </>
   );

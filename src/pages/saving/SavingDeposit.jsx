@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 import DivisionLine from "../../components/DivisionLine";
 import DepositView from "../../views/deposit/DepositView";
-import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 
 const SavingDeposit = () => {
   return (

@@ -58,10 +58,13 @@ const SavingHistory = ({ historyList }) => {
         </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
-        {history &&
+        {history.length > 0 ? (
           Object.values(history).map((history, index) => (
             <SavingHistoryItem key={index} historyItem={history} />
-          ))}
+          ))
+        ) : (
+          <Notice>아직 저축내역이 없어요</Notice>
+        )}
       </HistoryContainer>
     </>
   );
@@ -117,6 +120,11 @@ const HistoryContainer = styled.ul`
   &::-webkit-scrollbar {
     display: none; /* Chrome , Safari , Opera */
   }
+`;
+
+const Notice = styled(Title)`
+  color: ${({ theme }) => theme.colors.colorLightGray1};
+  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
 `;
 
 export default SavingHistory;

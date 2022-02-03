@@ -5,34 +5,39 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Portal from "../../components/Portal";
 import DepositKeypad from "./DepositKeypad";
+import { useDispatch } from "react-redux";
+import { requestSaving } from "../../redux/reducers/savingRequestReducer";
+import { stringRegexWithComma } from "../../utils/regex";
 
 const DepositView = () => {
-  const [inputPrice, setInputPrice] = useState("");
-  const [isShowKeypad, setIsShowKeypad] = useState(false);
-  const [isNull, setIsNull] = useState(true);
-
+  const dispatch = useDispatch();
   const location = useLocation();
   const { bank, account, defaultPrice, id } = location.state;
 
-  const handleInputPrice = (price) => {
-    {
-      price !== "" ? setIsNull(false) : setIsNull(true);
-    }
-
-    const inputLength = defaultPrice.toString().length;
-
-    if (price.length > inputLength) price = price.slice(0, inputLength);
-    if (price > defaultPrice) price = defaultPrice.toString();
-
-    setInputPrice(price);
-  };
+  const [inputPrice, setInputPrice] = useState("");
+  const [isShowKeypad, setIsShowKeypad] = useState(false);
+  const [isNull, setIsNull] = useState(true);
 
   const handleShowKeypad = () => {
     setIsShowKeypad(true);
   };
 
+  const handleInputPrice = (price) => {
+    const maxLength = defaultPrice.length;
+    price = price.slice(0, maxLength);
+
+    if (Number(price) > Number(defaultPrice)) price = defaultPrice;
+
+    handleNullCheck(price);
+    setInputPrice(price);
+  };
+
+  const handleNullCheck = (price) => {
+    price ? setIsNull(false) : setIsNull(true);
+  };
+
   const handleSubmit = () => {
-    console.log(inputPrice);
+    inputPrice && dispatch(requestSaving("1", Number(inputPrice)));
   };
 
   return (
@@ -46,15 +51,11 @@ const DepositView = () => {
         </DepositAccount>
         <Input
           type="text"
-          value={
-            inputPrice &&
-            `${inputPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
-          }
+          value={inputPrice && `${stringRegexWithComma(inputPrice)}원`}
           onChange={handleInputPrice}
-          placeholder={`${
-            defaultPrice &&
-            defaultPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-          }원 입력하세요`}
+          placeholder={
+            defaultPrice && `${stringRegexWithComma(defaultPrice)}원 입력하세요`
+          }
           onFocus={handleShowKeypad}
         />
         {inputPrice !== "" && inputPrice < defaultPrice && (
@@ -131,6 +132,7 @@ const WarningLabel = styled.div`
   border-radius: 6px;
   padding: 6px 8px;
   background-color: ${({ theme }) => theme.colors.colorLightGray2};
+  position: absolute;
 
   ${Text}:nth-child(1) {
     color: ${({ theme }) => theme.colors.colorBlue2};
