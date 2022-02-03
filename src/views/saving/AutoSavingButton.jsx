@@ -3,18 +3,14 @@ import styled from "styled-components";
 import axios from "axios";
 
 const AutoSavingButton = ({ isAuto, onHandleAuto }) => {
-  const handleAutoSwitch = () => {
-    onHandleAuto(!isAuto);
-  };
+  const id = "1";
 
-  // 나중에 처리 put 404 error
-  // 백엔드 로직 잡히면 해보자
-  // axios
-  //   .put("../../modules/autoSaving.json", { isAutoSave })
-  //   .then((res) => {
-  //     console.log(res);
-  //   })
-  //   .catch((e) => console.log(e));
+  const handleAutoSwitch = () => {
+    axios
+      .post(`http://183.99.247.17:8881/api/v1/challenges/${id}/auto`)
+      .then((res) => console.log(res));
+    onHandleAuto((isAuto) => !isAuto);
+  };
 
   return (
     <AutoSavingContainer>
