@@ -89,6 +89,11 @@ const MoreShowTemplate = () => {
                       <Period>{EachChallenge.date}일 뒤 종료</Period>
                     </Div2>
                     <ChallengeName>{EachChallenge.title}</ChallengeName>
+                    <Div3>
+                      {EachChallenge.tags.map((tag, index) => {
+                        return <Tags key={index}>{tag.tag_name}&nbsp;</Tags>;
+                      })}
+                    </Div3>
                   </Content>
                 );
               })}
@@ -106,7 +111,6 @@ const Container = styled.div`
 
 const Inner = styled.div`
   width: 343px;
-  border: 2px solid green;
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 
@@ -120,20 +124,21 @@ const Title = styled(H3)`
 
 const Contents = styled.div`
   height: 578px;
-  border: 1px solid yellow;
+  width: 343px;
+  overflow: scroll;
 `;
 
 const Div = styled.div`
   display: flex;
   align-items: center;
-  overflow-y: scroll;
-  border: 2px solid black;
+  flex-wrap: wrap;
+  gap: 40px 15px;
 `;
 
 const Content = styled.div`
   width: 164px;
   border: 1px solid red;
-  margin-right: 9px;
+  /* margin-right: 15px; */
 `;
 
 const Image = styled.div`
@@ -163,7 +168,18 @@ const Period = styled.div`
 const ChallengeName = styled(H3)`
   color: ${({ theme }) => theme.colors.colorDarkGray2};
   font-size: 14px;
-  margin-bottom: 0;
+  margin-bottom: 4px;
+`;
+
+const Div3 = styled.div`
+  display: flex;
+`;
+
+const Tags = styled.div`
+  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+  font-size: 12px;
+  line-height: 17px;
+  color: ${({ theme }) => theme.colors.colorGray1};
 `;
 
 export default MoreShowTemplate;
