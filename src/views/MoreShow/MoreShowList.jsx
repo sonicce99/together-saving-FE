@@ -2,71 +2,26 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useMatch } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import H3 from "../../components/H3";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MoreShowItem from "./MoreShowItem";
+import { connectChallengeApi } from "../../utils/callApi";
+import { showMoreTitle } from "../../utils/regex";
 
 const MoreShowTemplate = () => {
   const [challengeData, setChallengeData] = useState([]);
   const [challengeName, setChallengeName] = useState("");
   const [page, setPage] = useState(0);
 
-  const navigate = useNavigate();
-
-  // 챌린지 종류 가져오기
   const {
     params: { name },
   } = useMatch("/moreshow/:name");
 
-  useEffect(() => {
-    (async () => {
-      try {
-        switch (name) {
-          case "participate":
-            // 참여 중인 챌린지 가져오기
-            const participatingData = await axios.get(
-              "../../modules/participatingChallenge.json"
-              // `http://183.99.247.17:8881/api/v1/users/challenges?page=${page}`
-            );
-            setChallengeData(participatingData.data.data.challenges);
-            setChallengeName("참여중인 챌린지");
-            break;
-
-          case "popular":
-            // 인기 챌린지 가져오기
-            const popularData = await axios.get(
-              `http://183.99.247.17:8881/api/v1/auth/challenges?criteria=popularity&page=${page}`
-            );
-            setChallengeData(popularData.data.data.challenges);
-            setChallengeName("인기 챌린지");
-            break;
-
-          case "particular":
-            // 나와 비슷한 사람들의 챌린지 가져오기
-            const similarityData = await axios.get(
-              "../../modules/similarity.json"
-            );
-            setChallengeData(similarityData.data.data.challenges);
-            setChallengeName("20대가 좋아하는 챌린지");
-            break;
-
-          case "all":
-            // 전체 챌린지 가져오기
-            const wholeChallengeData = await axios.get(
-              "../../modules/wholeChallenge.json"
-            );
-            setChallengeData(wholeChallengeData.data.data.challenges);
-            setChallengeName("전체 챌린지");
-            break;
-
-          default:
-            console.log("error");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+  useEffect(async () => {
+    const { challenges } = await connectChallengeApi(name, page);
+    const title = showMoreTitle(name);
+    setChallengeData(challenges);
+    setChallengeName(title);
   }, []);
 
   const handleScrollPage = () => {

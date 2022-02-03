@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import H3 from "../../components/H3";
+import { useNavigate } from "react-router-dom";
 
 const MoreShowItem = ({ data }) => {
+  const navigate = useNavigate();
   const { id, mode, period, date, title, tags } = data;
+
+  const handleNavigate = () => {
+    navigate(`/challenge/${id}`);
+  };
+
   return (
     <ChallengeItem>
       <ThumbnailInfo>
-        <Image
-          onClick={() => {
-            navigate(`/challenge/${id}`);
-          }}
-          alt="thumbnail"
-        />
+        <Image src="" alt="thumbnail" onClick={handleNavigate} />
         <ChallengeMode>{mode}</ChallengeMode>
       </ThumbnailInfo>
       <ChallengeInfo>
