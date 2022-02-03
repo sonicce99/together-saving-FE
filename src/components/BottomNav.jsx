@@ -39,7 +39,8 @@ const BottomNav = () => {
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  border: 2px solid black;
+  position: absolute;
+  bottom: 0;
 `;
 
 export default BottomNav;
