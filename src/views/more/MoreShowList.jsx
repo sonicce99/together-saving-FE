@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import { useMatch } from "react-router-dom";
 import H3 from "../../components/H3";
@@ -11,6 +10,7 @@ import { showMoreTitle } from "../../utils/regex";
 const MoreShowTemplate = () => {
   const [challengeData, setChallengeData] = useState([]);
   const [challengeName, setChallengeName] = useState("");
+  const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
 
   const {
@@ -18,28 +18,26 @@ const MoreShowTemplate = () => {
   } = useMatch("/moreshow/:name");
 
   useEffect(async () => {
-    const { challenges } = await connectChallengeApi(name, page);
+    const { data } = await connectChallengeApi(name, page);
     const title = showMoreTitle(name);
-    setChallengeData(challenges);
+    setChallengeData(data);
     setChallengeName(title);
   }, []);
 
-  const handleScrollPage = () => {
-    // let pages = page + 1;
-    axios
-      .get("../../modules/participatingChallenge.json")
-      .then((res) =>
-        setChallengeData([...challengeData, res.data.data.challenges])
-      );
+  const handleScrollPage = async () => {
+    let pages = page + 1;
+    const { data } = await connectChallengeApi(name, page);
+    setChallengeData([...challengeData, data]);
+    setPage(pages + 1);
   };
 
   return (
     <MoreShowContainer>
       <ChallengeTitle>{challengeName}</ChallengeTitle>
       <InfiniteScroll
-        dataLength={challengeData.length} // 반복되는 데이터 갯수 (백에서 7로 고정해서 받아올 것)
-        next={handleScrollPage} // 데이터 더 불러오는 함수
-        hasMore={true} // 추가 데이터 유무
+        dataLength={challengeData.length}
+        next={handleScrollPage}
+        hasMore={hasMore}
         height={812}
       >
         <ChallengeList>
