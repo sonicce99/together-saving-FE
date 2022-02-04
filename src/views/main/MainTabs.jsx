@@ -8,10 +8,6 @@ import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 import axios from "axios";
 
-import cookie from "react-cookies";
-
-const Token = cookie.load("token");
-
 const MainTabs = () => {
   const [value, setValue] = React.useState(0); // Tabs 관련
 
@@ -33,10 +29,9 @@ const MainTabs = () => {
         const { data } = await axiosInstance.get(
           "/api/v1/users/my-challenges?page=0"
         );
+        console.log(data.data);
 
-        console.log(data);
-
-        // setParticipatingChallenges(participatingData.data.data);
+        setParticipatingChallenges(data.data);
 
         // 인기 챌린지 가져오기
         const popularChallengeData = await axios.get(

@@ -38,13 +38,11 @@ module.exports = {
   ],
   devServer: {
     // port: 3000,
-    port: 8080,
-    // proxy: {
-    //   "/api/": {
-    //     target: "http://183.99.247.17:8881",
-    //     changeOrigin: true,
-    //   },
-    // },
+    proxy: {
+      "/api": {
+        target: "http://183.99.247.17:8881",
+      },
+    },
     historyApiFallback: true,
   },
 };
