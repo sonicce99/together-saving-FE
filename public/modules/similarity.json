@@ -8,7 +8,7 @@
         "is_wished": false,
         "thumbnail": "이미지 경로",
         "title": "PC방비 모아 노트북 사기",
-        "mode": "자율",
+        "mode": "FREE",
         "period": 4,
         "remain_date": 5,
         "tags": [
@@ -31,7 +31,7 @@
         "is_wished": true,
         "thumbnail": "이미지 경로",
         "title": "택시비",
-        "mode": "자율",
+        "mode": "FREE",
         "period": 4,
         "remain_date": 2,
         "tags": [
