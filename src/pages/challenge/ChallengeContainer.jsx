@@ -31,7 +31,7 @@ const Challenge = () => {
 
   // 나중에 id 넣어서 post 요청 하기
   useEffect(() => {
-    dispatch(getChallengesummaryInfo(id));
+    dispatch(getChallengesummaryInfo("1"));
   }, [dispatch]);
 
   useEffect(() => {

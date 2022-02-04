@@ -6,7 +6,7 @@ import {
 } from "../actions/types";
 
 const getAPI = (id) => {
-  return axios.get(`http://183.99.247.17:8881/api/v1/auth/challenges/1`); // 1번으로 하드코딩 되어 있는 부분 ${id} 로 수정하기
+  return axios.get(`http://183.99.247.17:8881/api/v1/auth/challenges/${id}`); // 1번으로 하드코딩 되어 있는 부분 ${id} 로 수정하기
 };
 
 export const getChallengesummaryInfo = (id) => async (dispatch) => {

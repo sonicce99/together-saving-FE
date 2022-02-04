@@ -4,6 +4,8 @@ import H3 from "./H3.jsx";
 import MoreShowBtn from "./MoreShowBtn.jsx";
 import { useNavigate } from "react-router-dom";
 
+const MODE = ["자율", "경쟁"];
+
 const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
   const navigate = useNavigate();
 
@@ -19,13 +21,18 @@ const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
             ChallengeArray.map((EachChallenge, index) => {
               return (
                 <Content key={index}>
-                  <Image
-                    onClick={() => {
-                      navigate(`/challenge/${EachChallenge.id}`);
-                    }}
-                  >
-                    챌린지 이미지
-                  </Image>
+                  <ThumbnailInfo>
+                    <Image
+                      onClick={() => {
+                        navigate(`/challenge/${EachChallenge.id}`);
+                      }}
+                      alt="thumbnail"
+                    />
+                    <ChallengeMode>
+                      {EachChallenge.mode === "FREE" ? MODE[0] : MODE[1]}
+                    </ChallengeMode>
+                  </ThumbnailInfo>
+
                   <Div2>
                     <Period>{EachChallenge.period}주 저축</Period>
                     <Period>{EachChallenge.date}일 뒤 종료</Period>
@@ -43,7 +50,6 @@ const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
 const Container = styled.div`
   height: 214px;
   margin: 40px 0;
-  border: 2px solid black;
 `;
 
 const Title = styled(H3)`
@@ -67,21 +73,44 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 `;
 
 const Content = styled.div`
   width: 164px;
-  border: 1px solid red;
   margin-right: 9px;
 `;
 
-const Image = styled.div`
+const ThumbnailInfo = styled.div`
+  position: relative;
+`;
+
+const Image = styled.img`
   width: 164px;
   height: 132px;
-  border: 2px solid green;
-  /* background: url(image.png); */
+  background-color: wheat;
   cursor: pointer;
   border-radius: 6px;
+  position: relative;
+`;
+
+const ChallengeMode = styled.div`
+  width: 38px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 12px;
+  background-color: ${({ theme }) => theme.colors.colorDarkGray1};
+  color: ${({ theme }) => theme.colors.colorWhite};
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 `;
 
 const Div2 = styled.div`

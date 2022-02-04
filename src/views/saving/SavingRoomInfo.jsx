@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { remainDayRegex, remainWeekRegex } from "../../utils/regex";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
+  console.log(challengeInfo);
   // 챌린지 아이디 업데이트 필요 (저축 시 식별자 역할)
   const {
     challenge_id,
