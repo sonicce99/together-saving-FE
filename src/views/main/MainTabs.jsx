@@ -5,7 +5,12 @@ import ChallengeTemplate1 from "../../components/ChallengeTemplate1.jsx";
 import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
 import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
+import { axiosInstance } from "../../utils/TokenApi.jsx";
 import axios from "axios";
+
+import cookie from "react-cookies";
+
+const Token = cookie.load("token");
 
 const MainTabs = () => {
   const [value, setValue] = React.useState(0); // Tabs 관련
@@ -21,10 +26,17 @@ const MainTabs = () => {
     (async () => {
       try {
         // 참여 중인 챌린지 가져오기
-        const participatingData = await axios.get(
-          "../../modules/participatingChallenge.json"
+        // const participatingData = await axios.get(
+        //   "../../modules/participatingChallenge.json"
+        // );
+
+        const { data } = await axiosInstance.get(
+          "/api/v1/users/my-challenges?page=0"
         );
-        setParticipatingChallenges(participatingData.data.data);
+
+        console.log(data);
+
+        // setParticipatingChallenges(participatingData.data.data);
 
         // 인기 챌린지 가져오기
         const popularChallengeData = await axios.get(

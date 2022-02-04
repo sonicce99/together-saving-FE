@@ -12,18 +12,16 @@ import MoreShow from "./pages/MoreShow/MoreShow";
 import cookie from "react-cookies";
 
 const App = () => {
-  // const accessToken =
-  //   "BearereyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6NTI2LCJleHAiOjE2NDQyMzk3NDUsImVtYWlsIjoic2VjdXJpdHlUZXN0QHNhdmxlLmNvbSJ9.ffwBEQUmUCXsNEssByT-7E0Vk1oR82YgzauhcAqUe1lNs3zNz6Yqd2Z_xie0juglHPQQz4eXGUMG4sefWxnoHw";
+  const accessToken = process.env.Token;
 
-  // useEffect(() => {
-  //   // 로그인 후에 세션 유효기간 60분으로 설정하기
-  //   const expires = new Date();
-  //   expires.setMinutes(expires.getMinutes() + 60);
-  //   cookie.save("token", accessToken, {
-  //     path: "/",
-  //     expires,
-  //   });
-  // }, []);
+  useEffect(() => {
+    const expires = new Date();
+    expires.setMinutes(expires.getMinutes() + 60);
+    cookie.save("token", accessToken, {
+      path: "/",
+      expires,
+    });
+  }, []);
 
   return (
     <Wrapper>

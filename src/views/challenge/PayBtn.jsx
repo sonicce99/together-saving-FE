@@ -13,7 +13,7 @@ const PayBtn = ({ challenge_entry_fee }) => {
       <Inner>
         <Div>
           <Title>결제 금액</Title>
-          <PaySum>{stringRegexWithComma(challenge_entry_fee) + "원"}</PaySum>
+          {/* <PaySum>{stringRegexWithComma(challenge_entry_fee) + "원"}</PaySum> */}
         </Div>
         <Div2 />
         <Button onClick={() => navigate("/challenge/success")}>
