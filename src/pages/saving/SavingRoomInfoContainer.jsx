@@ -10,7 +10,7 @@ const SavingRoomInfoContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(getChallengesummaryInfo("1"));
+    dispatch(getChallengesummaryInfo());
   }, []);
 
   if (challengeInfo.loading) return <div>로딩중</div>;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { stringRegexWithComma } from "../../utils/regex";
+import { numberRegexWithComma } from "../../utils/regex";
 
 const SavingHistoryItem = ({ historyItem }) => {
   const week = [
@@ -23,7 +23,7 @@ const SavingHistoryItem = ({ historyItem }) => {
         <HistoryDate>
           {displayDate} {week[new Date(date).getDay()]}
         </HistoryDate>
-        <HistoryPrice>{stringRegexWithComma(amount)}원</HistoryPrice>
+        <HistoryPrice>{numberRegexWithComma(amount)}원</HistoryPrice>
       </HistoryItem>
     </>
   );

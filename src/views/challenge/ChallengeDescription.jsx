@@ -1,9 +1,17 @@
-import * as React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Avatar, Stack } from "@mui/material";
 import H3 from "../../components/H3.jsx";
 
-const ChallengeDescription = ({ host_nickname, challenge_description }) => {
+const ChallengeDescription = ({ hostName, description }) => {
+  const [isMore, setIsMore] = useState(false);
+
+  const textLimit = 100;
+
+  const handleShowMoreInfo = () => {
+    setIsMore((isMore) => !isMore);
+  };
+
   return (
     <>
       <Profile>
@@ -14,10 +22,18 @@ const ChallengeDescription = ({ host_nickname, challenge_description }) => {
             src="/static/images/avatar/1.jpg"
           />
         </Stack>
-        <Span>{host_nickname}</Span>
+        <Span>{hostName}</Span>
       </Profile>
       <H3>저축 챌린지 설명</H3>
-      <Description>{challenge_description}</Description>
+      <Description>
+        {description.length > textLimit
+          ? description.slice(0, textLimit)(<MoreButton></MoreButton>)
+          : description}
+        {/* {isMore ? description : description.slice(0, textLimit)}
+        <MoreButton onClick={handleShowMoreInfo}>
+          {isMore ? "닫기" : "・・・더보기"}
+        </MoreButton> */}
+      </Description>
     </>
   );
 };
@@ -45,4 +61,8 @@ const Description = styled(H3)`
   margin-bottom: 40px;
 `;
 
+const MoreButton = styled.button`
+  font-size: ${({ theme }) => theme.fontSize.fontSmall};
+  color: ${({ theme }) => theme.colors.colorGray3};
+`;
 export default ChallengeDescription;

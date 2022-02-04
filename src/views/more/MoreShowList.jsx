@@ -17,6 +17,7 @@ const MoreShowTemplate = () => {
     params: { name },
   } = useMatch("/moreshow/:name");
 
+  // useEffect 안에 async 사용은 X 이유도 같이 찾아보자
   useEffect(async () => {
     const { data } = await connectChallengeApi(name, page);
     const title = showMoreTitle(name);

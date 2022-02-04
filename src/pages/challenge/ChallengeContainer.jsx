@@ -31,7 +31,7 @@ const Challenge = () => {
 
   // 나중에 id 넣어서 post 요청 하기
   useEffect(() => {
-    dispatch(getChallengesummaryInfo("1"));
+    dispatch(getChallengesummaryInfo());
   }, [dispatch]);
 
   useEffect(() => {
@@ -70,10 +70,10 @@ const Challenge = () => {
       <DivisionLine />
       <Inner>
         <ChallengeDescription
-          host_nickname={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
-          challenge_description={data.data.challenge_description}
+          hostName={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
+          description={data.data.challenge_description}
         />
-        <ChallengeReview challenge_reviews={data.data.challenge_reviews} />
+        <ChallengeReview reviews={data.data.challenge_reviews} />
         <RefundAndCaution />
         <ChallengeTemplate2
           title="이런 챌린지도 있어요!"

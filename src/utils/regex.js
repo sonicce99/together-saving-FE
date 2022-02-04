@@ -1,7 +1,7 @@
 // 문자열로 넘어오는 금액에 천단위 콤마를 붙이는 정규식
-export const stringRegexWithComma = (string) => {
-  const stringRegex = string.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return stringRegex;
+export const numberRegexWithComma = (number) => {
+  const numberRegex = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return numberRegex;
 };
 
 // 챌린지 남은 진행일 수 표시
@@ -25,6 +25,7 @@ export const remainWeekRegex = (startDate, endDate) => {
 };
 
 // 챌린지 더보기 페이지 타이틀
+// 여기 있는 게 맞지 않다. 잘못됨 ㅠ
 export const showMoreTitle = (challengeName) => {
   switch (challengeName) {
     case "participate":
