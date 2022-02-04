@@ -24,7 +24,7 @@ const MainTabs = () => {
         const participatingData = await axios.get(
           "../../modules/participatingChallenge.json"
         );
-        setParticipatingChallenges(participatingData.data.data.challenges);
+        setParticipatingChallenges(participatingData.data.data);
 
         // 인기 챌린지 가져오기
         const popularChallengeData = await axios.get(
@@ -47,10 +47,6 @@ const MainTabs = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handlePage = () => {
-    setPage(page + 1);
   };
 
   return (
