@@ -32,6 +32,7 @@ const DepositKeypad = ({ inputPrice, onHandleInput }) => {
 };
 
 const KeypadContainer = styled.div`
+  width: 375px;
   height: 214px;
   padding: 3px 6px 5px;
   position: absolute;
