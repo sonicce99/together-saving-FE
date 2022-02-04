@@ -5,14 +5,14 @@ import {
   GET_POSTS_ERROR,
 } from "../actions/types";
 
-const getAPI = () => {
-  return axios.get("../../modules/challenge.json");
+const getAPI = (id) => {
+  return axios.get(`http://183.99.247.17:8881/api/v1/auth/challenges/1`); // 1번으로 하드코딩 되어 있는 부분 ${id} 로 수정하기
 };
 
-export const getChallengesummaryInfo = () => async (dispatch) => {
+export const getChallengesummaryInfo = (id) => async (dispatch) => {
   dispatch({ type: GET_POSTS }); // 요청이 시작됨
   try {
-    const { data } = await getAPI(); // API 호출
+    const { data } = await getAPI(id); // API 호출
     dispatch({ type: GET_POSTS_SUCCESS, data }); // 성공
   } catch (e) {
     dispatch({ type: GET_POSTS_ERROR, error: e }); // 실패
