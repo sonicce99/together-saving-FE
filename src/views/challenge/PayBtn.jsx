@@ -3,6 +3,7 @@ import styled from "styled-components";
 import H3 from "../../components/H3";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { stringRegexWithComma } from "../../utils/regex";
 
 const PayBtn = ({ challenge_entry_fee }) => {
   let navigate = useNavigate();
@@ -12,11 +13,7 @@ const PayBtn = ({ challenge_entry_fee }) => {
       <Inner>
         <Div>
           <Title>결제 금액</Title>
-          <PaySum>
-            {challenge_entry_fee
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원"}
-          </PaySum>
+          <PaySum>{stringRegexWithComma(challenge_entry_fee) + "원"}</PaySum>
         </Div>
         <Div2 />
         <Button onClick={() => navigate("/challenge/success")}>
