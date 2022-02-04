@@ -9,7 +9,6 @@ import SavingSuccess from "./views/deposit/SavingSuccess";
 import ChallengePaymentContainer from "./pages/challenge/ChallengePaymentContainer";
 import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
 import MoreShow from "./pages/MoreShow/MoreShow";
-import DepositKeypad from "./views/deposit/DepositKeypad";
 import cookie from "react-cookies";
 
 const App = () => {
