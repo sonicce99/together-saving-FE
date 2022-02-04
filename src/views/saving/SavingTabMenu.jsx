@@ -3,6 +3,8 @@ import styled from "styled-components";
 import SavingStatusContainer from "../../pages/saving/SavingStatusContainer";
 import DivisionLine from "../../components/DivisionLine";
 import SavingHistoryContainer from "../../pages/saving/SavingHistoryContainer";
+import SavingLankingContainer from "../../pages/saving/SavingLankingContainer";
+import SavingCommunicationContainer from "../../pages/saving/SavingCommunicationContainer";
 
 const SavingTabMenu = ({ currentTab, onChangeTab }) => {
   const components = {
@@ -13,7 +15,12 @@ const SavingTabMenu = ({ currentTab, onChangeTab }) => {
         <SavingHistoryContainer />
       </>
     ),
-    1: "소통",
+    1: (
+      <>
+        <SavingLankingContainer />
+        <SavingCommunicationContainer />
+      </>
+    ),
   };
 
   const handleChangeTab = (e) => {
