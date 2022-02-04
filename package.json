@@ -49,5 +49,6 @@
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
     "swiper": "^8.0.3"
-  }
+  },
+  "proxy": "http://183.99.247.17:8881"
 }
