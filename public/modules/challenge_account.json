@@ -3,63 +3,63 @@
     "thumbnail": "은행 아이콘 경로",
     "bank_name": "카카오뱅크",
     "account_number": "312-2652-12-25",
-    "balance": "40000000",
+    "balance": 40000000,
     "is_automated": false,
     "history": [
       {
         "date": "2022-01-24",
         "day_of_week": "MONDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-23",
         "day_of_week": "SUNDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-22",
         "day_of_week": "SATURDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       },
       {
         "date": "2022-01-21",
         "day_of_week": "FRIDAY",
-        "amount": "6000"
+        "amount": 6000
       }
     ]
   }

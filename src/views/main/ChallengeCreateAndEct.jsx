@@ -59,14 +59,19 @@ const ChallengeCreateAndEct = ({ setValue }) => {
 
 const Container = styled.div`
   height: 160px;
-  border: 2px solid black;
-  margin-bottom: 34px;
+  margin-bottom: 90px;
 `;
 
 const Div = styled.div`
   display: flex;
   align-items: center;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 `;
 
 const Content = styled.div`

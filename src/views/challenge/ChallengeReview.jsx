@@ -5,13 +5,14 @@ import Button from "../../components/Button.jsx";
 import H3 from "../../components/H3.jsx";
 import GrayBackground from "../../components/GrayBackground.jsx";
 
-const ChallengeReview = ({ challenge_reviews }) => {
+const ChallengeReview = ({ reviews }) => {
+  const textLimit = 100;
   return (
     <>
       <H3>참여후기</H3>
       <Div>
-        {challenge_reviews &&
-          challenge_reviews.map((challenge_review, index) => {
+        {reviews &&
+          reviews.map((review, index) => {
             return (
               <GrayBackground key={index}>
                 <Profile>
@@ -22,9 +23,9 @@ const ChallengeReview = ({ challenge_reviews }) => {
                       src="/static/images/avatar/1.jpg"
                     />
                   </Stack>
-                  <NickName>{challenge_review.nickname}</NickName>
+                  <NickName>{review.nickname}</NickName>
                 </Profile>
-                <Content>{challenge_review.content}</Content>
+                <Content>{review.content.slice(0, textLimit)}</Content>
               </GrayBackground>
             );
           })}
@@ -38,6 +39,12 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 `;
 
 const Profile = styled.div`

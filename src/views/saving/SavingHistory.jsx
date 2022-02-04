@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
 import { useSelector } from "react-redux";
-import { stringRegexWithComma } from "../../utils/regex";
+import { numberRegexWithComma } from "../../utils/regex";
 
 const SavingHistory = ({ savingHistory }) => {
   const { challenge_payment } = useSelector(
@@ -22,7 +22,7 @@ const SavingHistory = ({ savingHistory }) => {
 
   const [isAuto, setIsAuto] = useState(is_automated);
 
-  const personalBalance = stringRegexWithComma(balance);
+  const personalBalance = numberRegexWithComma(balance);
 
   const handleAuto = (auto) => {
     setIsAuto(auto);

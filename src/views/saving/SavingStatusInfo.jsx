@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
-import { stringRegexWithComma } from "../../utils/regex";
+import { numberRegexWithComma } from "../../utils/regex";
 
 const SavingStatusInfo = ({ savingStatus }) => {
   const {
@@ -16,7 +16,7 @@ const SavingStatusInfo = ({ savingStatus }) => {
     end_date,
   } = savingStatus.data;
 
-  const cmaBalance = stringRegexWithComma(cma_balance);
+  const cmaBalance = numberRegexWithComma(cma_balance);
 
   return (
     <>

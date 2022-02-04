@@ -17,9 +17,7 @@ const MoreShowItem = ({ data }) => {
     <ChallengeItem>
       <ThumbnailInfo>
         <Image src="" alt="thumbnail" onClick={handleNavigate} />
-        <ChallengeMode>
-          {mode === "COMPETITION" ? MODE[0] : MODE[1]}
-        </ChallengeMode>
+        <ChallengeMode>{mode === "FREE" ? MODE[0] : MODE[1]}</ChallengeMode>
       </ThumbnailInfo>
       <ChallengeInfo>
         <Period>{period}주 저축</Period>
