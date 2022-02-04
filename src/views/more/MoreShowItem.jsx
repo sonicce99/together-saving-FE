@@ -3,6 +3,8 @@ import styled from "styled-components";
 import H3 from "../../components/H3";
 import { useNavigate } from "react-router-dom";
 
+const MODE = ["자율", "경쟁"];
+
 const MoreShowItem = ({ data }) => {
   const navigate = useNavigate();
   const { id, mode, period, date, title, tags } = data;
@@ -15,7 +17,9 @@ const MoreShowItem = ({ data }) => {
     <ChallengeItem>
       <ThumbnailInfo>
         <Image src="" alt="thumbnail" onClick={handleNavigate} />
-        <ChallengeMode>{mode}</ChallengeMode>
+        <ChallengeMode>
+          {mode === "COMPETITION" ? MODE[0] : MODE[1]}
+        </ChallengeMode>
       </ThumbnailInfo>
       <ChallengeInfo>
         <Period>{period}주 저축</Period>

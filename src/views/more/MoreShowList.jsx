@@ -25,10 +25,11 @@ const MoreShowTemplate = () => {
   }, []);
 
   const handleScrollPage = async () => {
-    let pages = page + 1;
-    const { data } = await connectChallengeApi(name, page);
-    setChallengeData([...challengeData, data]);
-    setPage(pages + 1);
+    const nextPage = page + 1;
+    const { data } = await connectChallengeApi(name, nextPage);
+
+    setChallengeData([...challengeData, ...data]);
+    setPage(nextPage);
   };
 
   return (
@@ -41,10 +42,9 @@ const MoreShowTemplate = () => {
         height={812}
       >
         <ChallengeList>
-          {challengeData &&
-            Object.values(challengeData).map((data, index) => {
-              return <MoreShowItem key={index} data={data} />;
-            })}
+          {Object.values(challengeData).map((data, index) => {
+            return <MoreShowItem key={index} data={data} />;
+          })}
         </ChallengeList>
       </InfiniteScroll>
     </MoreShowContainer>
@@ -69,6 +69,7 @@ const ChallengeList = styled.ul`
   align-items: center;
   flex-wrap: wrap;
   gap: 40px 15px;
+  margin-bottom: 80px;
 `;
 
 export default MoreShowTemplate;
