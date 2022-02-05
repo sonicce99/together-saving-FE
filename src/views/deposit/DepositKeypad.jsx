@@ -10,7 +10,7 @@ const DepositKeypad = ({ inputPrice, onHandleInput }) => {
   };
 
   const handleRemovePriceButton = () => {
-    onHandleInput(inputPrice.slice(0, -1));
+    onHandleInput(String(inputPrice).slice(0, -1));
   };
 
   return (

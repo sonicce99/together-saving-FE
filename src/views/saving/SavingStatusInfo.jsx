@@ -4,7 +4,7 @@ import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 import { numberRegexWithComma } from "../../utils/regex";
 
-const SavingStatusInfo = ({ savingStatus }) => {
+const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
   const {
     thumbnail,
     nickname,
@@ -14,6 +14,8 @@ const SavingStatusInfo = ({ savingStatus }) => {
     failure_count,
     remain_count,
   } = savingStatus.data;
+
+  const { end_date } = challengeInfo.data;
 
   const cmaBalance = numberRegexWithComma(accumualted_amount);
 
@@ -27,7 +29,7 @@ const SavingStatusInfo = ({ savingStatus }) => {
           </Text>
           <Text>{cmaBalance}원</Text>
         </StatusInfoContainer>
-        {/* <SavingRate rate={saving_rate} endDate={end_date} /> */}
+        <SavingRate rate={saving_rate} endDate={end_date} />
         <SavingCount
           success={success_count}
           fail={failure_count}

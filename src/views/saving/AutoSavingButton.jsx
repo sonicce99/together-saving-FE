@@ -4,10 +4,8 @@ import { axiosInstance } from "../../utils/TokenApi";
 
 const AutoSavingButton = ({ isAuto, onHandleAuto, id }) => {
   const handleAutoSwitch = () => {
-    // axiosInstance
-    //   .post(`/api/v1/challenges/${id}/auto`)
-    //   .then((res) => console.log(res));
     onHandleAuto((isAuto) => !isAuto);
+    axiosInstance.put(`/api/v1/challenges/${id}/auto`);
   };
 
   return (

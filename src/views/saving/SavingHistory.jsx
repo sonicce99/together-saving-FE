@@ -3,15 +3,10 @@ import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
-import { useSelector } from "react-redux";
 import { numberRegexWithComma } from "../../utils/regex";
 
-const SavingHistory = ({ savingHistory, id }) => {
-  console.log(savingHistory.data);
-  const { challenge_payment } = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
-  );
-
+const SavingHistory = ({ savingHistory, challengeInfo, id }) => {
+  const [isAuto, setIsAuto] = useState(is_automated);
   const {
     account_number,
     balance,
@@ -21,7 +16,7 @@ const SavingHistory = ({ savingHistory, id }) => {
     thumbnail,
   } = savingHistory.data;
 
-  const [isAuto, setIsAuto] = useState(is_automated);
+  const { challenge_payment } = challengeInfo.data;
 
   const personalBalance = numberRegexWithComma(balance);
 
