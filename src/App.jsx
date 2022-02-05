@@ -29,14 +29,14 @@ const App = () => {
         <Route path="/" element={<Main />} />
         <Route path="/challenge/:id" element={<ChallengeContainer />} />
         <Route
-          path="/challenge/payment"
+          path="/challenge/:id/payment"
           element={<ChallengePaymentContainer />}
         />
         <Route
-          path="/challenge/success"
+          path="/challenge/:id/success"
           element={<ChallengePaymentSuccess />}
         />
-        <Route path="/saving" element={<Saving />} />
+        <Route path="/saving/:id" element={<Saving />} />
         <Route path="/saving/deposit" element={<SavingDeposit />} />
         <Route path="/saving/success" element={<SavingSuccess />} />
         <Route path="/moreshow/:name" element={<MoreShow />} />

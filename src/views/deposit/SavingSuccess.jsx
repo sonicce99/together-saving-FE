@@ -13,8 +13,7 @@ const SavingSuccess = () => {
         <SubText>앞으로 9번의 저축이 남았어요!</SubText>
       </SuccessContainer>
       <SuccessButtonContainer>
-        {/* 해당 챌린지 방으로 이동 시 id 값 필요 */}
-        <Link to="/saving">
+        <Link to={`/saving/${id}`}>
           <Button>확인</Button>
         </Link>
       </SuccessButtonContainer>

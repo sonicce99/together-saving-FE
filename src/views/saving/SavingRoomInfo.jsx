@@ -4,21 +4,13 @@ import { Link } from "react-router-dom";
 import { remainDayRegex, remainWeekRegex } from "../../utils/regex";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
-  // 챌린지 아이디 업데이트 필요 (저축 시 식별자 역할)
-  const {
-    challenge_id,
-    challenge_name,
-    challenge_frequency,
-    end_date,
-    start_date,
-  } = challengeInfo;
+  const { challenge_name, challenge_frequency, end_date, start_date } =
+    challengeInfo;
 
   const startDay = start_date.slice(2, 10).replaceAll("-", ".");
   const endDay = end_date.slice(5, 10).replaceAll("-", ".");
 
-  const weeklySavingDays = challenge_frequency
-    .map((item) => item.day)
-    .join(",");
+  const weeklySavingDays = challenge_frequency.map((item) => item).join(",");
   const weeklySavingTimes = challenge_frequency.length;
 
   const remainDay = remainDayRegex(end_date);
