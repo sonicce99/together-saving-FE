@@ -22,10 +22,10 @@ const Challenge = () => {
   );
   const dispatch = useDispatch();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   // 챌린지 id 가져오기
-  let {
+  const {
     params: { id },
   } = useMatch("/challenge/:id/");
 
@@ -39,7 +39,7 @@ const Challenge = () => {
       try {
         // 인기 챌린지 가져오기
         const popularChallenge = await axios.get(
-          "../../modules/popularChallenge.json"
+          "/api/v1/auth/challenges?criteria=popularity&page=0"
         );
         setPopularChallengeData(popularChallenge.data.data.challenges);
       } catch (error) {

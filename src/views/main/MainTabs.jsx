@@ -15,32 +15,29 @@ const MainTabs = () => {
     []
   ); // 참여 중인 챌린지 Data
   const [popularChallenges, setPopularChallenges] = React.useState([]); // 인기 챌린지 Data
-  const [similarityChallenge, setSimilarityChallenge] = React.useState([]); // 특정 그룹이 좋아하는 챌린지 Data
+  const [DeadLineChallenge, setDeadLineChallenge] = React.useState([]); // 특정 그룹이 좋아하는 챌린지 Data
   const [wholeChallenge, setWholeChallenge] = React.useState([]); // 전체 챌린지 Data
 
   React.useEffect(() => {
     (async () => {
       try {
         // 참여 중인 챌린지 가져오기
-        // const participatingData = await axios.get(
-        //   "../../modules/participatingChallenge.json"
-        // );
-
         const { data } = await axiosInstance.get(
           "/api/v1/users/my-challenges?page=0"
         );
-
         setParticipatingChallenges(data.data);
 
         // 인기 챌린지 가져오기
         const popularChallengeData = await axios.get(
-          "../../modules/popularChallenge.json"
+          "/api/v1/auth/challenges?criteria=popularity&page=0"
         );
-        setPopularChallenges(popularChallengeData.data.data.challenges);
+        setPopularChallenges(popularChallengeData.data.data);
 
-        // 특정 그룹이 좋아하는 챌린지 가져오기
-        const similarityData = await axios.get("../../modules/similarity.json");
-        setSimilarityChallenge(similarityData.data.data.challenges);
+        // 마감임박 챌린지 가져오기
+        const deatLineChallengeData = await axiosInstance.get(
+          "/api/v1/auth/challenges?criteria=deadline&page=0"
+        );
+        setDeadLineChallenge(deatLineChallengeData.data.data);
 
         // 전체 챌린지 가져오기
         const wholeData = await axios.get("../../modules/wholeChallenge.json");
@@ -110,8 +107,8 @@ const MainTabs = () => {
 
         <TabPanel value={value} index={0}>
           <ChallengeTemplate2
-            title="20대 남성이 좋아하는 챌린지"
-            ChallengeArray={similarityChallenge}
+            title="마감 임박 챌린지"
+            ChallengeArray={DeadLineChallenge}
           />
         </TabPanel>
 

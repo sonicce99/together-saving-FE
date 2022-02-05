@@ -11,7 +11,7 @@ const Saving = () => {
 
   const {
     params: { id },
-  } = useMatch("/saving/:id");
+  } = useMatch("/saving/:id/");
 
   return (
     <SavingContainer>
