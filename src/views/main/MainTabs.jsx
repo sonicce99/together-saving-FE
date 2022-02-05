@@ -29,7 +29,6 @@ const MainTabs = () => {
         const { data } = await axiosInstance.get(
           "/api/v1/users/my-challenges?page=0"
         );
-        console.log(data.data);
 
         setParticipatingChallenges(data.data);
 

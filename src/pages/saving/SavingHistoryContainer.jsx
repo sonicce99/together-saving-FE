@@ -3,7 +3,7 @@ import SavingHistory from "../../views/saving/SavingHistory";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
 
-const SavingHistoryContainer = () => {
+const SavingHistoryContainer = ({ id }) => {
   const history = useSelector(
     (state) => state.savingHistoryReducer.savingHistory
   );
@@ -11,8 +11,10 @@ const SavingHistoryContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSavingHistory());
+    dispatch(getSavingHistory(id));
   }, [dispatch]);
+
+  console.log(history);
 
   if (history.loading) return <div>로딩중</div>;
   if (history.error) return <div>에러 발생</div>;

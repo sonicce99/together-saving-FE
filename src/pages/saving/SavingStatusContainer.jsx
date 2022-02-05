@@ -5,14 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 import { Skeleton } from "@mui/material";
 
-const SavingStatusContainer = () => {
+const SavingStatusContainer = ({ id }) => {
   const statusInfo = useSelector((state) => state.savingInfoReducer.savingInfo);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSavingInfo());
+    dispatch(getSavingInfo(id));
   }, []);
+
+  console.log(statusInfo);
 
   if (statusInfo.loading) {
     return (

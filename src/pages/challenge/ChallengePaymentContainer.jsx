@@ -7,8 +7,14 @@ import DivisionLine from "../../components/DivisionLine";
 import SavingDay from "../../views/challenge/SavingDay";
 import { useSelector } from "react-redux";
 import PayBtn from "../../views/challenge/PayBtn";
+import { useMatch } from "react-router-dom";
 
 const ChallengePayment = () => {
+  // 챌린지 id 가져오기
+  let {
+    params: { id },
+  } = useMatch("/challenge/:id/payment");
+
   const { data, loading, error } = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
@@ -36,7 +42,7 @@ const ChallengePayment = () => {
         <SavingDay challenge_frequency={data.data.challenge_frequency} />
         <RefundAndCaution />
       </Inner>
-      <PayBtn challenge_entry_fee={data.data.challenge_entry_fee} />
+      <PayBtn challenge_entry_fee={data.data.challenge_entry_fee} id={id} />
     </Container>
   );
 };
