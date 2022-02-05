@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi";
 import {
   GET_SAVING_ACCOUNT_PENDING,
   GET_SAVING_ACCOUNT_SUCCESS,
@@ -6,8 +6,8 @@ import {
 } from "../actions/types";
 
 const getAPI = (id) => {
-  return axios.get(
-    `${process.env.API_ADDRESS}/api/v1/users/challenges/${id}/saving-histories?period=today&ordering=desc`
+  return axiosInstance.get(
+    `/api/v1/users/challenges/${id}/saving-histories?period=today&ordering=desc`
   );
 };
 

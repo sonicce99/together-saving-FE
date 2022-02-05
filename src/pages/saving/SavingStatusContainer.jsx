@@ -14,8 +14,6 @@ const SavingStatusContainer = ({ id }) => {
     dispatch(getSavingInfo(id));
   }, []);
 
-  console.log(statusInfo);
-
   if (statusInfo.loading) {
     return (
       <SkeletonContainer>

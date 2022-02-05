@@ -14,13 +14,13 @@ const SavingHistoryContainer = ({ id }) => {
     dispatch(getSavingHistory(id));
   }, [dispatch]);
 
-  console.log(history);
+  console.log(history.data);
 
   if (history.loading) return <div>로딩중</div>;
   if (history.error) return <div>에러 발생</div>;
   if (!history.data) return null;
 
-  return <SavingHistory savingHistory={history.data} />;
+  return <SavingHistory savingHistory={history.data} id={id} />;
 };
 
 export default SavingHistoryContainer;
