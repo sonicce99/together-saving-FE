@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 
-const LOOKUP_PERIODS = ["당일", "1주일", "1개월", "3개월"];
-const SORT_BY_VALUE = ["최근저축순", "과거저축순"];
+// const LOOKUP_PERIODS = ["당일", "1주일", "1개월", "3개월"];
+// const SORT_BY_VALUE = ["최근저축순", "과거저축순"];
+const LOOKUP_PERIODS = ["today", "1week", "1month", "3month"];
+const SORT_BY_VALUE = ["desc", "asc"];
 
-const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
+const SavingFilterPopUp = ({ period, order, onFilter, onClose }) => {
   const [filter, setFilter] = useState({
-    lookup,
-    sort,
+    period,
+    order,
   });
 
   const handleChangeFilter = (e) => {
@@ -20,8 +22,8 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
   };
 
   const handleSubmit = () => {
-    const { lookup, sort } = filter;
-    onFilter(lookup, sort);
+    const { period, order } = filter;
+    onFilter(period, order);
     onClose();
   };
 
@@ -35,9 +37,9 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
               <Label key={index}>
                 <Input
                   type="radio"
-                  name="lookup"
+                  name="period"
                   value={period}
-                  checked={filter.lookup === period ? true : false}
+                  checked={filter.period === period ? true : false}
                   onChange={handleChangeFilter}
                 />
                 <Text>{period}</Text>
@@ -46,16 +48,16 @@ const SavingFilterPopUp = ({ lookup, sort, onClose, onFilter }) => {
           </FilterContainer>
           <Title>정렬기준</Title>
           <FilterContainer>
-            {SORT_BY_VALUE.map((sort, index) => (
+            {SORT_BY_VALUE.map((order, index) => (
               <Label key={index}>
                 <Input
                   type="radio"
-                  name="sort"
-                  value={sort}
-                  checked={filter.sort === sort ? true : false}
+                  name="order"
+                  value={order}
+                  checked={filter.order === order ? true : false}
                   onChange={handleChangeFilter}
                 />
-                <Text>{sort}</Text>
+                <Text>{order}</Text>
               </Label>
             ))}
           </FilterContainer>

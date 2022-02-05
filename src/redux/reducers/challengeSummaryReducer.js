@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi";
 import {
   GET_POSTS,
   GET_POSTS_SUCCESS,

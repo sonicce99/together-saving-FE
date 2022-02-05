@@ -3,18 +3,21 @@ import styled from "styled-components";
 import SavingStatusInfo from "../../views/saving/SavingStatusInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
+import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer";
 import { Skeleton } from "@mui/material";
 
 const SavingStatusContainer = ({ id }) => {
   const statusInfo = useSelector((state) => state.savingInfoReducer.savingInfo);
+  const challenge = useSelector(
+    (state) => state.challengeSummaryReducer.challengeSummaryInfo
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSavingInfo(id));
+    dispatch(getChallengesummaryInfo(id));
   }, []);
-
-  console.log(statusInfo);
 
   if (statusInfo.loading) {
     return (
@@ -29,8 +32,14 @@ const SavingStatusContainer = ({ id }) => {
 
   if (statusInfo.error) return <div>에러 발생</div>;
   if (!statusInfo.data) return null;
+  if (!challenge.data) return null;
 
-  return <SavingStatusInfo savingStatus={statusInfo.data} />;
+  return (
+    <SavingStatusInfo
+      savingStatus={statusInfo.data}
+      challengeInfo={challenge.data}
+    />
+  );
 };
 
 const SkeletonContainer = styled.div`

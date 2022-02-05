@@ -3,19 +3,21 @@ import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
-import { useSelector } from "react-redux";
 import { numberRegexWithComma } from "../../utils/regex";
 
-const SavingHistory = ({ savingHistory }) => {
-  const { challenge_payment } = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo.data.data
-  );
-
+const SavingHistory = ({
+  savingHistory,
+  challengeInfo,
+  filter,
+  onFilter,
+  id,
+}) => {
+  const { challenge_payment } = challengeInfo.data;
   const {
     account_number,
     balance,
     bank_name,
-    history,
+    saving_history,
     is_automated,
     thumbnail,
   } = savingHistory.data;
@@ -34,7 +36,7 @@ const SavingHistory = ({ savingHistory }) => {
         <Title>연결된 계좌</Title>
         <AccountInfoContainer>
           <AccountInfo>
-            <BankThumbnail />
+            <BankThumbnail src={thumbnail} alt="thumbnail" />
             <AccountTextContainer>
               <AccountText>{bank_name}</AccountText>
               <AccountText>{account_number}</AccountText>
@@ -42,8 +44,12 @@ const SavingHistory = ({ savingHistory }) => {
             <PriceText>{personalBalance}원</PriceText>
           </AccountInfo>
         </AccountInfoContainer>
-        <SavingHistoryList historyList={history} />
-        <AutoSavingButton isAuto={isAuto} onHandleAuto={handleAuto} />
+        <SavingHistoryList
+          historyList={saving_history}
+          filter={filter}
+          onFilter={onFilter}
+        />
+        <AutoSavingButton isAuto={isAuto} onHandleAuto={handleAuto} id={id} />
       </SavingHistoryContainer>
       <SavingStartButton
         bank={bank_name}

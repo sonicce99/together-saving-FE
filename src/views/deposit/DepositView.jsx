@@ -37,7 +37,7 @@ const DepositView = () => {
   };
 
   const handleSubmit = () => {
-    inputPrice && dispatch(requestSaving("1", Number(inputPrice)));
+    inputPrice && dispatch(requestSaving(id, Number(inputPrice)));
   };
 
   return (
@@ -69,7 +69,7 @@ const DepositView = () => {
           </WarningLabel>
         )}
         <ButtonContainer>
-          <Link to="/saving/success">
+          <Link to={`/saving/${id}/success`}>
             <Button isNull={isNull} disabled={isNull} onClick={handleSubmit}>
               저축하기
             </Button>
