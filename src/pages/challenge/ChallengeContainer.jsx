@@ -22,6 +22,8 @@ const Challenge = () => {
   );
   const dispatch = useDispatch();
 
+  console.log(data);
+
   const navigate = useNavigate();
 
   // 챌린지 id 가져오기
@@ -29,7 +31,6 @@ const Challenge = () => {
     params: { id },
   } = useMatch("/challenge/:id/");
 
-  // 나중에 id 넣어서 post 요청 하기
   useEffect(() => {
     dispatch(getChallengesummaryInfo(id));
   }, [dispatch]);
@@ -41,7 +42,7 @@ const Challenge = () => {
         const popularChallenge = await axios.get(
           "/api/v1/auth/challenges?criteria=popularity&page=0"
         );
-        setPopularChallengeData(popularChallenge.data.data.challenges);
+        setPopularChallengeData(popularChallenge.data.data);
       } catch (error) {
         console.log(error);
       }

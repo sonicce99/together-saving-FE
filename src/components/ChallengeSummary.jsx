@@ -21,7 +21,7 @@ const ChallengeSummary = ({
         <Title>저축 요일</Title>
         {challenge_frequency &&
           challenge_frequency.map((day, index) => {
-            return <BoldTitle key={index}>{day.day}</BoldTitle>;
+            return <BoldTitle key={index}>{day}</BoldTitle>;
           })}
       </Div>
       <Div>

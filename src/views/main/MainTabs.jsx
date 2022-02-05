@@ -37,6 +37,7 @@ const MainTabs = () => {
         const deatLineChallengeData = await axiosInstance.get(
           "/api/v1/auth/challenges?criteria=deadline&page=0"
         );
+        console.log(deatLineChallengeData);
         setDeadLineChallenge(deatLineChallengeData.data.data);
 
         // 전체 챌린지 가져오기

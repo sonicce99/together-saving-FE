@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LikeButton from "../../components/LikeButton";
 
 const Tags = ({ is_wished, tags }) => {
+  console.log(is_wished);
   return (
     <TagBox>
       <Div>
@@ -10,7 +11,7 @@ const Tags = ({ is_wished, tags }) => {
           tags.map((tag, index) => {
             return (
               <TagDesign key={index}>
-                <Title>{tag.tag_name}</Title>
+                <Title>{tag}</Title>
               </TagDesign>
             );
           })}
