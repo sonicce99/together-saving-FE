@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { numberRegexWithComma } from "../../utils/regex";
 
-const PayBtn = ({ challenge_entry_fee }) => {
+const PayBtn = ({ challenge_entry_fee, id }) => {
   const challengeFee = String(challenge_entry_fee);
   let navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const PayBtn = ({ challenge_entry_fee }) => {
           <PaySum>{numberRegexWithComma(challengeFee)}원</PaySum>
         </Div>
         <Div2 />
-        <Button onClick={() => navigate("/challenge/success")}>
+        <Button onClick={() => navigate(`/challenge/${id}/success`)}>
           참가비 결제하기
         </Button>
       </Inner>

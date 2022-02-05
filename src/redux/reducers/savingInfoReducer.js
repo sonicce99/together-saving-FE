@@ -5,15 +5,17 @@ import {
   GET_SAVING_INFO_FAIL,
 } from "../actions/types";
 
-const getAPI = () => {
-  return axios.get("../../modules/saving.json");
+const getAPI = (id) => {
+  return axios.get(
+    `${process.env.API_ADDRESS}/api/v1/users/challenges/${id}/saving-detail`
+  );
 };
 
-export const getSavingInfo = () => async (dispatch) => {
+export const getSavingInfo = (id) => async (dispatch) => {
   dispatch({ type: GET_SAVING_INFO_PENDING });
 
   try {
-    const { data } = await getAPI();
+    const { data } = await getAPI(id);
     dispatch({
       type: GET_SAVING_INFO_SUCCESS,
       data: data,

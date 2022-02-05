@@ -3,20 +3,29 @@ import styled from "styled-components";
 import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 import DivisionLine from "../../components/DivisionLine";
 import SavingTabMenu from "../../views/saving/SavingTabMenu";
+import { useMatch } from "react-router-dom";
 
 const Saving = () => {
   const [currentTab, setCurrentTab] = useState(0);
   const handleChangeTab = (current) => setCurrentTab(current);
 
+  const {
+    params: { id },
+  } = useMatch("/saving/:id");
+
   return (
     <SavingContainer>
       {currentTab === 0 && (
         <>
-          <SavingRoomInfoContainer />
+          <SavingRoomInfoContainer id={id} />
           <DivisionLine />
         </>
       )}
-      <SavingTabMenu currentTab={currentTab} onChangeTab={handleChangeTab} />
+      <SavingTabMenu
+        currentTab={currentTab}
+        onChangeTab={handleChangeTab}
+        id={id}
+      />
     </SavingContainer>
   );
 };

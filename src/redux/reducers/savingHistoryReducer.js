@@ -5,15 +5,17 @@ import {
   GET_SAVING_ACCOUNT_FAIL,
 } from "../actions/types";
 
-const getAPI = () => {
-  return axios.get("../../modules/challenge_account.json");
+const getAPI = (id) => {
+  return axios.get(
+    `${process.env.API_ADDRESS}/api/v1/users/challenges/${id}/saving-histories?period=today&ordering=desc`
+  );
 };
 
-export const getSavingHistory = () => async (dispatch) => {
+export const getSavingHistory = (id) => async (dispatch) => {
   dispatch({ type: GET_SAVING_ACCOUNT_PENDING });
 
   try {
-    const { data } = await getAPI();
+    const { data } = await getAPI(id);
     dispatch({
       type: GET_SAVING_ACCOUNT_SUCCESS,
       data,

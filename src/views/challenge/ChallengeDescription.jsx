@@ -25,15 +25,15 @@ const ChallengeDescription = ({ hostName, description }) => {
         <Span>{hostName}</Span>
       </Profile>
       <H3>저축 챌린지 설명</H3>
-      <Description>
+      {/* <Description>
         {description.length > textLimit
           ? description.slice(0, textLimit)(<MoreButton></MoreButton>)
-          : description}
-        {/* {isMore ? description : description.slice(0, textLimit)}
+          : description} */}
+      {/* {isMore ? description : description.slice(0, textLimit)}
         <MoreButton onClick={handleShowMoreInfo}>
           {isMore ? "닫기" : "・・・더보기"}
         </MoreButton> */}
-      </Description>
+      {/* </Description> */}
     </>
   );
 };

@@ -6,13 +6,13 @@ import SavingHistoryContainer from "../../pages/saving/SavingHistoryContainer";
 import SavingLankingContainer from "../../pages/saving/SavingLankingContainer";
 import SavingCommunicationContainer from "../../pages/saving/SavingCommunicationContainer";
 
-const SavingTabMenu = ({ currentTab, onChangeTab }) => {
+const SavingTabMenu = ({ currentTab, onChangeTab, id }) => {
   const components = {
     0: (
       <>
-        <SavingStatusContainer />
+        <SavingStatusContainer id={id} />
         <DivisionLine />
-        <SavingHistoryContainer />
+        <SavingHistoryContainer id={id} />
       </>
     ),
     1: (

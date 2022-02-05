@@ -31,7 +31,7 @@ const Challenge = () => {
 
   // 나중에 id 넣어서 post 요청 하기
   useEffect(() => {
-    dispatch(getChallengesummaryInfo());
+    dispatch(getChallengesummaryInfo(id));
   }, [dispatch]);
 
   useEffect(() => {
@@ -81,9 +81,9 @@ const Challenge = () => {
         />
         <Button
           onClick={() => {
-            data.data.is_participated
-              ? navigate("/saving")
-              : navigate("/challenge/payment");
+            data.data.participated
+              ? navigate(`/saving/${id}`)
+              : navigate(`/challenge/${id}/payment`);
           }}
         >
           챌린지 함께하기
