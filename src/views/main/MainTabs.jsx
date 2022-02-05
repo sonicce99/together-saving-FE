@@ -28,7 +28,7 @@ const MainTabs = () => {
         setParticipatingChallenges(data.data);
 
         // 인기 챌린지 가져오기
-        const popularChallengeData = await axios.get(
+        const popularChallengeData = await axiosInstance.get(
           "/api/v1/auth/challenges?criteria=popularity&page=0"
         );
         setPopularChallenges(popularChallengeData.data.data);
@@ -37,7 +37,6 @@ const MainTabs = () => {
         const deatLineChallengeData = await axiosInstance.get(
           "/api/v1/auth/challenges?criteria=deadline&page=0"
         );
-        console.log(deatLineChallengeData);
         setDeadLineChallenge(deatLineChallengeData.data.data);
 
         // 전체 챌린지 가져오기
