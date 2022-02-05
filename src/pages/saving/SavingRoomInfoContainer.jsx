@@ -3,14 +3,14 @@ import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
 
-const SavingRoomInfoContainer = () => {
+const SavingRoomInfoContainer = ({ challengeId }) => {
   const dispatch = useDispatch();
   const challengeInfo = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
 
   useEffect(() => {
-    dispatch(getChallengesummaryInfo());
+    dispatch(getChallengesummaryInfo(challengeId));
   }, []);
 
   if (challengeInfo.loading) return <div>로딩중</div>;
