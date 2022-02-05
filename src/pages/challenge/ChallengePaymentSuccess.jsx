@@ -3,8 +3,13 @@ import styled from "styled-components";
 import Character from "../../images/Character.png";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
+import { useMatch } from "react-router-dom";
 
 const ChallengePaymentSuccess = () => {
+  let {
+    params: { id },
+  } = useMatch("/challenge/:id/success");
+
   return (
     <Container>
       <Inner>
@@ -12,7 +17,7 @@ const ChallengePaymentSuccess = () => {
         <Title>참가비 결제가 완료 되었어요!</Title>
         <P>이제 챌린지를 시작해보세요!</P>
       </Inner>
-      <Link to="/saving">
+      <Link to={`/saving/${id}`}>
         <Button>확인</Button>
       </Link>
     </Container>

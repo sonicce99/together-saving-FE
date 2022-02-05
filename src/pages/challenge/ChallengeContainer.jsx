@@ -81,9 +81,9 @@ const Challenge = () => {
         />
         <Button
           onClick={() => {
-            data.data.is_participated
+            data.data.participated
               ? navigate(`/saving/${id}`)
-              : navigate("/challenge/payment");
+              : navigate(`/challenge/${id}/payment`);
           }}
         >
           챌린지 함께하기

@@ -9,7 +9,6 @@ const Saving = () => {
   const [currentTab, setCurrentTab] = useState(0);
   const handleChangeTab = (current) => setCurrentTab(current);
 
-  // 챌린지 id 가져오기
   const {
     params: { id },
   } = useMatch("/saving/:id/");
@@ -18,11 +17,15 @@ const Saving = () => {
     <SavingContainer>
       {currentTab === 0 && (
         <>
-          <SavingRoomInfoContainer challengeId={id} />
+          <SavingRoomInfoContainer id={id} />
           <DivisionLine />
         </>
       )}
-      <SavingTabMenu currentTab={currentTab} onChangeTab={handleChangeTab} />
+      <SavingTabMenu
+        currentTab={currentTab}
+        onChangeTab={handleChangeTab}
+        id={id}
+      />
     </SavingContainer>
   );
 };
