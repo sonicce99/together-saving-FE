@@ -4,25 +4,26 @@ import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 import { numberRegexWithComma } from "../../utils/regex";
 
-const SavingStatusInfo = ({ savingStatus }) => {
+const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
   const {
+    thumbnail,
     nickname,
-    profile_picture,
-    cma_balance,
+    accumualted_amount,
     saving_rate,
-    saving_success,
-    saving_fail,
-    saving_remain,
-    end_date,
+    success_count,
+    failure_count,
+    remain_count,
   } = savingStatus.data;
 
-  const cmaBalance = numberRegexWithComma(cma_balance);
+  const { end_date } = challengeInfo.data;
+
+  const cmaBalance = numberRegexWithComma(accumualted_amount);
 
   return (
     <>
       <SavingStatusContainer>
         <StatusInfoContainer>
-          <InfoThumbnail />
+          <InfoThumbnail src={thumbnail} alt="thumbnail" />
           <Text>
             <Span>{nickname}</Span>님의 누적 저축 금액
           </Text>
@@ -30,9 +31,9 @@ const SavingStatusInfo = ({ savingStatus }) => {
         </StatusInfoContainer>
         <SavingRate rate={saving_rate} endDate={end_date} />
         <SavingCount
-          success={saving_success}
-          fail={saving_fail}
-          remain={saving_remain}
+          success={success_count}
+          fail={failure_count}
+          remain={remain_count}
         />
       </SavingStatusContainer>
     </>
@@ -49,7 +50,7 @@ const StatusInfoContainer = styled.div`
   align-items: center;
 `;
 
-const InfoThumbnail = styled.div`
+const InfoThumbnail = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;

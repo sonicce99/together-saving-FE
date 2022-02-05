@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi";
 
-const AutoSavingButton = ({ isAuto, onHandleAuto }) => {
-  const id = "1";
-
-  const handleAutoSwitch = () => {
-    axios
-      .post(`http://183.99.247.17:8881/api/v1/challenges/${id}/auto`)
-      .then((res) => console.log(res));
+const AutoSavingButton = ({ isAuto, onHandleAuto, id }) => {
+  const handleAutoSwitch = async () => {
+    await axiosInstance.put(`/api/v1/challenges/${id}/auto`);
     onHandleAuto((isAuto) => !isAuto);
   };
 

@@ -4,62 +4,40 @@ import Portal from "../../components/Portal";
 import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
 import SavingFilterPopUp from "./SavingFilterPopUp";
-import axios from "axios";
 
-const SavingHistory = ({ historyList }) => {
+const SavingHistory = ({ historyList, filter, onFilter }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [history, setHistory] = useState(historyList);
-  const [filter, setFilter] = useState({
-    lookup: "1주일",
-    sort: "최근저축순",
-  });
-
-  const { lookup, sort } = filter;
+  const { period, order } = filter;
 
   const handlePopup = () => {
     setShowPopup(!showPopup);
   };
-
-  const handleFilter = (lookup, sort) => {
-    setFilter({
-      ...filter,
-      lookup,
-      sort,
-    });
-  };
-
-  // console.log(lookup, sort);
-  // axios
-  //   .post("../../modules/history_acient", { period: lookup, ordering: sort })
-  //   .then((res) => {
-  //     console.log(res);
-  //   });
 
   return (
     <>
       <TitleContainer>
         <Title>저축 내역</Title>
         <HistoryButtonContainer>
-          <Text>{lookup === "당일" ? lookup : `최근 ${lookup}`}</Text>
-          <Text>{sort}</Text>
+          <Text>{period === "today" ? period : `최근 ${period}`}</Text>
+          <Text>{order}</Text>
           <HistoryButton>
             <HistoryIcon src={historyFilter} alt="icon" onClick={handlePopup} />
           </HistoryButton>
           {showPopup && (
             <Portal>
               <SavingFilterPopUp
-                lookup={lookup}
-                sort={sort}
+                period={period}
+                order={order}
+                onFilter={onFilter}
                 onClose={handlePopup}
-                onFilter={handleFilter}
               />
             </Portal>
           )}
         </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
-        {history.length > 0 ? (
-          Object.values(history).map((history, index) => (
+        {historyList.length > 0 ? (
+          Object.values(historyList).map((history, index) => (
             <SavingHistoryItem key={index} historyItem={history} />
           ))
         ) : (
