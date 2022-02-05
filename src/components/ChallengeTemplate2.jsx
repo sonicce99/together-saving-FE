@@ -44,7 +44,10 @@ const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
                         return <Tags key={index}>{tag.tag_name}</Tags>;
                       })}
                     </Div4>
-                    <LikeButton is_wished={EachChallenge.is_wished} />
+                    <LikeButton
+                      challengeId={EachChallenge.id}
+                      is_wished={EachChallenge.is_wished}
+                    />
                   </Div3>
                 </Content>
               );
