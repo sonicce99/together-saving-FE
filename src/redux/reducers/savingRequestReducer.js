@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi";
 import {
   GET_SAVING_REQUEST_PENDING,
   GET_SAVING_REQUEST_SUCCESS,
@@ -6,12 +6,9 @@ import {
 } from "../actions/types";
 
 const getAPI = (challengeId, savingPrice) => {
-  return axios.post(
-    `http://183.99.247.17:8881/api/v1/users/challenges/${challengeId}/saving`,
-    {
-      saving_amount: savingPrice,
-    }
-  );
+  return axiosInstance.post(`/api/v1/users/challenges/${challengeId}/saving`, {
+    saving_amount: savingPrice,
+  });
 };
 
 export const requestSaving = (challengeId, savingPrice) => async (dispatch) => {

@@ -3,11 +3,16 @@ import styled from "styled-components";
 import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 import DivisionLine from "../../components/DivisionLine";
 import DepositView from "../../views/deposit/DepositView";
+import { useMatch } from "react-router-dom";
 
 const SavingDeposit = () => {
+  const {
+    params: { id },
+  } = useMatch("/saving/:id/deposit");
+
   return (
     <DepositContainer>
-      <SavingRoomInfoContainer />
+      <SavingRoomInfoContainer id={id} />
       <DivisionLine />
       <DepositView />
     </DepositContainer>

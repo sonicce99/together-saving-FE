@@ -1,4 +1,5 @@
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi";
+
 import {
   GET_SAVING_INFO_PENDING,
   GET_SAVING_INFO_SUCCESS,
@@ -6,9 +7,7 @@ import {
 } from "../actions/types";
 
 const getAPI = (id) => {
-  return axios.get(
-    `${process.env.API_ADDRESS}/api/v1/users/challenges/${id}/saving-detail`
-  );
+  return axiosInstance.get(`/api/v1/users/challenges/${id}/saving-detail`);
 };
 
 export const getSavingInfo = (id) => async (dispatch) => {

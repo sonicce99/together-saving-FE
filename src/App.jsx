@@ -37,8 +37,8 @@ const App = () => {
           element={<ChallengePaymentSuccess />}
         />
         <Route path="/saving/:id" element={<Saving />} />
-        <Route path="/saving/deposit" element={<SavingDeposit />} />
-        <Route path="/saving/success" element={<SavingSuccess />} />
+        <Route path="/saving/:id/deposit" element={<SavingDeposit />} />
+        <Route path="/saving/:id/success" element={<SavingSuccess />} />
         <Route path="/moreshow/:name" element={<MoreShow />} />
       </Routes>
     </Wrapper>

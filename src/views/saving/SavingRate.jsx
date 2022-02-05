@@ -30,7 +30,7 @@ const SavingRate = ({ rate, endDate }) => {
             <SavingFinishPopUp />
           </Portal>
         )}
-        <Progress width={`${rate}%`} />
+        <Progress width={rate > 100 && "100%"} />
       </ProgressContainer>
       <RateInfoContainer>
         <Text>현재 {rate}%</Text>

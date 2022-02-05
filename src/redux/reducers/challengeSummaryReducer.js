@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi";
 import {
   GET_POSTS,
   GET_POSTS_SUCCESS,
@@ -7,7 +7,7 @@ import {
 
 const getAPI = (id) => {
   // return axios.get("../../modules/challenge.json");
-  return axios.get(`http://183.99.247.17:8881/api/v1/auth/challenges/${id}`);
+  return axiosInstance.get(`/api/v1/auth/challenges/${id}`);
 };
 
 export const getChallengesummaryInfo = (id) => async (dispatch) => {

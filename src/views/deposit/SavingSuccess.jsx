@@ -3,8 +3,11 @@ import styled from "styled-components";
 import success_boo from "../../images/success_boo.png";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const SavingSuccess = () => {
+  const { id } = useParams();
+
   return (
     <>
       <SuccessContainer>
