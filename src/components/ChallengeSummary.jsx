@@ -10,6 +10,15 @@ const ChallengeSummary = ({
   challenge_entry_fee, // 참가비
   challenge_members, // 참여 인원
 }) => {
+  const dayObject = {
+    MON: "월",
+    TUE: "화",
+    WED: "수",
+    THR: "목",
+    FRI: "금",
+    SAT: "토",
+    SUN: "일",
+  };
   return (
     <>
       <Challenge_name>{challenge_name}</Challenge_name>
@@ -21,7 +30,7 @@ const ChallengeSummary = ({
         <Title>저축 요일</Title>
         {challenge_frequency &&
           challenge_frequency.map((day, index) => {
-            return <BoldTitle key={index}>{day}</BoldTitle>;
+            return <BoldTitle key={index}>{dayObject[day]}</BoldTitle>;
           })}
       </Div>
       <Div>
