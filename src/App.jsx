@@ -36,7 +36,7 @@ const App = () => {
           path="/challenge/success"
           element={<ChallengePaymentSuccess />}
         />
-        <Route path="/saving" element={<Saving />} />
+        <Route path="/saving/:id" element={<Saving />} />
         <Route path="/saving/deposit" element={<SavingDeposit />} />
         <Route path="/saving/success" element={<SavingSuccess />} />
         <Route path="/moreshow/:name" element={<MoreShow />} />
