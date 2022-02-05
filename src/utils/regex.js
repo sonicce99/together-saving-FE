@@ -24,8 +24,6 @@ export const remainWeekRegex = (startDate, endDate) => {
   return remainWeek;
 };
 
-// 챌린지 더보기 페이지 타이틀
-// 여기 있는 게 맞지 않다. 잘못됨 ㅠ
 export const showMoreTitle = (challengeName) => {
   switch (challengeName) {
     case "participate":
@@ -34,9 +32,9 @@ export const showMoreTitle = (challengeName) => {
     case "popular":
       const popluar = "인기 챌린지";
       return popluar;
-    case "particular":
-      const similar = "나와 비슷한 사람들 챌린지";
-      return similar;
+    case "deadline":
+      const deadline = "마감 임박 챌린지";
+      return deadline;
     case "all":
       const all = "전체 챌린지";
       return all;

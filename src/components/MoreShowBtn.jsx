@@ -14,7 +14,7 @@ const MoreShow = ({ title }) => {
           ? navigate("/moreshow/popular")
           : title === "전체 챌린지"
           ? navigate("/moreshow/all")
-          : navigate("/moreshow/particular");
+          : navigate("/moreshow/deadline");
       }}
     >
       더보기
