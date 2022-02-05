@@ -22,16 +22,16 @@ const Challenge = () => {
   );
   const dispatch = useDispatch();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   // 챌린지 id 가져오기
-  let {
+  const {
     params: { id },
   } = useMatch("/challenge/:id/");
 
   // 나중에 id 넣어서 post 요청 하기
   useEffect(() => {
-    dispatch(getChallengesummaryInfo());
+    dispatch(getChallengesummaryInfo(id));
   }, [dispatch]);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Challenge = () => {
       try {
         // 인기 챌린지 가져오기
         const popularChallenge = await axios.get(
-          "../../modules/popularChallenge.json"
+          "/api/v1/auth/challenges?criteria=popularity&page=0"
         );
         setPopularChallengeData(popularChallenge.data.data.challenges);
       } catch (error) {
@@ -82,7 +82,7 @@ const Challenge = () => {
         <Button
           onClick={() => {
             data.data.is_participated
-              ? navigate("/saving")
+              ? navigate(`/saving/${id}`)
               : navigate("/challenge/payment");
           }}
         >
