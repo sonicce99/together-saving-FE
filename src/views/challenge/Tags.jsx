@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LikeButton from "../../components/LikeButton";
 
-const Tags = ({ is_wished, tags }) => {
-  console.log(is_wished);
+const Tags = ({ challenge_id, is_wished, tags }) => {
   return (
     <TagBox>
       <Div>
@@ -16,7 +15,7 @@ const Tags = ({ is_wished, tags }) => {
             );
           })}
       </Div>
-      <LikeButton is_wished={is_wished} />
+      <LikeButton challengeId={challenge_id} is_wished={is_wished} />
     </TagBox>
   );
 };
