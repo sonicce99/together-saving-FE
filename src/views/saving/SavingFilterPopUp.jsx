@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
+import { periodKor, orderKor } from "../../utils/regex";
 
-// const LOOKUP_PERIODS = ["당일", "1주일", "1개월", "3개월"];
-// const SORT_BY_VALUE = ["최근저축순", "과거저축순"];
 const LOOKUP_PERIODS = ["today", "1week", "1month", "3month"];
 const SORT_BY_VALUE = ["desc", "asc"];
 
@@ -42,7 +41,7 @@ const SavingFilterPopUp = ({ period, order, onFilter, onClose }) => {
                   checked={filter.period === period ? true : false}
                   onChange={handleChangeFilter}
                 />
-                <Text>{period}</Text>
+                <Text>{periodKor(period)}</Text>
               </Label>
             ))}
           </FilterContainer>
@@ -57,7 +56,7 @@ const SavingFilterPopUp = ({ period, order, onFilter, onClose }) => {
                   checked={filter.order === order ? true : false}
                   onChange={handleChangeFilter}
                 />
-                <Text>{order}</Text>
+                <Text>{orderKor(order)}</Text>
               </Label>
             ))}
           </FilterContainer>

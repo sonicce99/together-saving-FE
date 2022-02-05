@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { remainDayRegex, remainWeekRegex } from "../../utils/regex";
+import {
+  remainDayRegex,
+  remainWeekRegex,
+  challengeDayKor,
+} from "../../utils/regex";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
   const { challenge_name, challenge_frequency, end_date, start_date } =
@@ -10,7 +14,9 @@ const SavingRoomInfo = ({ challengeInfo }) => {
   const startDay = start_date.slice(2, 10).replaceAll("-", ".");
   const endDay = end_date.slice(5, 10).replaceAll("-", ".");
 
-  const weeklySavingDays = challenge_frequency.map((item) => item).join(",");
+  const weeklySavingDays = challenge_frequency
+    .map((item) => challengeDayKor(item))
+    .join(",");
   const weeklySavingTimes = challenge_frequency.length;
 
   const remainDay = remainDayRegex(end_date);

@@ -4,6 +4,7 @@ import Portal from "../../components/Portal";
 import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
 import SavingFilterPopUp from "./SavingFilterPopUp";
+import { periodKor, orderKor } from "../../utils/regex";
 
 const SavingHistory = ({ historyList, filter, onFilter }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -18,8 +19,12 @@ const SavingHistory = ({ historyList, filter, onFilter }) => {
       <TitleContainer>
         <Title>저축 내역</Title>
         <HistoryButtonContainer>
-          <Text>{period === "today" ? period : `최근 ${period}`}</Text>
-          <Text>{order}</Text>
+          <Text>
+            {period === "today"
+              ? periodKor(period)
+              : `최근 ${periodKor(period)}`}
+          </Text>
+          <Text>{orderKor(order)}</Text>
           <HistoryButton>
             <HistoryIcon src={historyFilter} alt="icon" onClick={handlePopup} />
           </HistoryButton>
