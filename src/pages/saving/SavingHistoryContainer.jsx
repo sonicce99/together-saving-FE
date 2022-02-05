@@ -1,33 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SavingHistory from "../../views/saving/SavingHistory";
 import { useSelector, useDispatch } from "react-redux";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer";
 
 const SavingHistoryContainer = ({ id }) => {
-  const challenge = useSelector(
-    (state) => state.challengeSummaryReducer.challengeSummaryInfo
-  );
+  const [filter, setFilter] = useState({ period: "today", order: "desc" });
+
   const history = useSelector(
     (state) => state.savingHistoryReducer.savingHistory
+  );
+  const challenge = useSelector(
+    (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSavingHistory(id));
+    dispatch(getSavingHistory(id, filter.period, filter.order));
     dispatch(getChallengesummaryInfo(id));
-  }, []);
+  }, [filter]);
 
   if (history.loading) return <div>로딩중</div>;
   if (history.error) return <div>에러 발생</div>;
   if (!history.data) return null;
   if (!challenge.data) return null;
 
+  const handleFilter = (period, order) => {
+    setFilter({
+      ...filter,
+      period,
+      order,
+    });
+  };
+
   return (
     <SavingHistory
       savingHistory={history.data}
       challengeInfo={challenge.data}
+      filter={filter}
+      onFilter={handleFilter}
       id={id}
     />
   );

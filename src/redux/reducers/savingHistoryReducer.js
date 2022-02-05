@@ -5,17 +5,17 @@ import {
   GET_SAVING_ACCOUNT_FAIL,
 } from "../actions/types";
 
-const getAPI = (id) => {
+const getAPI = (id, period, order) => {
   return axiosInstance.get(
-    `/api/v1/users/challenges/${id}/saving-histories?period=today&ordering=desc`
+    `/api/v1/users/challenges/${id}/saving-histories?period=${period}&ordering=${order}`
   );
 };
 
-export const getSavingHistory = (id) => async (dispatch) => {
+export const getSavingHistory = (id, period, order) => async (dispatch) => {
   dispatch({ type: GET_SAVING_ACCOUNT_PENDING });
 
   try {
-    const { data } = await getAPI(id);
+    const { data } = await getAPI(id, period, order);
     dispatch({
       type: GET_SAVING_ACCOUNT_SUCCESS,
       data,

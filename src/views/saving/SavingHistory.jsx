@@ -5,8 +5,14 @@ import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
 import { numberRegexWithComma } from "../../utils/regex";
 
-const SavingHistory = ({ savingHistory, challengeInfo, id }) => {
-  const [isAuto, setIsAuto] = useState(is_automated);
+const SavingHistory = ({
+  savingHistory,
+  challengeInfo,
+  filter,
+  onFilter,
+  id,
+}) => {
+  const { challenge_payment } = challengeInfo.data;
   const {
     account_number,
     balance,
@@ -16,7 +22,7 @@ const SavingHistory = ({ savingHistory, challengeInfo, id }) => {
     thumbnail,
   } = savingHistory.data;
 
-  const { challenge_payment } = challengeInfo.data;
+  const [isAuto, setIsAuto] = useState(is_automated);
 
   const personalBalance = numberRegexWithComma(balance);
 
@@ -38,7 +44,11 @@ const SavingHistory = ({ savingHistory, challengeInfo, id }) => {
             <PriceText>{personalBalance}원</PriceText>
           </AccountInfo>
         </AccountInfoContainer>
-        <SavingHistoryList historyList={saving_history} />
+        <SavingHistoryList
+          historyList={saving_history}
+          filter={filter}
+          onFilter={onFilter}
+        />
         <AutoSavingButton isAuto={isAuto} onHandleAuto={handleAuto} id={id} />
       </SavingHistoryContainer>
       <SavingStartButton

@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { axiosInstance } from "../../utils/TokenApi";
 
 const AutoSavingButton = ({ isAuto, onHandleAuto, id }) => {
-  const handleAutoSwitch = () => {
+  const handleAutoSwitch = async () => {
+    await axiosInstance.put(`/api/v1/challenges/${id}/auto`);
     onHandleAuto((isAuto) => !isAuto);
-    axiosInstance.put(`/api/v1/challenges/${id}/auto`);
   };
 
   return (
