@@ -1,12 +1,44 @@
-import * as React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Avatar, Stack } from "@mui/material";
-import Button from "../../components/Button.jsx";
+import Button2 from "../../components/Button.jsx";
 import H3 from "../../components/H3.jsx";
+import { Box, Typography, Modal } from "@mui/material";
 import GrayBackground from "../../components/GrayBackground.jsx";
+import { axiosInstance } from "../../utils/TokenApi.jsx";
 
-const ChallengeReview = ({ reviews }) => {
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "188px",
+  transform: "translate(-50%, -50%)",
+  width: 343,
+  bgcolor: "background.paper",
+  border: "1px solid #F7F8FA",
+  boxShadow: 24,
+  borderRadius: "6px",
+  p: 0,
+};
+
+const ChallengeReview = ({ challenge_id, reviews }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [inputValue, setInputValue] = useState("");
   const textLimit = 100;
+
+  const handleInputValue = (value) => {
+    setInputValue(value);
+  };
+
+  const reviewSend = async (challenge_id) => {
+    await axiosInstance.post("/api/v1/users/reviews", {
+      challenge_id: challenge_id,
+      review_content: inputValue,
+    });
+    handleClose();
+  };
+
   return (
     <>
       <H3>참여후기</H3>
@@ -30,7 +62,32 @@ const ChallengeReview = ({ reviews }) => {
             );
           })}
       </Div>
-      <ReviewBtn>후기 작성하기</ReviewBtn>
+      <ReviewBtn onClick={handleOpen}>후기 작성하기</ReviewBtn>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            sx={{ mb: 2, ml: "35%", mt: 1 }}
+          >
+            리뷰 남기기
+          </Typography>
+          <Input
+            autoFocus
+            onChange={(event) => handleInputValue(event.target.value)}
+            maxLength="150"
+          />
+          <ReviewCompleteBtn onClick={() => reviewSend(challenge_id)}>
+            작성 완료
+          </ReviewCompleteBtn>
+        </Box>
+      </Modal>
     </>
   );
 };
@@ -73,11 +130,29 @@ const Content = styled(H3)`
   width: 234px;
 `;
 
-const ReviewBtn = styled(Button)`
+const ReviewBtn = styled(Button2)`
   color: ${({ theme }) => theme.colors.colorBlue2};
   background-color: ${({ theme }) => theme.colors.colorWhite};
   border: 1px solid #3178ff;
   margin-bottom: 40px;
+`;
+
+const Input = styled.textarea`
+  border-top: "1px solid #F7F8FA";
+  width: 340px;
+  height: 150px;
+  resize: none;
+  outline-color: #3178ff;
+  padding: 10px;
+`;
+
+const ReviewCompleteBtn = styled.button`
+  border: 2px solid #000;
+  margin-left: 205px;
+  font-size: 16px;
+  padding: 3px;
+  border-radius: 6px;
+  margin-top: 8px;
 `;
 
 export default ChallengeReview;
