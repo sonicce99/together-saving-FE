@@ -4,9 +4,10 @@ import {
   GET_POSTS_SUCCESS,
   GET_POSTS_ERROR,
 } from "../actions/types";
+import { axiosInstance } from "../../utils/TokenApi";
 
 const getAPI = (id) => {
-  return axios.get(`/api/v1/auth/challenges/${id}`);
+  return axiosInstance.get(`/api/v1/auth/challenges/${id}`);
 };
 
 export const getChallengesummaryInfo = (id) => async (dispatch) => {

@@ -12,7 +12,7 @@ import Thumbnail from "../../components/Thimbnail";
 import { useMatch, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
-import axios from "axios";
+import { axiosInstance } from "../../utils/TokenApi.jsx";
 
 const Challenge = () => {
   const [popularChallengeData, setPopularChallengeData] = useState([]);
@@ -21,8 +21,6 @@ const Challenge = () => {
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
   const dispatch = useDispatch();
-
-  console.log(data);
 
   const navigate = useNavigate();
 
@@ -39,7 +37,7 @@ const Challenge = () => {
     (async () => {
       try {
         // 인기 챌린지 가져오기
-        const popularChallenge = await axios.get(
+        const popularChallenge = await axiosInstance.get(
           "/api/v1/auth/challenges?criteria=popularity&page=0"
         );
         setPopularChallengeData(popularChallenge.data.data);
@@ -57,7 +55,11 @@ const Challenge = () => {
     <Container>
       <Thumbnail thumbnail={data.data.thumbnail} />
       <Inner>
-        <Tags is_wished={data.data.is_wished} tags={data.data.tags} />
+        <Tags
+          challenge_id={data.data.challenge_id}
+          is_wished={data.data.is_wished}
+          tags={data.data.tags}
+        />
         <ChallengeSummary
           challenge_name={data.data.challenge_name}
           start_date={data.data.start_date}
@@ -74,7 +76,10 @@ const Challenge = () => {
           hostName={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
           description={data.data.challenge_description}
         />
-        <ChallengeReview reviews={data.data.challenge_reviews} />
+        <ChallengeReview
+          challenge_id={data.data.challenge_id}
+          reviews={data.data.challenge_reviews}
+        />
         <RefundAndCaution />
         <ChallengeTemplate2
           title="이런 챌린지도 있어요!"
