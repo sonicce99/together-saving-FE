@@ -4,7 +4,6 @@ import {
   GET_POSTS_SUCCESS,
   GET_POSTS_ERROR,
 } from "../actions/types";
-import { axiosInstance } from "../../utils/TokenApi";
 
 const getAPI = (id) => {
   return axiosInstance.get(`/api/v1/auth/challenges/${id}`);
