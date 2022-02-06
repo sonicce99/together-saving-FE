@@ -4,7 +4,7 @@ import Portal from "../../components/Portal";
 import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
 import SavingFilterPopUp from "./SavingFilterPopUp";
-import { periodKor, orderKor } from "../../utils/regex";
+import { periodKor, orderKor } from "../../utils/engDataRegex";
 
 const SavingHistory = ({ historyList, filter, onFilter }) => {
   const [showPopup, setShowPopup] = useState(false);

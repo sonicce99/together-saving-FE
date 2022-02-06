@@ -47,7 +47,6 @@ const SkeletonContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
 
   &:nth-child(1) {
     margin-bottom: 20px;

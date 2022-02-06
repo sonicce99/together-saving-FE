@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Portal from "../../components/Portal";
+import useRemainDay from "../../hooks/useRemainDay";
 import SavingFinishPopUp from "./SavingFinishPopUp";
-import { remainDayRegex } from "../../utils/regex";
 
 const SavingRate = ({ rate, endDate }) => {
-  const remainDay = remainDayRegex(endDate);
+  const remainDay = useRemainDay(endDate);
 
   return (
     <>

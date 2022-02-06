@@ -7,7 +7,7 @@ import Portal from "../../components/Portal";
 import DepositKeypad from "./DepositKeypad";
 import { useDispatch } from "react-redux";
 import { requestSaving } from "../../redux/reducers/savingRequestReducer";
-import { numberRegexWithComma } from "../../utils/regex";
+import useNumberComma from "../../hooks/useNumberComma";
 
 const DepositView = () => {
   const dispatch = useDispatch();
@@ -51,10 +51,10 @@ const DepositView = () => {
         </DepositAccount>
         <Input
           type="text"
-          value={inputPrice && `${numberRegexWithComma(inputPrice)}원`}
+          value={inputPrice && `${useNumberComma(inputPrice)}원`}
           onChange={handleInputPrice}
           placeholder={
-            defaultPrice && `${numberRegexWithComma(defaultPrice)}원 입력하세요`
+            defaultPrice && `${useNumberComma(defaultPrice)}원 입력하세요`
           }
           onFocus={handleShowKeypad}
         />
