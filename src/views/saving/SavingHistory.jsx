@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
-import { numberRegexWithComma } from "../../utils/regex";
+import useNumberComma from "../../hooks/useNumberComma";
 
 const SavingHistory = ({
   savingHistory,
@@ -24,7 +24,7 @@ const SavingHistory = ({
 
   const [isAuto, setIsAuto] = useState(is_automated);
 
-  const personalBalance = numberRegexWithComma(balance);
+  const personalBalance = useNumberComma(balance);
 
   const handleAuto = (auto) => {
     setIsAuto(auto);

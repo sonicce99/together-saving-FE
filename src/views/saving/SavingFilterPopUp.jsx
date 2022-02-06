@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
-import { periodKor, orderKor } from "../../utils/regex";
+import { periodKor, orderKor } from "../../utils/engDataRegex";
 
 const LOOKUP_PERIODS = ["today", "1week", "1month", "3month"];
 const SORT_BY_VALUE = ["desc", "asc"];
