@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Character from "../../images/Character.png";
 import Button from "../../components/Button";
+import Time from "../../components/Time";
 import { Link } from "react-router-dom";
 import { useMatch } from "react-router-dom";
 
@@ -12,6 +13,7 @@ const ChallengePaymentSuccess = () => {
 
   return (
     <Container>
+      <Time />
       <Inner>
         <Image src={Character} />
         <Title>참가비 결제가 완료 되었어요!</Title>
