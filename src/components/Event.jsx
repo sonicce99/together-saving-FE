@@ -43,6 +43,7 @@ const Container = styled.div`
 const Image = styled.img`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 307px;
+  cursor: pointer;
 `;
 
 export default Event;
