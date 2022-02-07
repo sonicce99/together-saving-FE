@@ -3,6 +3,7 @@ import { axiosInstance } from "../utils/TokenApi";
 
 const useChallengeApi = (challengeName, nextPage) => {
   const [challengeData, setChallengeData] = useState([]);
+  const [isSubscribe, setIsSubscribe] = useState(true);
 
   const getCallApi = () => {
     switch (challengeName) {
@@ -40,8 +41,8 @@ const useChallengeApi = (challengeName, nextPage) => {
   };
 
   useEffect(() => {
-    getCallApi();
-    return () => getCallApi();
+    isSubscribe && getCallApi();
+    return () => setIsSubscribe((isSubscribe) => !isSubscribe);
   }, [nextPage]);
 
   return challengeData;
