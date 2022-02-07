@@ -4,10 +4,12 @@ import Header from "../../components/Header.jsx";
 import Event from "../../components/Event.jsx";
 import MainTabs from "../../views/main/MainTabs.jsx";
 import BottomNav from "../../components/BottomNav.jsx";
+import Time from "../../components/Time.jsx";
 
 const Main = () => {
   return (
     <MainContainer>
+      <Time />
       <Header />
       <Event />
       <MainTabs />

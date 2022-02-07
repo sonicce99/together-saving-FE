@@ -32,6 +32,9 @@ const ChallengeReview = ({ challenge_id, reviews }) => {
   };
 
   const reviewSend = async (challenge_id) => {
+    if (inputValue.length <= 5) {
+      alert("5글자 이상 입력해주세요");
+    }
     await axiosInstance.post("/api/v1/users/reviews", {
       challenge_id: challenge_id,
       review_content: inputValue,
@@ -82,9 +85,11 @@ const ChallengeReview = ({ challenge_id, reviews }) => {
             autoFocus
             onChange={(event) => handleInputValue(event.target.value)}
             maxLength="150"
+            minLength="5"
           />
+          <ReviewOutBtn onClick={() => handleClose()}>Dismiss</ReviewOutBtn>
           <ReviewCompleteBtn onClick={() => reviewSend(challenge_id)}>
-            작성 완료
+            Submit
           </ReviewCompleteBtn>
         </Box>
       </Modal>
@@ -138,21 +143,29 @@ const ReviewBtn = styled(Button2)`
 `;
 
 const Input = styled.textarea`
-  border-top: "1px solid #F7F8FA";
+  border: transparent;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
   width: 340px;
   height: 150px;
   resize: none;
-  outline-color: #3178ff;
+  outline: none;
   padding: 10px;
 `;
 
 const ReviewCompleteBtn = styled.button`
-  border: 2px solid #000;
-  margin-left: 205px;
   font-size: 16px;
-  padding: 3px;
-  border-radius: 6px;
-  margin-top: 8px;
+  padding: 10px;
+  width: 170px;
+  color: ${({ theme }) => theme.colors.colorBlue2};
+`;
+
+const ReviewOutBtn = styled.button`
+  font-size: 16px;
+  border-right: 1px solid #e4e4e4;
+  padding: 10px;
+  width: 170px;
+  color: ${({ theme }) => theme.colors.colorBlue2};
 `;
 
 export default ChallengeReview;
