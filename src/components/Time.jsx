@@ -39,8 +39,11 @@ const Time = () => {
 };
 
 const Container = styled.div`
+  width: 100%;
   height: 44px;
   padding: 12px 20px;
+  position: fixed;
+  z-index: 9999;
 `;
 
 const Inner = styled.div`

@@ -29,7 +29,9 @@ const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 151px;
   box-shadow: 0px -2px 5px 1px rgba(0, 0, 0, 0.18);
-  /* background: ${({ theme }) => theme.colors.colorWhite}; */
+  background-color: white;
+  position: fixed;
+  bottom: 0;
 `;
 
 const Inner = styled.div`

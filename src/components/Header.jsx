@@ -41,8 +41,12 @@ const Header = ({ main, more, detail }) => {
 };
 
 const Container = styled.header`
+  width: 100%;
   height: 52px;
-  padding: 0 16px;
+  padding: 50px 16px;
+  position: fixed;
+  z-index: 999;
+  background-color: white;
 `;
 
 const Inner = styled.main`
