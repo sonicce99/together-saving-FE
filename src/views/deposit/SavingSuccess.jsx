@@ -3,6 +3,7 @@ import styled from "styled-components";
 import success_boo from "../../images/success_boo.png";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
+import Time from "../../components/Time";
 import { useParams } from "react-router-dom";
 
 const SavingSuccess = () => {
@@ -10,6 +11,7 @@ const SavingSuccess = () => {
 
   return (
     <>
+      <Time />
       <SuccessContainer>
         <Img src={success_boo} alt="success_boo" />
         <MainText>저축에 성공했어요!</MainText>
@@ -53,6 +55,7 @@ const SubText = styled(Text)`
 `;
 
 const SuccessButtonContainer = styled.div`
+  height: 90px;
   padding: 8px 16px 34px;
   position: absolute;
   bottom: 0;
