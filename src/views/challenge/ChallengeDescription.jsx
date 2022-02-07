@@ -33,7 +33,7 @@ const ChallengeDescription = ({ hostName, description }) => {
           : description}
         {description.length > 100 && (
           <MoreButton onClick={handleShowMoreInfo}>
-            {isMore ? "닫기" : "더보기"}
+            {isMore ? "닫기" : "・・・더보기"}
           </MoreButton>
         )}
       </Description>
