@@ -6,7 +6,6 @@ import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
 import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
-import axios from "axios";
 
 const MainTabs = () => {
   const [value, setValue] = React.useState(0); // Tabs 관련
@@ -40,8 +39,10 @@ const MainTabs = () => {
         setDeadLineChallenge(deatLineChallengeData.data.data);
 
         // 전체 챌린지 가져오기
-        const wholeData = await axios.get("../../modules/wholeChallenge.json");
-        setWholeChallenge(wholeData.data.data.challenges);
+        const wholeData = await axiosInstance.get(
+          "/api/v1/auth/challenges?criteria=valid&page=0"
+        );
+        setWholeChallenge(wholeData.data.data);
       } catch (error) {
         console.log(error);
       }

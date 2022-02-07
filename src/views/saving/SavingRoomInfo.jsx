@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { remainDayRegex, remainWeekRegex } from "../../utils/regex";
+import { challengeDayKor } from "../../utils/engDataRegex";
+import useRemainDay from "../../hooks/useRemainDay";
+import useRemainWeek from "../../hooks/useRemainWeek";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
   const { challenge_name, challenge_frequency, end_date, start_date } =
@@ -10,15 +12,17 @@ const SavingRoomInfo = ({ challengeInfo }) => {
   const startDay = start_date.slice(2, 10).replaceAll("-", ".");
   const endDay = end_date.slice(5, 10).replaceAll("-", ".");
 
-  const weeklySavingDays = challenge_frequency.map((item) => item).join(",");
+  const weeklySavingDays = challenge_frequency
+    .map((item) => challengeDayKor(item))
+    .join(",");
   const weeklySavingTimes = challenge_frequency.length;
 
-  const remainDay = remainDayRegex(end_date);
-  const remainWeek = remainWeekRegex(start_date, end_date);
+  const remainDay = useRemainDay(end_date);
+  const remainWeek = useRemainWeek(start_date, end_date);
 
   return (
     <InfoContainer>
-      <InfoThumbnail />
+      <InfoThumbnail src="" alt="thumbnail" />
       <InfoTextContainer>
         <Link to="/challenge/:id">
           <Title>{challenge_name}</Title>
@@ -42,7 +46,7 @@ const InfoContainer = styled.div`
   display: flex;
 `;
 
-const InfoThumbnail = styled.div`
+const InfoThumbnail = styled.img`
   width: 92px;
   height: 70px;
   border-radius: 5px;

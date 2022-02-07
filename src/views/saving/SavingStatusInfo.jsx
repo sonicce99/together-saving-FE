@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
-import { numberRegexWithComma } from "../../utils/regex";
+import useNumberComma from "../../hooks/useNumberComma";
 
 const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
   const {
@@ -17,7 +17,7 @@ const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
 
   const { end_date } = challengeInfo.data;
 
-  const cmaBalance = numberRegexWithComma(accumualted_amount);
+  const cmaBalance = useNumberComma(accumualted_amount);
 
   return (
     <>

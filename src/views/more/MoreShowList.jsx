@@ -4,12 +4,10 @@ import { useMatch } from "react-router-dom";
 import H3 from "../../components/H3";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MoreShowItem from "./MoreShowItem";
-import { connectChallengeApi } from "../../utils/callApi";
-import { showMoreTitle } from "../../utils/regex";
+import useChallengeApi from "../../hooks/useChallengeApi";
+import useCategory from "../../hooks/useCategory";
 
 const MoreShowTemplate = () => {
-  const [challengeData, setChallengeData] = useState([]);
-  const [challengeName, setChallengeName] = useState("");
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
 
@@ -17,35 +15,28 @@ const MoreShowTemplate = () => {
     params: { name },
   } = useMatch("/moreshow/:name");
 
-  // useEffect 안에 async 사용은 X 이유도 같이 찾아보자
-  useEffect(async () => {
-    const { data } = await connectChallengeApi(name, page);
-    const title = showMoreTitle(name);
-    setChallengeData(data);
-    setChallengeName(title);
-  }, []);
+  const data = useChallengeApi(name, page);
+  const category = useCategory(name);
 
-  const handleScrollPage = async () => {
-    const nextPage = page + 1;
-    const { data } = await connectChallengeApi(name, nextPage);
-
-    setChallengeData([...challengeData, ...data]);
-    setPage(nextPage);
+  const handleScrollPage = () => {
+    setPage((page) => page + 1);
+    if (data.length === 0) setHasMore((hasMore) => !hasMore);
   };
 
   return (
     <MoreShowContainer>
-      <ChallengeTitle>{challengeName}</ChallengeTitle>
+      <ChallengeTitle>{category}</ChallengeTitle>
       <InfiniteScroll
-        dataLength={challengeData.length}
+        dataLength={data.length}
         next={handleScrollPage}
         hasMore={hasMore}
         height={812}
       >
         <ChallengeList>
-          {Object.values(challengeData).map((data, index) => {
-            return <MoreShowItem key={index} data={data} />;
-          })}
+          {data &&
+            Object.values(data).map((item, index) => {
+              return <MoreShowItem key={index} data={item} />;
+            })}
         </ChallengeList>
       </InfiniteScroll>
     </MoreShowContainer>
