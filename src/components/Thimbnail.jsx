@@ -11,10 +11,10 @@ const Thumbnail = ({ thumbnail }) => {
     </Size>
   );
 };
+
 const Size = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 270px;
-  border: 2px solid black;
 `;
 
 export default Thumbnail;

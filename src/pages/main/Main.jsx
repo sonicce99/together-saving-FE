@@ -11,8 +11,10 @@ const Main = () => {
     <MainContainer>
       <Time />
       <Header main />
-      <Event />
-      <MainTabs />
+      <MainContentContainer>
+        <Event />
+        <MainTabs />
+      </MainContentContainer>
       <BottomNav />
     </MainContainer>
   );
@@ -21,6 +23,10 @@ const Main = () => {
 const MainContainer = styled.div`
   height: 812px;
   overflow-y: scroll;
+`;
+
+const MainContentContainer = styled.div`
+  padding-top: 96px;
 `;
 
 export default Main;

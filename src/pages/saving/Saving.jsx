@@ -16,27 +16,30 @@ const Saving = () => {
   } = useMatch("/saving/:id/");
 
   return (
-    <SavingContainer>
+    <>
       <Time />
       <Header sub />
-      {currentTab === 0 && (
-        <>
-          <SavingRoomInfoContainer id={id} />
-          <DivisionLine />
-        </>
-      )}
-      <SavingTabMenu
-        currentTab={currentTab}
-        onChangeTab={handleChangeTab}
-        id={id}
-      />
-    </SavingContainer>
+      <SavingContainer>
+        {currentTab === 0 && (
+          <>
+            <SavingRoomInfoContainer id={id} />
+            <DivisionLine />
+          </>
+        )}
+        <SavingTabMenu
+          currentTab={currentTab}
+          onChangeTab={handleChangeTab}
+          id={id}
+        />
+      </SavingContainer>
+    </>
   );
 };
 
 const SavingContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 96px;
 `;
 
 export default Saving;

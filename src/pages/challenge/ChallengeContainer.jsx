@@ -81,10 +81,14 @@ const Challenge = () => {
           reviews={data.data.challenge_reviews}
         />
         <RefundAndCaution />
-        <ChallengeTemplate2
-          title="이런 챌린지도 있어요!"
-          ChallengeArray={popularChallengeData}
-        />
+        <RecommendContainer>
+          <ChallengeTemplate2
+            title="이런 챌린지도 있어요!"
+            ChallengeArray={popularChallengeData}
+          />
+        </RecommendContainer>
+      </Inner>
+      <ButtonContainer>
         <Button
           onClick={() => {
             data.data.participated
@@ -94,18 +98,35 @@ const Challenge = () => {
         >
           챌린지 함께하기
         </Button>
-      </Inner>
+      </ButtonContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
+  height: 812px;
+  overflow-y: scroll;
+`;
+
+const RecommendContainer = styled.div`
+  margin-bottom: 120px;
 `;
 
 const Inner = styled.div`
   width: 343px;
   margin: ${({ theme }) => theme.margins.marginCenter};
+`;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+  box-shadow: 0px 4px 21px -1px rgba(0, 0, 0, 0.18);
+  background-color: white;
+  position: fixed;
+  bottom: 0;
 `;
 
 export default Challenge;

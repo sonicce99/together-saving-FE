@@ -21,11 +21,15 @@ const style = {
 };
 
 const ChallengeReview = ({ challenge_id, reviews }) => {
+  const [isMore, setIsMore] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [inputValue, setInputValue] = useState("");
-  const textLimit = 100;
+
+  const handleShowMoreInfo = () => {
+    setIsMore((isMore) => !isMore);
+  };
 
   const handleInputValue = (value) => {
     setInputValue(value);
@@ -60,7 +64,18 @@ const ChallengeReview = ({ challenge_id, reviews }) => {
                   </Stack>
                   <NickName>{review.nickname}</NickName>
                 </Profile>
-                <Content>{review.content.slice(0, textLimit)}</Content>
+                <Content>
+                  {review.content.length > 70
+                    ? !isMore
+                      ? review.content.slice(0, 70)
+                      : review.content
+                    : review.content}
+                  {review.content.length > 70 && (
+                    <MoreButton onClick={handleShowMoreInfo} review>
+                      {isMore ? "닫기" : "・・・더보기"}
+                    </MoreButton>
+                  )}
+                </Content>
               </GrayBackground>
             );
           })}
@@ -166,6 +181,14 @@ const ReviewOutBtn = styled.button`
   padding: 10px;
   width: 170px;
   color: ${({ theme }) => theme.colors.colorBlue2};
+`;
+
+const MoreButton = styled.button`
+  font-size: ${({ theme }) => theme.fontSize.fontSmall};
+  color: ${({ theme }) => theme.colors.colorGray3};
+  margin-left: 5px;
+
+  ${(props) => props.review && `font-size: 12px`}
 `;
 
 export default ChallengeReview;

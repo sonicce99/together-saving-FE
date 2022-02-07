@@ -13,19 +13,22 @@ const SavingDeposit = () => {
   } = useMatch("/saving/:id/deposit");
 
   return (
-    <DepositContainer>
+    <>
       <Time />
       <Header sub />
-      <SavingRoomInfoContainer id={id} />
-      <DivisionLine />
-      <DepositView />
-    </DepositContainer>
+      <DepositContainer>
+        <SavingRoomInfoContainer id={id} />
+        <DivisionLine />
+        <DepositView />
+      </DepositContainer>
+    </>
   );
 };
 
 const DepositContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 96px;
 `;
 
 export default SavingDeposit;

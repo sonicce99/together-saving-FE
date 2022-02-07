@@ -63,6 +63,7 @@ const SavingHistory = ({
 
 const SavingHistoryContainer = styled.div`
   padding: 30px 16px;
+  height: 550px;
 `;
 
 const Title = styled.p`
