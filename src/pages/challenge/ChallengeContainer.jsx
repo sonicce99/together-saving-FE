@@ -22,8 +22,6 @@ const Challenge = () => {
   );
   const dispatch = useDispatch();
 
-  console.log(dispatch);
-
   const navigate = useNavigate();
 
   // 챌린지 id 가져오기
