@@ -82,18 +82,15 @@ const Challenge = () => {
             description={data.data.challenge_description}
           />
           <ChallengeReview
+            participated={data.data.participated}
             challenge_id={data.data.challenge_id}
             reviews={data.data.challenge_reviews}
           />
           <RefundAndCaution />
-          <RecommendContainer>
-            <ChallengeTemplate2
-              title="이런 챌린지도 있어요!"
-              ChallengeArray={popularChallengeData}
-            />
-          </RecommendContainer>
-        </Inner>
-        <ButtonContainer>
+          <ChallengeTemplate2
+            title="이런 챌린지도 있어요!"
+            ChallengeArray={popularChallengeData}
+          />
           <Button
             onClick={() => {
               data.data.participated
@@ -103,7 +100,7 @@ const Challenge = () => {
           >
             챌린지 함께하기
           </Button>
-        </ButtonContainer>
+        </Inner>
       </Container>
     </>
   );
