@@ -22,6 +22,8 @@ const Challenge = () => {
   );
   const dispatch = useDispatch();
 
+  console.log(dispatch);
+
   const navigate = useNavigate();
 
   // 챌린지 id 가져오기
@@ -31,7 +33,7 @@ const Challenge = () => {
 
   useEffect(() => {
     dispatch(getChallengesummaryInfo(id));
-  }, [dispatch]);
+  }, [id]);
 
   useEffect(() => {
     (async () => {
@@ -77,6 +79,7 @@ const Challenge = () => {
           description={data.data.challenge_description}
         />
         <ChallengeReview
+          participated={data.data.participated}
           challenge_id={data.data.challenge_id}
           reviews={data.data.challenge_reviews}
         />
