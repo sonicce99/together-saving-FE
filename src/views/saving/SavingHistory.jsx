@@ -9,11 +9,14 @@ import defaultThumbnail from "../../images/Character.png";
 const SavingHistory = ({
   savingHistory,
   challengeInfo,
+  statusInfo,
   filter,
   onFilter,
   id,
 }) => {
   const { challenge_payment } = challengeInfo.data;
+  const { saving_rate } = statusInfo.data;
+
   const {
     account_number,
     balance,
@@ -60,6 +63,7 @@ const SavingHistory = ({
         account={account_number}
         isAuto={isAuto}
         defaultPrice={challenge_payment}
+        savingRate={saving_rate}
       />
     </>
   );
