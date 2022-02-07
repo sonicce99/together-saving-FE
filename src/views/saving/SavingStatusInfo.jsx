@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 import useNumberComma from "../../hooks/useNumberComma";
+import defaultProfile from "../../images/Character.png";
 
 const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
   const {
@@ -19,11 +20,19 @@ const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
 
   const cmaBalance = useNumberComma(accumualted_amount);
 
+  const handleImageError = (e) => {
+    e.target.src = defaultProfile;
+  };
+
   return (
     <>
       <SavingStatusContainer>
         <StatusInfoContainer>
-          <InfoThumbnail src={thumbnail} alt="thumbnail" />
+          <InfoThumbnail
+            src={thumbnail}
+            alt="thumbnail"
+            onError={handleImageError}
+          />
           <Text>
             <Span>{nickname}</Span>님의 누적 저축 금액
           </Text>
@@ -54,8 +63,9 @@ const InfoThumbnail = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: wheat;
-  margin-bottom: 20px;
+  background-color: skyblue;
+  display: block;
+  margin: 0 auto 20px;
 `;
 
 const Text = styled.p`

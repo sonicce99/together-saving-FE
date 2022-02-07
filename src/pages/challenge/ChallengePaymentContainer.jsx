@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Thumbnail from "../../components/Thimbnail";
+import Thumbnail from "../../components/Thumbnail";
 import RefundAndCaution from "../../components/RefundAndCaution";
 import ChallengeSummary from "../../components/ChallengeSummary";
 import DivisionLine from "../../components/DivisionLine";
