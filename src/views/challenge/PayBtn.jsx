@@ -4,10 +4,21 @@ import H3 from "../../components/H3";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import useNumberComma from "../../hooks/useNumberComma";
+import { axiosInstance } from "../../utils/TokenApi";
 
 const PayBtn = ({ challenge_entry_fee, id }) => {
   const challengeFee = useNumberComma(challenge_entry_fee);
   let navigate = useNavigate();
+
+  const handlePayment = async () => {
+    try {
+      // 결제하기 요청
+      await axiosInstance.post(`/api/v1/challenges/${id}/payment`);
+      navigate(`/challenge/${id}/success`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
@@ -17,9 +28,7 @@ const PayBtn = ({ challenge_entry_fee, id }) => {
           <PaySum>{challengeFee}원</PaySum>
         </Div>
         <Div2 />
-        <Button onClick={() => navigate(`/challenge/${id}/success`)}>
-          참가비 결제하기
-        </Button>
+        <Button onClick={() => handlePayment()}>참가비 결제하기</Button>
       </Inner>
     </Container>
   );
@@ -29,7 +38,6 @@ const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 151px;
   box-shadow: 0px -2px 5px 1px rgba(0, 0, 0, 0.18);
-  /* background: ${({ theme }) => theme.colors.colorWhite}; */
 `;
 
 const Inner = styled.div`

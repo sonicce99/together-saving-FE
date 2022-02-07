@@ -31,7 +31,7 @@ const Challenge = () => {
 
   useEffect(() => {
     dispatch(getChallengesummaryInfo(id));
-  }, [dispatch]);
+  }, [id]);
 
   useEffect(() => {
     (async () => {
@@ -77,6 +77,7 @@ const Challenge = () => {
           description={data.data.challenge_description}
         />
         <ChallengeReview
+          participated={data.data.participated}
           challenge_id={data.data.challenge_id}
           reviews={data.data.challenge_reviews}
         />
