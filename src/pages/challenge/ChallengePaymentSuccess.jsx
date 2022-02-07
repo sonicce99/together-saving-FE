@@ -30,7 +30,6 @@ const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 812px;
   text-align: center;
-  border: 2px solid black;
 `;
 
 const Inner = styled.div`

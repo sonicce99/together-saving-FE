@@ -39,15 +39,12 @@ const Time = () => {
 };
 
 const Container = styled.div`
-  width: ${({ theme }) => theme.viewSize.mobile};
   height: 44px;
-  background: transparent;
+  padding: 12px 20px;
 `;
 
 const Inner = styled.div`
-  width: 343px;
   margin: ${({ theme }) => theme.margins.marginCenter};
-  height: 44px;
   display: flex;
   justify-content: space-between;
   align-items: center;

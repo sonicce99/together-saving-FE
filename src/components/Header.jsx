@@ -1,19 +1,39 @@
 import React from "react";
 import styled from "styled-components";
-import savle from "../images/savle.png";
+import logo from "../images/savle.png";
 import heart from "../images/heart.png";
 import bell from "../images/bell.png";
+import arrow from "../images/left_arrow.png";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ main, more, detail }) => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <Container>
       <Inner>
         <Left>
-          <Savle src={savle} />
+          {main ? (
+            <LeftButton src={logo} alt="logo" logo />
+          ) : (
+            <LeftButton src={arrow} alt="arrow" onClick={handleGoBack} />
+          )}
         </Left>
         <Right>
-          <Heart src={heart} />
-          <Bell src={bell} />
+          {main || more ? (
+            <>
+              <Heart src={heart} />
+              <Bell src={bell} />
+            </>
+          ) : detail ? (
+            ""
+          ) : (
+            "관리"
+          )}
         </Right>
       </Inner>
     </Container>
@@ -21,29 +41,27 @@ const Header = () => {
 };
 
 const Container = styled.header`
-  width: ${({ theme }) => theme.viewSize.mobile};
-  box-sizing: border-box;
   height: 52px;
-  border: 2px solid black;
+  padding: 0 16px;
 `;
 
 const Inner = styled.main`
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 16px;
-  height: 52px;
 `;
 
-const Left = styled.div``;
+const Left = styled.button``;
 
 const Right = styled.div`
   display: flex;
   align-items: center;
 `;
-const Savle = styled.img`
-  width: 65px;
-  height: 19px;
+
+const LeftButton = styled.img`
+  ${(props) =>
+    props.logo ? `width: 65px; height: 20px;` : `width: 10px; height: 20px;`}
 `;
 
 const Heart = styled.img`

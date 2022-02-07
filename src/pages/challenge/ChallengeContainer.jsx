@@ -101,7 +101,6 @@ const Challenge = () => {
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  border: 2px solid black;
 `;
 
 const Inner = styled.div`

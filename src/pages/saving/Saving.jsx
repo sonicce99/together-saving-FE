@@ -3,6 +3,8 @@ import styled from "styled-components";
 import SavingRoomInfoContainer from "./SavingRoomInfoContainer";
 import DivisionLine from "../../components/DivisionLine";
 import SavingTabMenu from "../../views/saving/SavingTabMenu";
+import Time from "../../components/Time";
+import Header from "../../components/Header";
 import { useMatch } from "react-router-dom";
 
 const Saving = () => {
@@ -15,6 +17,8 @@ const Saving = () => {
 
   return (
     <SavingContainer>
+      <Time />
+      <Header sub />
       {currentTab === 0 && (
         <>
           <SavingRoomInfoContainer id={id} />

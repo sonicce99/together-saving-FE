@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 20px;
-  letter-spacing: -0.5px;
+    letter-spacing: -0.5px;
   }
 
   a {
