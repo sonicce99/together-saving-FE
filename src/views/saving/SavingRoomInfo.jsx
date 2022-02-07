@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 import { challengeDayKor } from "../../utils/engDataRegex";
 import useRemainDay from "../../hooks/useRemainDay";
 import useRemainWeek from "../../hooks/useRemainWeek";
+import defaultThumbnail from "../../images/SaveChallenge.png";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
-  const { challenge_name, challenge_frequency, end_date, start_date } =
-    challengeInfo;
+  const {
+    thumbnail,
+    challenge_name,
+    challenge_frequency,
+    end_date,
+    start_date,
+  } = challengeInfo;
 
   const startDay = start_date.slice(2, 10).replaceAll("-", ".");
   const endDay = end_date.slice(5, 10).replaceAll("-", ".");
@@ -22,7 +28,7 @@ const SavingRoomInfo = ({ challengeInfo }) => {
 
   return (
     <InfoContainer>
-      <InfoThumbnail src="" alt="thumbnail" />
+      <InfoThumbnail src={!thumbnail && defaultThumbnail} alt="thumbnail" />
       <InfoTextContainer>
         <Link to="/challenge/:id">
           <Title>{challenge_name}</Title>
@@ -51,7 +57,6 @@ const InfoThumbnail = styled.img`
   height: 70px;
   border-radius: 5px;
   margin-right: 16px;
-  background-color: wheat;
 `;
 
 const InfoTextContainer = styled.div`

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import H3 from "./H3.jsx";
 import MoreShowBtn from "./MoreShowBtn.jsx";
 import { useNavigate } from "react-router-dom";
+import defaultThumbnail from "../images/SaveChallenge.png";
 
 const MODE = ["자율", "경쟁"];
 
@@ -23,6 +24,7 @@ const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
                 <Content key={index}>
                   <ThumbnailInfo>
                     <Image
+                      src={!EachChallenge.thumbnail && defaultThumbnail}
                       onClick={() => {
                         navigate(`/challenge/${EachChallenge.id}`);
                       }}

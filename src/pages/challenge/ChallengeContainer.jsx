@@ -8,7 +8,9 @@ import ChallengeReview from "../../views/challenge/ChallengeReview.jsx";
 import RefundAndCaution from "../../components/RefundAndCaution.jsx";
 import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import Button from "../../components/Button.jsx";
-import Thumbnail from "../../components/Thimbnail";
+import Thumbnail from "../../components/Thumbnail";
+import Time from "../../components/Time";
+import Header from "../../components/Header";
 import { useMatch, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
@@ -52,61 +54,64 @@ const Challenge = () => {
   if (!data) return <h2>No data!</h2>;
 
   return (
-    <Container>
-      <Thumbnail thumbnail={data.data.thumbnail} />
-      <Inner>
-        <Tags
-          challenge_id={data.data.challenge_id}
-          is_wished={data.data.is_wished}
-          tags={data.data.tags}
-        />
-        <ChallengeSummary
-          challenge_name={data.data.challenge_name}
-          start_date={data.data.start_date}
-          end_date={data.data.end_date}
-          challenge_frequency={data.data.challenge_frequency}
-          challenge_payment={data.data.challenge_payment}
-          challenge_entry_fee={data.data.challenge_entry_fee}
-          challenge_members={data.data.challenge_members}
-        />
-      </Inner>
-      <DivisionLine />
-      <Inner>
-        <ChallengeDescription
-          hostName={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
-          description={data.data.challenge_description}
-        />
-        <ChallengeReview
-          challenge_id={data.data.challenge_id}
-          reviews={data.data.challenge_reviews}
-        />
-        <RefundAndCaution />
-        <RecommendContainer>
-          <ChallengeTemplate2
-            title="이런 챌린지도 있어요!"
-            ChallengeArray={popularChallengeData}
+    <>
+      <Time />
+      <Header detail />
+      <Container>
+        <Thumbnail thumbnail={data.data.thumbnail} />
+        <Inner>
+          <Tags
+            challenge_id={data.data.challenge_id}
+            is_wished={data.data.is_wished}
+            tags={data.data.tags}
           />
-        </RecommendContainer>
-      </Inner>
-      <ButtonContainer>
-        <Button
-          onClick={() => {
-            data.data.participated
-              ? navigate(`/saving/${id}`)
-              : navigate(`/challenge/${id}/payment`);
-          }}
-        >
-          챌린지 함께하기
-        </Button>
-      </ButtonContainer>
-    </Container>
+          <ChallengeSummary
+            challenge_name={data.data.challenge_name}
+            start_date={data.data.start_date}
+            end_date={data.data.end_date}
+            challenge_frequency={data.data.challenge_frequency}
+            challenge_payment={data.data.challenge_payment}
+            challenge_entry_fee={data.data.challenge_entry_fee}
+            challenge_members={data.data.challenge_members}
+          />
+        </Inner>
+        <DivisionLine />
+        <Inner>
+          <ChallengeDescription
+            hostName={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
+            description={data.data.challenge_description}
+          />
+          <ChallengeReview
+            challenge_id={data.data.challenge_id}
+            reviews={data.data.challenge_reviews}
+          />
+          <RefundAndCaution />
+          <RecommendContainer>
+            <ChallengeTemplate2
+              title="이런 챌린지도 있어요!"
+              ChallengeArray={popularChallengeData}
+            />
+          </RecommendContainer>
+        </Inner>
+        <ButtonContainer>
+          <Button
+            onClick={() => {
+              data.data.participated
+                ? navigate(`/saving/${id}`)
+                : navigate(`/challenge/${id}/payment`);
+            }}
+          >
+            챌린지 함께하기
+          </Button>
+        </ButtonContainer>
+      </Container>
+    </>
   );
 };
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  height: 812px;
-  overflow-y: scroll;
+  padding-top: 100px;
 `;
 
 const RecommendContainer = styled.div`

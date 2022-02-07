@@ -4,6 +4,7 @@ import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
 import useNumberComma from "../../hooks/useNumberComma";
+import defaultThumbnail from "../../images/Character.png";
 
 const SavingHistory = ({
   savingHistory,
@@ -36,7 +37,10 @@ const SavingHistory = ({
         <Title>연결된 계좌</Title>
         <AccountInfoContainer>
           <AccountInfo>
-            <BankThumbnail src={thumbnail} alt="thumbnail" />
+            <BankThumbnail
+              src={!thumbnail && defaultThumbnail}
+              alt="thumbnail"
+            />
             <AccountTextContainer>
               <AccountText>{bank_name}</AccountText>
               <AccountText>{account_number}</AccountText>
@@ -89,7 +93,6 @@ const AccountInfo = styled.div`
 const BankThumbnail = styled.img`
   width: 45px;
   height: 45px;
-  background-color: wheat;
   border-radius: 50%;
   margin-right: 16px;
 `;
