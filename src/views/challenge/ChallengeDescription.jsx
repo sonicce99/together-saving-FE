@@ -6,7 +6,7 @@ import H3 from "../../components/H3.jsx";
 const ChallengeDescription = ({ hostName, description }) => {
   const [isMore, setIsMore] = useState(false);
 
-  const textLimit = 100;
+  const preview = description.slice(0, 100);
 
   const handleShowMoreInfo = () => {
     setIsMore((isMore) => !isMore);
@@ -26,10 +26,16 @@ const ChallengeDescription = ({ hostName, description }) => {
       </Profile>
       <H3>저축 챌린지 설명</H3>
       <Description>
-        {isMore ? description : description.slice(0, textLimit)}
-        <MoreButton onClick={handleShowMoreInfo}>
-          {isMore ? "닫기" : "・・・더보기"}
-        </MoreButton>
+        {description.length > 100
+          ? !isMore
+            ? preview
+            : description
+          : description}
+        {description.length > 100 && (
+          <MoreButton onClick={handleShowMoreInfo}>
+            {isMore ? "닫기" : "더보기"}
+          </MoreButton>
+        )}
       </Description>
     </>
   );
@@ -61,5 +67,7 @@ const Description = styled(H3)`
 const MoreButton = styled.button`
   font-size: ${({ theme }) => theme.fontSize.fontSmall};
   color: ${({ theme }) => theme.colors.colorGray3};
+  margin-left: 5px;
 `;
+
 export default ChallengeDescription;
