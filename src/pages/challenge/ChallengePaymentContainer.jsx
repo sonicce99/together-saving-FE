@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Thumbnail from "../../components/Thimbnail";
+import Thumbnail from "../../components/Thumbnail";
 import RefundAndCaution from "../../components/RefundAndCaution";
 import ChallengeSummary from "../../components/ChallengeSummary";
 import DivisionLine from "../../components/DivisionLine";
@@ -38,9 +38,9 @@ const ChallengePayment = () => {
         />
       </Inner>
       <DivisionLine />
-      <Inner>
+      <Inner warning>
         <SavingDay challenge_frequency={data.data.challenge_frequency} />
-        <RefundAndCaution />
+        <RefundAndCaution payment />
       </Inner>
       <PayBtn challenge_entry_fee={data.data.challenge_entry_fee} id={id} />
     </Container>
@@ -49,12 +49,13 @@ const ChallengePayment = () => {
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  border: 2px solid black;
 `;
 
 const Inner = styled.div`
   width: 343px;
   margin: ${({ theme }) => theme.margins.marginCenter};
+
+  ${(props) => props.warning && `margin-bottom: 165px;`}
 `;
 
 export default ChallengePayment;

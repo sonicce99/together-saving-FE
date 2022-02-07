@@ -15,7 +15,7 @@ const SavingCount = ({ success, fail, remain }) => {
       <CountInfo>
         <Img src={save_fail} alt="fail" />
         <Text>저축실패</Text>
-        <Text>{fail}번</Text>
+        <Text>{fail < 0 ? "0" : fail}번</Text>
       </CountInfo>
       <CountInfo>
         <Img src={save_remain} alt="remain" />

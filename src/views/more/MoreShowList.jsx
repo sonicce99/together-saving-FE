@@ -44,6 +44,7 @@ const MoreShowTemplate = () => {
 
 const MoreShowContainer = styled.div`
   width: 343px;
+  padding-top: 96px;
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 

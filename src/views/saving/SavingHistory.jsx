@@ -4,15 +4,19 @@ import AutoSavingButton from "./AutoSavingButton";
 import SavingHistoryList from "./SavingHistoryList";
 import SavingStartButton from "./SavingStartButton";
 import useNumberComma from "../../hooks/useNumberComma";
+import defaultThumbnail from "../../images/Character.png";
 
 const SavingHistory = ({
   savingHistory,
   challengeInfo,
+  statusInfo,
   filter,
   onFilter,
   id,
 }) => {
   const { challenge_payment } = challengeInfo.data;
+  const { saving_rate } = statusInfo.data;
+
   const {
     account_number,
     balance,
@@ -36,7 +40,10 @@ const SavingHistory = ({
         <Title>연결된 계좌</Title>
         <AccountInfoContainer>
           <AccountInfo>
-            <BankThumbnail src={thumbnail} alt="thumbnail" />
+            <BankThumbnail
+              src={!thumbnail && defaultThumbnail}
+              alt="thumbnail"
+            />
             <AccountTextContainer>
               <AccountText>{bank_name}</AccountText>
               <AccountText>{account_number}</AccountText>
@@ -56,6 +63,7 @@ const SavingHistory = ({
         account={account_number}
         isAuto={isAuto}
         defaultPrice={challenge_payment}
+        savingRate={saving_rate}
       />
     </>
   );
@@ -63,6 +71,7 @@ const SavingHistory = ({
 
 const SavingHistoryContainer = styled.div`
   padding: 30px 16px;
+  height: 550px;
 `;
 
 const Title = styled.p`
@@ -88,7 +97,6 @@ const AccountInfo = styled.div`
 const BankThumbnail = styled.img`
   width: 45px;
   height: 45px;
-  background-color: wheat;
   border-radius: 50%;
   margin-right: 16px;
 `;
