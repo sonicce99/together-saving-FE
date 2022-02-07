@@ -33,7 +33,7 @@ const Challenge = () => {
 
   useEffect(() => {
     dispatch(getChallengesummaryInfo(id));
-  }, [dispatch]);
+  }, [id]);
 
   useEffect(() => {
     (async () => {

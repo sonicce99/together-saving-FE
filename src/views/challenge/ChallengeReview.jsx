@@ -20,7 +20,7 @@ const style = {
   p: 0,
 };
 
-const ChallengeReview = ({ challenge_id, reviews }) => {
+const ChallengeReview = ({ participated, challenge_id, reviews }) => {
   const [isMore, setIsMore] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -80,7 +80,11 @@ const ChallengeReview = ({ challenge_id, reviews }) => {
             );
           })}
       </Div>
-      <ReviewBtn onClick={handleOpen}>후기 작성하기</ReviewBtn>
+      {participated ? (
+        <ReviewAbleBtn onClick={handleOpen}>후기 작성하기</ReviewAbleBtn>
+      ) : (
+        <ReviewDisableBtn disabled>챌린지에 참여 해주세요</ReviewDisableBtn>
+      )}
       <Modal
         open={open}
         onClose={handleClose}
@@ -150,10 +154,17 @@ const Content = styled(H3)`
   width: 234px;
 `;
 
-const ReviewBtn = styled(Button2)`
+const ReviewAbleBtn = styled(Button2)`
   color: ${({ theme }) => theme.colors.colorBlue2};
   background-color: ${({ theme }) => theme.colors.colorWhite};
   border: 1px solid #3178ff;
+  margin-bottom: 40px;
+`;
+
+const ReviewDisableBtn = styled(Button2)`
+  color: "#928989";
+  background-color: "#CDCDCD";
+  border: 1px solid #cdcdcd;
   margin-bottom: 40px;
 `;
 

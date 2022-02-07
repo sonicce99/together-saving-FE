@@ -8,9 +8,7 @@ const Time = () => {
 
   // 시 계산
   const handleHour = (date) => {
-    date.getHours() > 12
-      ? setCurrentHour(String(date.getHours() - 12).padStart(2, 0))
-      : setCurrentHour(String(date.getHours()).padStart(2, 0));
+    setCurrentHour(String(date.getHours()).padStart(2, 0));
   };
 
   // 분 계산
