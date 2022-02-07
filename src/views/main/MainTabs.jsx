@@ -58,7 +58,6 @@ const MainTabs = () => {
       <Box
         sx={{
           width: "100%",
-          border: "2px solid black",
         }}
       >
         <Box

@@ -37,7 +37,6 @@ const Event = () => {
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 307px;
-  border: 2px solid black;
 `;
 
 const Image = styled.img`

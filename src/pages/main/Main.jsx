@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <MainContainer>
       <Time />
-      <Header />
+      <Header main />
       <Event />
       <MainTabs />
       <BottomNav />

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useMatch } from "react-router-dom";
-import H3 from "../../components/H3";
 import InfiniteScroll from "react-infinite-scroll-component";
 import MoreShowItem from "./MoreShowItem";
 import useChallengeApi from "../../hooks/useChallengeApi";
@@ -48,12 +47,12 @@ const MoreShowContainer = styled.div`
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 
-const ChallengeTitle = styled(H3)`
+const ChallengeTitle = styled.p`
   color: ${({ theme }) => theme.colors.colorBlack};
+  font-size: ${({ theme }) => theme.fontSize.fontMideum};
   font-family: SF Pro Text;
   font-weight: 600;
-  line-height: 21px;
-  margin-bottom: 16px;
+  padding: 28px 0 16px 0;
 `;
 
 const ChallengeList = styled.ul`
