@@ -10,7 +10,6 @@ import ChallengePaymentContainer from "./pages/challenge/ChallengePaymentContain
 import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
 import MoreShow from "./pages/MoreShow/MoreShow";
 import cookie from "react-cookies";
-import SavingStatusSkeleton from "./components/skeleton/SavingStatusSkeleton";
 
 const App = () => {
   const accessToken = process.env.Token;
@@ -41,7 +40,6 @@ const App = () => {
         <Route path="/saving/:id/deposit" element={<SavingDeposit />} />
         <Route path="/saving/:id/success" element={<SavingSuccess />} />
         <Route path="/moreshow/:name" element={<MoreShow />} />
-        <Route path="/skeleton" element={<SavingStatusSkeleton />} />
       </Routes>
     </Wrapper>
   );
