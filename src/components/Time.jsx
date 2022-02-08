@@ -37,7 +37,7 @@ const Time = () => {
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: ${({ theme }) => theme.viewSize.mobile};
   height: 44px;
   padding: 12px 20px;
   position: fixed;
