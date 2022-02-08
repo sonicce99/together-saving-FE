@@ -11,7 +11,7 @@ const SavingHistory = ({ historyList, filter, onFilter }) => {
   const { period, order } = filter;
 
   const handlePopup = () => {
-    setShowPopup(!showPopup);
+    setShowPopup((showPopup) => !showPopup);
   };
 
   return (
