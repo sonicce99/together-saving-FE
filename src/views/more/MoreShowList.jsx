@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useMatch } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";

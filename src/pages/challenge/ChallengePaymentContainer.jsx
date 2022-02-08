@@ -5,9 +5,12 @@ import RefundAndCaution from "../../components/RefundAndCaution";
 import ChallengeSummary from "../../components/ChallengeSummary";
 import DivisionLine from "../../components/DivisionLine";
 import SavingDay from "../../views/challenge/SavingDay";
+import Time from "../../components/Time";
+import Header from "../../components/Header";
 import { useSelector } from "react-redux";
 import PayBtn from "../../views/challenge/PayBtn";
 import { useMatch } from "react-router-dom";
+import ChallengeSkeleton from "../../components/skeleton/ChallengeSkeleton";
 
 const ChallengePayment = () => {
   // 챌린지 id 가져오기
@@ -19,31 +22,35 @@ const ChallengePayment = () => {
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
 
-  if (loading) return <h2>로딩중...</h2>;
+  if (loading) return <ChallengeSkeleton />;
   if (error) return <h2>에러 발생!</h2>;
   if (!data) return <h2>No data!</h2>;
 
   return (
-    <Container>
-      <Thumbnail>챌린지 썸네일</Thumbnail>
-      <Inner>
-        <ChallengeSummary
-          challenge_name={data.data.challenge_name}
-          start_date={data.data.start_date}
-          end_date={data.data.end_date}
-          challenge_frequency={data.data.challenge_frequency}
-          challenge_payment={data.data.challenge_payment}
-          challenge_entry_fee={data.data.challenge_entry_fee}
-          challenge_members={data.data.challenge_members}
-        />
-      </Inner>
-      <DivisionLine />
-      <Inner warning>
-        <SavingDay challenge_frequency={data.data.challenge_frequency} />
-        <RefundAndCaution payment />
-      </Inner>
-      <PayBtn challenge_entry_fee={data.data.challenge_entry_fee} id={id} />
-    </Container>
+    <>
+      <Time />
+      <Header detail />
+      <Container>
+        <Thumbnail>챌린지 썸네일</Thumbnail>
+        <Inner>
+          <ChallengeSummary
+            challenge_name={data.data.challenge_name}
+            start_date={data.data.start_date}
+            end_date={data.data.end_date}
+            challenge_frequency={data.data.challenge_frequency}
+            challenge_payment={data.data.challenge_payment}
+            challenge_entry_fee={data.data.challenge_entry_fee}
+            challenge_members={data.data.challenge_members}
+          />
+        </Inner>
+        <DivisionLine />
+        <Inner warning>
+          <SavingDay challenge_frequency={data.data.challenge_frequency} />
+          <RefundAndCaution payment />
+        </Inner>
+        <PayBtn challenge_entry_fee={data.data.challenge_entry_fee} id={id} />
+      </Container>
+    </>
   );
 };
 
