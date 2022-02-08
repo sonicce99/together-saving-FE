@@ -12,29 +12,30 @@ const ChallengePaymentSuccess = () => {
   } = useMatch("/challenge/:id/success");
 
   return (
-    <Container>
+    <>
       <Time />
-      <Inner>
-        <Image src={Character} />
-        <Title>참가비 결제가 완료 되었어요!</Title>
-        <P>이제 챌린지를 시작해보세요!</P>
-      </Inner>
-      <Link to={`/saving/${id}`}>
-        <Button>확인</Button>
-      </Link>
-    </Container>
+      <Container>
+        <Inner>
+          <Image src={Character} />
+          <Title>참가비 결제가 완료 되었어요!</Title>
+          <P>이제 챌린지를 시작해보세요!</P>
+        </Inner>
+        <Link to={`/saving/${id}`}>
+          <Button>확인</Button>
+        </Link>
+      </Container>
+    </>
   );
 };
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  height: 812px;
   text-align: center;
+  border: 1px solid white;
 `;
 
 const Inner = styled.div`
   width: 205px;
-  height: 335px;
   margin: ${({ theme }) => theme.margins.marginCenter};
   margin-top: 242px;
   margin-bottom: 150px;
