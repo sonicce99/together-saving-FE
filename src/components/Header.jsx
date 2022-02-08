@@ -41,7 +41,7 @@ const Header = ({ main, more, detail }) => {
 };
 
 const Container = styled.header`
-  width: 100%;
+  width: ${({ theme }) => theme.viewSize.mobile};
   height: 52px;
   padding: 50px 16px;
   position: fixed;
