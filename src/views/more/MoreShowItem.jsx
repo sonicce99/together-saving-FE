@@ -7,7 +7,7 @@ const MODE = ["자율", "경쟁"];
 
 const MoreShowItem = ({ data }) => {
   const navigate = useNavigate();
-  const { id, mode, period, date, title, tags } = data;
+  const { id, thumbnail, mode, period, date, title, tags } = data;
 
   const handleNavigate = () => {
     navigate(`/challenge/${id}`);
@@ -16,7 +16,7 @@ const MoreShowItem = ({ data }) => {
   return (
     <ChallengeItem>
       <ThumbnailInfo>
-        <Image src="" alt="thumbnail" onClick={handleNavigate} />
+        <Image src={thumbnail} alt="thumbnail" onClick={handleNavigate} />
         <ChallengeMode>{mode === "FREE" ? MODE[0] : MODE[1]}</ChallengeMode>
       </ThumbnailInfo>
       <ChallengeInfo>

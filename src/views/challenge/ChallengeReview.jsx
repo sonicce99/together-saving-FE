@@ -6,6 +6,7 @@ import H3 from "../../components/H3.jsx";
 import { Box, Typography, Modal } from "@mui/material";
 import GrayBackground from "../../components/GrayBackground.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
+import defaultImage from "../../images/Character.png";
 
 const style = {
   position: "absolute",
@@ -59,7 +60,11 @@ const ChallengeReview = ({ participated, challenge_id, reviews }) => {
                     <Avatar
                       sx={{ width: 32, height: 32 }}
                       alt="Remy Sharp"
-                      src="/static/images/avatar/1.jpg"
+                      src={
+                        review.profile_picture
+                          ? review.profile_picture
+                          : defaultImage
+                      }
                     />
                   </Stack>
                   <NickName>{review.nickname}</NickName>

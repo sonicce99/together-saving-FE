@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { challengeDayKor } from "../../utils/engDataRegex";
 import useRemainDay from "../../hooks/useRemainDay";
 import useRemainWeek from "../../hooks/useRemainWeek";
-import defaultThumbnail from "../../images/SaveChallenge.png";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
   const {
@@ -28,7 +27,7 @@ const SavingRoomInfo = ({ challengeInfo }) => {
 
   return (
     <InfoContainer>
-      <InfoThumbnail src={!thumbnail && defaultThumbnail} alt="thumbnail" />
+      <InfoThumbnail src={thumbnail} alt="thumbnail" />
       <InfoTextContainer>
         <Link to="/challenge/:id">
           <Title>{challenge_name}</Title>
