@@ -79,7 +79,8 @@ const Challenge = () => {
         <DivisionLine />
         <Inner>
           <ChallengeDescription
-            hostName={data.data.host_nickname} // host 프로필 사진 데이터가 API에 없음. 추가해야함.
+            hostName={data.data.host_nickname}
+            hostImage={data.data.host_thumbnail}
             description={data.data.challenge_description}
           />
           <ChallengeReview

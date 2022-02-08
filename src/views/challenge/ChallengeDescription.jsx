@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Avatar, Stack } from "@mui/material";
 import H3 from "../../components/H3.jsx";
+import defaultImage from "../../images/Character.png";
 
-const ChallengeDescription = ({ hostName, description }) => {
+const ChallengeDescription = ({ hostName, hostImage, description }) => {
   const [isMore, setIsMore] = useState(false);
 
   const preview = description.slice(0, 100);
@@ -17,9 +18,9 @@ const ChallengeDescription = ({ hostName, description }) => {
       <Profile>
         <Stack direction="row">
           <Avatar
+            src={hostImage ? hostImage : defaultImage}
             sx={{ width: 36, height: 36 }}
-            alt="Remy Sharp"
-            src="/static/images/avatar/1.jpg"
+            alt="profile"
           />
         </Stack>
         <Span>{hostName}</Span>
