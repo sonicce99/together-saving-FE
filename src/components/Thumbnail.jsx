@@ -12,7 +12,6 @@ const Size = styled.div`
   height: 270px;
   background-image: url(${defaultThumbnail});
   background-size: cover;
-  border: 1px solid skyblue;
 `;
 
 export default Thumbnail;

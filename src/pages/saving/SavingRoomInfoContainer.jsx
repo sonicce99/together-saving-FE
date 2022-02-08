@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SavingRoomInfo from "../../views/saving/SavingRoomInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
+import SavingRoomInfoSkeleton from "../../components/skeleton/SavingRoomInfoSkeleton";
 
 const SavingRoomInfoContainer = ({ id }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const SavingRoomInfoContainer = ({ id }) => {
     dispatch(getChallengesummaryInfo(id));
   }, []);
 
-  if (challengeInfo.loading) return <div>로딩중</div>;
+  if (challengeInfo.loading) return <SavingRoomInfoSkeleton />;
   if (challengeInfo.error) return <div>에러 발생</div>;
   if (!challengeInfo.data) return null;
 

@@ -15,6 +15,7 @@ import { useMatch, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer.js";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
+import ChallengeSkeleton from "../../components/skeleton/ChallengeSkeleton";
 
 const Challenge = () => {
   const [popularChallengeData, setPopularChallengeData] = useState([]);
@@ -49,7 +50,7 @@ const Challenge = () => {
     })();
   }, []);
 
-  if (loading) return <h2>로딩중...</h2>;
+  if (loading) return <ChallengeSkeleton />;
   if (error) return <h2>에러 발생!</h2>;
   if (!data) return <h2>No data!</h2>;
 
@@ -111,24 +112,9 @@ const Container = styled.div`
   padding-top: 100px;
 `;
 
-const RecommendContainer = styled.div`
-  margin-bottom: 120px;
-`;
-
 const Inner = styled.div`
   width: 343px;
   margin: ${({ theme }) => theme.margins.marginCenter};
-`;
-
-const ButtonContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 8px 16px;
-  box-shadow: 0px 4px 21px -1px rgba(0, 0, 0, 0.18);
-  background-color: white;
-  position: fixed;
-  bottom: 0;
 `;
 
 export default Challenge;

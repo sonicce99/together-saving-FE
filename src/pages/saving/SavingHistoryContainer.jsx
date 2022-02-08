@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSavingInfo } from "../../redux/reducers/savingInfoReducer";
 import { getSavingHistory } from "../../redux/reducers/savingHistoryReducer";
 import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryReducer";
+import SavingHistorySkeleton from "../../components/skeleton/SavingHistorySkeleton";
 
 const SavingHistoryContainer = ({ id }) => {
   const [filter, setFilter] = useState({ period: "today", order: "desc" });
@@ -24,7 +25,7 @@ const SavingHistoryContainer = ({ id }) => {
     dispatch(getSavingInfo(id));
   }, [filter]);
 
-  if (history.loading) return <div>로딩중</div>;
+  if (history.loading) return <SavingHistorySkeleton />;
   if (history.error) return <div>에러 발생</div>;
   if (!history.data) return null;
   if (!challenge.data) return null;

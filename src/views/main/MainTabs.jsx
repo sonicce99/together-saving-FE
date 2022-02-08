@@ -8,6 +8,7 @@ import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 
 const MainTabs = () => {
+  const [loading, setLoading] = React.useState(true);
   const [value, setValue] = React.useState(0); // Tabs 관련
 
   const [participatingChallenges, setParticipatingChallenges] = React.useState(
@@ -47,6 +48,7 @@ const MainTabs = () => {
         console.log(error);
       }
     })();
+    setLoading((loading) => !loading);
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -93,6 +95,7 @@ const MainTabs = () => {
           <ChallengeTemplate1
             title="참여중인 챌린지"
             ChallengeArray={participatingChallenges}
+            loading={loading}
           />
         </TabPanel>
 
