@@ -13,9 +13,6 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 20px;
     letter-spacing: -0.5px;
-    position: absolute;
-    left: 50%;
-    margin-left: -187.5px;
     border: 1px solid #f8f8f8;
   }
 
