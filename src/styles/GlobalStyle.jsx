@@ -7,16 +7,20 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+       display: none; 
+    }
   }
 
-  *::-webkit-scrollbar {
-  display: none; 
-}
-  
   body {
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 20px;
     letter-spacing: -0.5px;
+    
+    &::-webkit-scrollbar {
+    display: none;
+  }
   }
 
   a {

@@ -25,7 +25,7 @@ const SavingRate = ({ rate, endDate }) => {
         </Day>
       </RemainDayContainer>
       <ProgressContainer>
-        {(remainDay < 0 || rate === "100") && (
+        {(remainDay < 0 || rate === 100) && (
           <Portal>
             <SavingFinishPopUp />
           </Portal>
