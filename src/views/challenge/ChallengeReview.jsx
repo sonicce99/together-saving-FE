@@ -10,7 +10,7 @@ import defaultImage from "../../images/default_profile.png";
 
 const style = {
   position: "absolute",
-  top: "50%",
+  top: "45%",
   left: "188px",
   transform: "translate(-50%, -50%)",
   width: 343,

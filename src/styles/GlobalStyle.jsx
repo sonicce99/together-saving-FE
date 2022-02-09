@@ -17,10 +17,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 20px;
     letter-spacing: -0.5px;
-    
+    border: 1px solid #f8f8f8;
+
     &::-webkit-scrollbar {
     display: none;
   }
+
   }
 
   a {
