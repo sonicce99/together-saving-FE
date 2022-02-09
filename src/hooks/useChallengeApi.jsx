@@ -3,37 +3,32 @@ import { axiosInstance } from "../utils/TokenApi";
 
 const useChallengeApi = (challengeName, nextPage) => {
   const [challengeData, setChallengeData] = useState([]);
-  const [isSubscribe, setIsSubscribe] = useState(true);
 
-  const getCallApi = () => {
+  const getCallApi = async () => {
     switch (challengeName) {
       case "participate":
-        axiosInstance
-          .get(`/api/v1/users/my-challenges?page=${nextPage}`)
-          .then((res) => {
-            setChallengeData([...challengeData, ...res.data.data]);
-          });
+        const join = await axiosInstance.get(
+          `/api/v1/users/my-challenges?page=${nextPage}`
+        );
+        setChallengeData([...challengeData, ...join.data.data]);
         break;
       case "popular":
-        axiosInstance
-          .get(`/api/v1/auth/challenges?criteria=popularity&page=${nextPage}`)
-          .then((res) => {
-            setChallengeData([...challengeData, ...res.data.data]);
-          });
+        const popular = await axiosInstance.get(
+          `/api/v1/auth/challenges?criteria=popularity&page=${nextPage}`
+        );
+        setChallengeData([...challengeData, ...popular.data.data]);
         break;
       case "deadline":
-        axiosInstance
-          .get(`/api/v1/auth/challenges?criteria=deadline&page=${nextPage}`)
-          .then((res) => {
-            setChallengeData([...challengeData, ...res.data.data]);
-          });
+        const deadline = await axiosInstance.get(
+          `/api/v1/auth/challenges?criteria=deadline&page=${nextPage}`
+        );
+        setChallengeData([...challengeData, ...deadline.data.data]);
         break;
       case "all":
-        axiosInstance
-          .get(`/api/v1/auth/challenges?criteria=valid&page=${nextPage}`)
-          .then((res) => {
-            setChallengeData([...challengeData, ...res.data.data]);
-          });
+        const all = await axiosInstance.get(
+          `/api/v1/auth/challenges?criteria=valid&page=${nextPage}`
+        );
+        setChallengeData([...challengeData, ...all.data.data]);
         break;
       default:
         throw Error;
@@ -41,8 +36,7 @@ const useChallengeApi = (challengeName, nextPage) => {
   };
 
   useEffect(() => {
-    isSubscribe && getCallApi();
-    return () => setIsSubscribe((isSubscribe) => !isSubscribe);
+    getCallApi();
   }, [nextPage]);
 
   return challengeData;
