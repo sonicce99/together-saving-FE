@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import SavingLanking from "../../views/saving/SavingLanking";
 
 const SavingLankingContainer = () => {
-  // const dispatch = useDispatch();
   const challengeInfo = useSelector(
     (state) => state.challengeSummaryReducer.challengeSummaryInfo
   );
@@ -13,7 +12,10 @@ const SavingLankingContainer = () => {
   if (!challengeInfo.data) return null;
 
   return (
-    <SavingLanking challenge_name={challengeInfo.data.data.challenge_name} />
+    <SavingLanking
+      challenge_id={challengeInfo.data.data.challenge_id}
+      challenge_name={challengeInfo.data.data.challenge_name}
+    />
   );
 };
 
