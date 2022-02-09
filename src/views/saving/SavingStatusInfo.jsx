@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SavingCount from "./SavingCount";
 import SavingRate from "./SavingRate";
 import useNumberComma from "../../hooks/useNumberComma";
-import defaultImage from "../../images/Character.png";
+import defaultImage from "../../images/default_profile.png";
 
 const SavingStatusInfo = ({ savingStatus, challengeInfo }) => {
   const {
