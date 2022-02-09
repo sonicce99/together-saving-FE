@@ -5,14 +5,39 @@ import SavingHistoryItem from "./SavingHistoryItem";
 import historyFilter from "../../images/history_filter.png";
 import SavingFilterPopUp from "./SavingFilterPopUp";
 import { periodKor, orderKor } from "../../utils/engDataRegex";
+import { useEffect } from "react";
+import { axiosInstance } from "../../utils/TokenApi";
 
-const SavingHistory = ({ historyList, filter, onFilter }) => {
+const SavingHistoryList = ({ id, filter, historyList }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const { period, order } = filter;
+  const [filteredData, setFilteredData] = useState(historyList);
+  const [option, setOption] = useState(filter);
+
+  let isCleanUp = true;
 
   const handlePopup = () => {
     setShowPopup((showPopup) => !showPopup);
   };
+
+  const handleFilter = (period, order) => {
+    setOption({
+      ...option,
+      period,
+      order,
+    });
+  };
+
+  const handleHistoryData = async () => {
+    const { data } = await axiosInstance.get(
+      `/api/v1/users/challenges/${id}/saving-histories?period=${option.period}&ordering=${option.order}`
+    );
+    if (isCleanUp) setFilteredData(data.data.saving_history);
+  };
+
+  useEffect(() => {
+    handleHistoryData();
+    return () => (isCleanUp = false);
+  }, [option]);
 
   return (
     <>
@@ -20,20 +45,20 @@ const SavingHistory = ({ historyList, filter, onFilter }) => {
         <Title>저축 내역</Title>
         <HistoryButtonContainer>
           <Text>
-            {period === "today"
-              ? periodKor(period)
-              : `최근 ${periodKor(period)}`}
+            {option.period === "today"
+              ? periodKor(option.period)
+              : `최근 ${periodKor(option.period)}`}
           </Text>
-          <Text>{orderKor(order)}</Text>
+          <Text>{orderKor(option.order)}</Text>
           <HistoryButton>
             <HistoryIcon src={historyFilter} alt="icon" onClick={handlePopup} />
           </HistoryButton>
           {showPopup && (
             <Portal>
               <SavingFilterPopUp
-                period={period}
-                order={order}
-                onFilter={onFilter}
+                period={option.period}
+                order={option.order}
+                onFilter={handleFilter}
                 onClose={handlePopup}
               />
             </Portal>
@@ -41,8 +66,8 @@ const SavingHistory = ({ historyList, filter, onFilter }) => {
         </HistoryButtonContainer>
       </TitleContainer>
       <HistoryContainer>
-        {historyList.length > 0 ? (
-          Object.values(historyList).map((history, index) => (
+        {filteredData.length > 0 ? (
+          Object.values(filteredData).map((history, index) => (
             <SavingHistoryItem key={index} historyItem={history} />
           ))
         ) : (
@@ -110,4 +135,4 @@ const Notice = styled(Title)`
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
 `;
 
-export default SavingHistory;
+export default SavingHistoryList;

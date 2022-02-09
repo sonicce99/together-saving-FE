@@ -7,12 +7,11 @@ import useNumberComma from "../../hooks/useNumberComma";
 import defaultThumbnail from "../../images/Character.png";
 
 const SavingHistory = ({
+  id,
+  filter,
   savingHistory,
   challengeInfo,
   statusInfo,
-  filter,
-  onFilter,
-  id,
 }) => {
   const { challenge_payment } = challengeInfo.data;
   const { saving_rate } = statusInfo.data;
@@ -52,11 +51,11 @@ const SavingHistory = ({
           </AccountInfo>
         </AccountInfoContainer>
         <SavingHistoryList
-          historyList={saving_history}
+          id={id}
           filter={filter}
-          onFilter={onFilter}
+          historyList={saving_history}
         />
-        <AutoSavingButton isAuto={isAuto} onHandleAuto={handleAuto} id={id} />
+        <AutoSavingButton id={id} isAuto={isAuto} onHandleAuto={handleAuto} />
       </SavingHistoryContainer>
       <SavingStartButton
         bank={bank_name}
