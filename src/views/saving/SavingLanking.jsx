@@ -1,22 +1,35 @@
-import * as React from "react";
+import React, { useState } from "react";
 import styles from "styled-components";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
+import { Typography, Avatar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { IoIosArrowDown } from "react-icons/io";
+import { axiosInstance } from "../../utils/TokenApi";
 
-const SavingLanking = ({ challenge_name }) => {
-  const [expanded, setExpanded] = React.useState(false);
+const SavingLanking = ({ challenge_id, challenge_name }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [lankingData, setLankingData] = useState([]);
 
-  const handleToggleExpaned = (expanded) => {
-    setExpanded(!expanded);
+  const handleToggleExpaned = async (expanded) => {
+    try {
+      if (!expanded) {
+        const { data } = await axiosInstance.get(
+          `/api/v1/challenges/${challenge_id}/saving-ratio`
+        );
+        setLankingData(data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setExpanded(!expanded);
+    }
   };
 
   return (
     <div>
-      <Accordion expanded={expanded === true}>
+      <Accordion expanded={expanded}>
         <AccordionSummary
           expandIcon={<IoIosArrowDown />}
           aria-controls="panel1a-content"
@@ -24,7 +37,7 @@ const SavingLanking = ({ challenge_name }) => {
           onClick={() => handleToggleExpaned(expanded)}
         >
           <Typography component={"span"} variant={"body2"}>
-            {expanded === true ? (
+            {expanded ? (
               <Div>
                 <Title>{challenge_name}</Title>
                 &nbsp;<P>랭킹</P>
@@ -38,7 +51,22 @@ const SavingLanking = ({ challenge_name }) => {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>랭킹이 들어갈 자리</Typography>
+          <Div2>
+            {lankingData &&
+              lankingData.map((user, index) => {
+                return (
+                  <Content key={index}>
+                    <Avatar
+                      alt="userPicture"
+                      src={`${user.profile_picture}`}
+                      sx={{ width: 64, height: 64, cursor: "pointer" }}
+                    />
+                    <NickName>{user.nick_name}</NickName>
+                    <Achievement>{user.saving_rate}%</Achievement>
+                  </Content>
+                );
+              })}
+          </Div2>
         </AccordionDetails>
       </Accordion>
     </div>
@@ -67,13 +95,26 @@ const AccordionSummary = styled((props) => (
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
-  border: "2px solid black",
+  padding: theme.spacing(0),
+  height: "108px",
 }));
 
 const Div = styles.div`
   display: flex;
   align-items: center;
+`;
+
+const Div2 = styles.div`
+display: flex;
+align-items: center;
+overflow-x: scroll;
+-ms-overflow-style: none;
+scrollbar-width: none;
+
+&::-webkit-scrollbar {
+  display: none;
+}
+margin-left : 16px;
 `;
 
 const Title = styles.p`
@@ -88,6 +129,35 @@ const P = styles.p`
   font-size: 16px;
   line-height: 23px;
   color: ${({ theme }) => theme.colors.colorGray3};
+`;
+
+const Content = styles.div`
+  width: 88px;
+  height: 108px;
+  margin-right : 14px;
+`;
+
+const NickName = styles.div`
+font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+font-size: 12px;
+line-height: 9px;
+text-align: center;
+letter-spacing: -0.463911px;
+color: #202021;
+margin-top : 10px;
+margin-bottom : 7px;
+cursor : pointer;
+`;
+
+const Achievement = styles.div`
+font-family: SF Pro;
+font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+font-size: 12px;
+line-height: 9px;
+text-align: center;
+letter-spacing: -0.463911px;
+color: ${({ theme }) => theme.colors.colorGray3};
+
 `;
 
 export default SavingLanking;
