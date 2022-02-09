@@ -8,7 +8,7 @@ import SavingDeposit from "./pages/saving/SavingDeposit";
 import SavingSuccess from "./views/deposit/SavingSuccess";
 import ChallengePaymentContainer from "./pages/challenge/ChallengePaymentContainer";
 import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
-import MoreShow from "./pages/MoreShow/MoreShow";
+import MoreShow from "./pages/more/MoreShow";
 import cookie from "react-cookies";
 
 const App = () => {

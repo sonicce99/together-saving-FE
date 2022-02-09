@@ -59,7 +59,7 @@ const Challenge = () => {
       <Time />
       <Header detail />
       <Container>
-        <Thumbnail thumbnail={data.data.thumbnail} />
+        <Thumbnail thumbnail={data.data.thumbnail} mode={data.data.mode} />
         <Inner>
           <Tags
             challenge_id={data.data.challenge_id}

@@ -7,7 +7,6 @@ import useChallengeApi from "../../hooks/useChallengeApi";
 import useCategory from "../../hooks/useCategory";
 
 const MoreShowTemplate = () => {
-  const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
 
   const {
@@ -19,7 +18,6 @@ const MoreShowTemplate = () => {
 
   const handleScrollPage = () => {
     setPage((page) => page + 1);
-    if (data.length === 0) setHasMore((hasMore) => !hasMore);
   };
 
   return (
@@ -28,7 +26,7 @@ const MoreShowTemplate = () => {
       <InfiniteScroll
         dataLength={data.length}
         next={handleScrollPage}
-        hasMore={hasMore}
+        hasMore={true}
         height={812}
       >
         <ChallengeList>

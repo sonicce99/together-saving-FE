@@ -31,7 +31,7 @@ const SavingButtonContainer = styled.div`
   height: 90px;
   background-color: white;
   padding: 8px 16px 34px;
-  box-shadow: 0px 4px 21px -1px rgba(0, 0, 0, 0.18);
+  border-top: 1px solid ${({ theme }) => theme.colors.colorLightGray4};
   position: fixed;
   bottom: 0;
 `;

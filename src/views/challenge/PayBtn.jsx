@@ -37,6 +37,7 @@ const PayBtn = ({ challenge_entry_fee, id }) => {
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 151px;
+  border-top: 1px solid ${({ theme }) => theme.colors.colorLightGray4};
   background-color: white;
   position: fixed;
   bottom: 0;
