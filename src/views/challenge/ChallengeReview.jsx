@@ -10,8 +10,8 @@ import defaultImage from "../../images/Character.png";
 
 const style = {
   position: "absolute",
-  top: "50%",
-  left: "188px",
+  top: "45%",
+  left: "50%",
   transform: "translate(-50%, -50%)",
   width: 343,
   bgcolor: "background.paper",
