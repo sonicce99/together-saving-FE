@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     position: absolute;
     left: 50%;
     margin-left: -187.5px;
+    border: 1px solid #f8f8f8;
   }
 
   a {
