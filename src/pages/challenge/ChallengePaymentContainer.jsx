@@ -31,7 +31,7 @@ const ChallengePayment = () => {
       <Time />
       <Header detail />
       <Container>
-        <Thumbnail>챌린지 썸네일</Thumbnail>
+        <Thumbnail thumbnail={data.data.thumbnail} mode={data.data.mode} />
         <Inner>
           <ChallengeSummary
             challenge_name={data.data.challenge_name}
@@ -56,6 +56,7 @@ const ChallengePayment = () => {
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
+  padding-top: 100px;
 `;
 
 const Inner = styled.div`
