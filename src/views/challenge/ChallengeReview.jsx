@@ -6,7 +6,7 @@ import H3 from "../../components/H3.jsx";
 import { Box, Typography, Modal } from "@mui/material";
 import GrayBackground from "../../components/GrayBackground.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
-import defaultImage from "../../images/Character.png";
+import defaultImage from "../../images/default_profile.png";
 
 const style = {
   position: "absolute",

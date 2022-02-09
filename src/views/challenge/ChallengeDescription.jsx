@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Avatar, Stack } from "@mui/material";
 import H3 from "../../components/H3.jsx";
-import defaultImage from "../../images/Character.png";
+import defaultImage from "../../images/default_profile.png";
 
 const ChallengeDescription = ({ hostName, hostImage, description }) => {
   const [isMore, setIsMore] = useState(false);

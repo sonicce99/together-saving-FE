@@ -5,17 +5,20 @@ const MODE = ["자율모드", "경쟁모드"];
 
 const Thumbnail = ({ thumbnail, mode }) => {
   return (
-    <>
+    <ThumbnailContainer>
       <Size thumbnail={thumbnail} />
       <Mode>
         <Text>{mode === "FREE" ? MODE[0] : MODE[1]}</Text>
       </Mode>
-    </>
+    </ThumbnailContainer>
   );
 };
 
-const Size = styled.div`
+const ThumbnailContainer = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
+`;
+
+const Size = styled.div`
   height: 270px;
   background-image: url(${(props) => props.thumbnail});
   background-size: cover;
@@ -32,7 +35,7 @@ const Mode = styled.div`
   align-items: center;
   position: absolute;
   top: 326px;
-  right: 16px;
+  left: 292px;
 `;
 
 const Text = styled.p`
