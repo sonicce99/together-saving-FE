@@ -17,7 +17,7 @@ import { getChallengesummaryInfo } from "../../redux/reducers/challengeSummaryRe
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 import ChallengeSkeleton from "../../components/skeleton/ChallengeSkeleton";
 
-const Challenge = () => {
+const ChallengeContainer = () => {
   const [popularChallengeData, setPopularChallengeData] = useState([]);
 
   const { data, loading, error } = useSelector(
@@ -93,6 +93,8 @@ const Challenge = () => {
             title="이런 챌린지도 있어요!"
             ChallengeArray={popularChallengeData}
           />
+        </Inner>
+        <ButtonContainer>
           <Button
             onClick={() => {
               data.data.participated
@@ -102,7 +104,7 @@ const Challenge = () => {
           >
             챌린지 함께하기
           </Button>
-        </Inner>
+        </ButtonContainer>
       </Container>
     </>
   );
@@ -110,7 +112,7 @@ const Challenge = () => {
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  padding-top: 100px;
+  position: relative;
 `;
 
 const Inner = styled.div`
@@ -118,4 +120,13 @@ const Inner = styled.div`
   margin: ${({ theme }) => theme.margins.marginCenter};
 `;
 
-export default Challenge;
+const ButtonContainer = styled.div`
+  height: 90px;
+  background-color: white;
+  padding: 8px 16px 34px;
+  border-top: 1px solid ${({ theme }) => theme.colors.colorLightGray4};
+  position: fixed;
+  bottom: 0;
+`;
+
+export default ChallengeContainer;

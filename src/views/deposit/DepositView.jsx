@@ -98,7 +98,7 @@ const DepositAccount = styled.div`
 
 const Text = styled.p`
   &:nth-child(1) {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   &:nth-child(2) {

@@ -14,7 +14,7 @@ const ChallengeSummary = ({
     MON: "월",
     TUE: "화",
     WED: "수",
-    THR: "목",
+    THU: "목",
     FRI: "금",
     SAT: "토",
     SUN: "일",
@@ -87,10 +87,10 @@ const Div2 = styled.div`
 `;
 
 const Border = styled.div`
-  border: 1px solid #dadada;
   width: 1px;
   height: 40px;
   margin: 5px 20px 0 20px;
+  background-color: #dadada;
 `;
 
 const Title = styled.div`

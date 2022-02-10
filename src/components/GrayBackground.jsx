@@ -6,6 +6,8 @@ const GrayBackground = styled.div`
   border-radius: 10px;
   margin-right: 16px;
   margin-bottom: 16px;
+
+  ${(props) => props.reviews && `min-height: 160px;`}
 `;
 
 export default GrayBackground;

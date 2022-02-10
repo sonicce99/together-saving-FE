@@ -34,7 +34,7 @@ const Mode = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 326px;
+  top: 226px;
   left: 292px;
 `;
 

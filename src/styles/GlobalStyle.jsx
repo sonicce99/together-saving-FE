@@ -7,10 +7,6 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    &::-webkit-scrollbar {
-       display: none; 
-    }
   }
 
   body {
@@ -18,11 +14,6 @@ const GlobalStyles = createGlobalStyle`
     line-height: 20px;
     letter-spacing: -0.5px;
     border: 1px solid #f8f8f8;
-
-    &::-webkit-scrollbar {
-    display: none;
-  }
-
   }
 
   a {
