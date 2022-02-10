@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/*"
+  from = "/proxy/*"
   to = "https://naughty-curran-94e140.netlify.app/:splat"
   status = 200
   force = true
