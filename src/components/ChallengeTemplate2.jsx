@@ -96,6 +96,7 @@ const Div = styled.div`
 const Content = styled.div`
   width: 253px;
   margin-right: 16px;
+  margin-bottom: 140px;
 `;
 
 const ThumbnailInfo = styled.div`

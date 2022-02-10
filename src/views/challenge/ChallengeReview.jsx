@@ -54,7 +54,7 @@ const ChallengeReview = ({ participated, challenge_id, reviews }) => {
         {reviews &&
           reviews.map((review, index) => {
             return (
-              <GrayBackground key={index}>
+              <GrayBackground key={index} reviews>
                 <Profile>
                   <Stack direction="row">
                     <Avatar

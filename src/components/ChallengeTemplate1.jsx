@@ -89,6 +89,7 @@ const Content = styled.div`
 
 const ThumbnailInfo = styled.div`
   position: relative;
+  margin-bottom: 4px;
 `;
 
 const Image = styled.img`
