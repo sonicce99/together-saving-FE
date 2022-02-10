@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/proxy/*"
-  to = "http://183.99.247.17:8881/:splat"
+  from = "*"
+  to = "http://183.99.247.17:8881/api/*"
   status = 200
 
 [[redirects]]
