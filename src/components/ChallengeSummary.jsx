@@ -87,10 +87,10 @@ const Div2 = styled.div`
 `;
 
 const Border = styled.div`
-  border: 1px solid #dadada;
   width: 1px;
   height: 40px;
   margin: 5px 20px 0 20px;
+  background-color: #dadada;
 `;
 
 const Title = styled.div`

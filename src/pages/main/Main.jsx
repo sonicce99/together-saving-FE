@@ -8,21 +8,22 @@ import Time from "../../components/Time.jsx";
 
 const Main = () => {
   return (
-    <MainContainer>
+    <>
       <Time />
       <Header main />
-      <MainContentContainer>
-        <Event />
-        <MainTabs />
-      </MainContentContainer>
-      <BottomNav />
-    </MainContainer>
+      <MainContainer>
+        <MainContentContainer>
+          <Event />
+          <MainTabs />
+        </MainContentContainer>
+        <BottomNav />
+      </MainContainer>
+    </>
   );
 };
 
 const MainContainer = styled.div`
   height: 812px;
-  overflow-y: scroll;
 `;
 
 const MainContentContainer = styled.div`

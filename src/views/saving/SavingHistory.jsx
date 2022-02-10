@@ -126,7 +126,7 @@ const AccountText = styled.p`
 const PriceText = styled.p`
   color: ${({ theme }) => theme.colors.colorDarkGray1};
   font-size: ${({ theme }) => theme.fontSize.fontSmall};
-  font-weight: ${({ theme }) => theme.fontWeights.weightBold};
+  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
 
   &:first-of-type {
     align-self: flex-end;
