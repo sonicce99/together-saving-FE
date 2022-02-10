@@ -1,6 +1,6 @@
 [[redirects]]
   from = "*"
-  to = "http://183.99.247.17:8881/api/*"
+  to = "http://183.99.247.17:8881/*"
   status = 200
 
 [[redirects]]
