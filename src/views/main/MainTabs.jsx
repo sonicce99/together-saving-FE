@@ -6,6 +6,7 @@ import ChallengeTemplate2 from "../../components/ChallengeTemplate2.jsx";
 import DivisionLine from "../../components/DivisionLine.jsx";
 import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
+import axios from "axios";
 
 const MainTabs = () => {
   const [loading, setLoading] = React.useState(true);
@@ -22,26 +23,26 @@ const MainTabs = () => {
     (async () => {
       try {
         // 참여 중인 챌린지 가져오기
-        const { data } = await axiosInstance.get(
-          "/api/v1/users/my-challenges?page=0"
+        const { data } = await axios.get(
+          "http://183.99.247.17:8881/api/v1/users/my-challenges?page=0"
         );
         setParticipatingChallenges(data.data);
 
         // 인기 챌린지 가져오기
-        const popularChallengeData = await axiosInstance.get(
-          "/api/v1/auth/challenges?criteria=popularity&page=0"
+        const popularChallengeData = await axios.get(
+          "http://183.99.247.17:8881/api/v1/auth/challenges?criteria=popularity&page=0"
         );
         setPopularChallenges(popularChallengeData.data.data);
 
         // 마감임박 챌린지 가져오기
-        const deatLineChallengeData = await axiosInstance.get(
-          "/api/v1/auth/challenges?criteria=deadline&page=0"
+        const deatLineChallengeData = await axios.get(
+          "http://183.99.247.17:8881/api/v1/auth/challenges?criteria=deadline&page=0"
         );
         setDeadLineChallenge(deatLineChallengeData.data.data);
 
         // 전체 챌린지 가져오기
         const wholeData = await axiosInstance.get(
-          "/api/v1/auth/challenges?criteria=valid&page=0"
+          "http://183.99.247.17:8881/api/v1/auth/challenges?criteria=valid&page=0"
         );
         setWholeChallenge(wholeData.data.data);
       } catch (error) {
