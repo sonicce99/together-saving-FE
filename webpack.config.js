@@ -39,11 +39,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    // proxy: {
-    //   "/api": {
-    //     target: "http://183.99.247.17:8881",
-    //   },
-    // },
+    proxy: {
+      "/api": {
+        target: "http://183.99.247.17:8881",
+      },
+    },
     historyApiFallback: true,
   },
 };
