@@ -5,8 +5,16 @@ import GrayBackground from "../../components/GrayBackground";
 import { FaCheckCircle } from "react-icons/fa";
 
 const SavingDay = ({ challenge_frequency }) => {
-  const Week = ["월", "화", "수", "목", "금", "토", "일"];
-  const SavingDay = challenge_frequency.map((day) => day.day);
+  const dayObject = {
+    월: "MON",
+    화: "TUE",
+    수: "WED",
+    목: "THU",
+    금: "FRI",
+    토: "SAT",
+    일: "SUN",
+  };
+  const Week = Object.keys(dayObject);
 
   return (
     <Container>
@@ -18,7 +26,7 @@ const SavingDay = ({ challenge_frequency }) => {
               <Div2 key={index}>
                 <Title>{day}</Title>
                 <Day>
-                  {SavingDay.includes(day) ? (
+                  {challenge_frequency.includes(dayObject[day]) ? (
                     <FaCheckCircle size={22} color="#3178FF" />
                   ) : null}
                 </Day>

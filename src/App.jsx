@@ -12,12 +12,12 @@ import MoreShow from "./pages/more/MoreShow";
 import cookie from "react-cookies";
 
 const App = () => {
-  const accessToken = process.env.Token;
+  const TOKEN = process.env.TOKEN;
 
   useEffect(() => {
     const expires = new Date();
     expires.setMinutes(expires.getMinutes() + 60);
-    cookie.save("token", accessToken, {
+    cookie.save("TOKEN", TOKEN, {
       path: "/",
       expires,
     });
