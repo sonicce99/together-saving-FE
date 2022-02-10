@@ -7,6 +7,8 @@ import DivisionLine from "../../components/DivisionLine.jsx";
 import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 
+const PROXY = window.location.hostname === "localhost" ? "" : "/api";
+
 const MainTabs = () => {
   const [loading, setLoading] = React.useState(true);
   const [value, setValue] = React.useState(0); // Tabs 관련
@@ -23,25 +25,25 @@ const MainTabs = () => {
       try {
         // 참여 중인 챌린지 가져오기
         const { data } = await axiosInstance.get(
-          "/api/v1/users/my-challenges?page=0"
+          `${PROXY}/v1/users/my-challenges?page=0`
         );
         setParticipatingChallenges(data.data);
 
         // 인기 챌린지 가져오기
         const popularChallengeData = await axiosInstance.get(
-          "/api/v1/auth/challenges?criteria=popularity&page=0"
+          `${PROXY}/v1/auth/challenges?criteria=popularity&page=0`
         );
         setPopularChallenges(popularChallengeData.data.data);
 
         // 마감임박 챌린지 가져오기
         const deatLineChallengeData = await axiosInstance.get(
-          "/api/v1/auth/challenges?criteria=deadline&page=0"
+          `${PROXY}/v1/auth/challenges?criteria=deadline&page=0`
         );
         setDeadLineChallenge(deatLineChallengeData.data.data);
 
         // 전체 챌린지 가져오기
         const wholeData = await axiosInstance.get(
-          "/api/v1/auth/challenges?criteria=valid&page=0"
+          `${PROXY}/v1/auth/challenges?criteria=valid&page=0`
         );
         setWholeChallenge(wholeData.data.data);
       } catch (error) {
