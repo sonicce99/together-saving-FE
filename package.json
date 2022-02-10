@@ -5,11 +5,12 @@
   "main": "index.jsx",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production babel src/index.jsx -w -d dist/js"
+    "build": "webpack --mode production",
+    "babel": "babel src/index.jsx -w -d dist/js"
   },
   "browserslist": {
     "production": [
-      ">0.5%",
+      ">0.2%",
       "not dead",
       "not op_mini all"
     ],
