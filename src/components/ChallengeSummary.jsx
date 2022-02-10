@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useNumberComma from "../hooks/useNumberComma";
 
 const ChallengeSummary = ({
   challenge_name, //챌린지명
@@ -35,32 +36,17 @@ const ChallengeSummary = ({
       </Div>
       <Div>
         <Title>저축 금액</Title>
-        <BoldTitle>
-          {challenge_payment &&
-            challenge_payment
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원"}
-        </BoldTitle>
+        <BoldTitle>{useNumberComma(challenge_payment)}</BoldTitle>
       </Div>
       <Div>
         <Div2>
           <Title2>참가비</Title2>
-          <BoldTitle>
-            {challenge_entry_fee &&
-              challenge_entry_fee
-                .toString()
-                .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원"}
-          </BoldTitle>
+          <BoldTitle>{useNumberComma(challenge_payment)}</BoldTitle>
         </Div2>
         <Border></Border>
         <Div2>
           <Title2>참여 인원</Title2>
-          <BoldTitle>
-            {challenge_members &&
-              challenge_members
-                .toString()
-                .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "명"}
-          </BoldTitle>
+          <BoldTitle>{useNumberComma(challenge_payment)}</BoldTitle>
         </Div2>
       </Div>
     </>

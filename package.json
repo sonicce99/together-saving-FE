@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "babel": "babel src/index.jsx -w -d dist/js"
+    "babel": "babel src/index.jsx --out-dir dist/js"
   },
   "browserslist": {
     "production": [
