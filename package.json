@@ -5,8 +5,13 @@
   "main": "index.jsx",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "babel": "babel src/index.jsx -w -d dist/js"
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
