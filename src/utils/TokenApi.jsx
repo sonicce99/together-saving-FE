@@ -3,10 +3,10 @@ import cookie from "react-cookies";
 
 const Token = cookie.load("token");
 
-const PROXY = window.location.hostname === "localhost" ? "/" : "/";
-const URL = PROXY;
+// const PROXY = window.location.hostname === "localhost" ? "/" : "/proxy";
+// const URL = PROXY;
 
 export const axiosInstance = axios.create({
-  baseURL: URL,
+  baseURL: "/",
   headers: { Authorization: Token },
 });
