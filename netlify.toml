@@ -1,0 +1,8 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://183.99.247.17:8881/:splat"
+  status = 200
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
+    X-Api-Key = "some-api-key-string"
