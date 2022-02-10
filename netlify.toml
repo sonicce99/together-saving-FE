@@ -1,0 +1,5 @@
+[[redirects]]
+ from = "https://angry-archimedes-ab83f4.netlify.app/"
+ to = "http://localhost:8080"
+ status = 404
+ force = true

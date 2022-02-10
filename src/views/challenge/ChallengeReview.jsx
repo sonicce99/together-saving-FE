@@ -162,7 +162,7 @@ const Content = styled(H3)`
 const ReviewAbleBtn = styled(Button2)`
   color: ${({ theme }) => theme.colors.colorBlue2};
   background-color: ${({ theme }) => theme.colors.colorWhite};
-  border: 1px solid #3178ff;
+  border: 1.5px solid #3178ff;
   margin-bottom: 40px;
 `;
 

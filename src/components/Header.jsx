@@ -46,7 +46,7 @@ const Container = styled.header`
   padding: 50px 16px;
   position: fixed;
   z-index: 999;
-  background-color: white;
+  /* background-color: white; */
 `;
 
 const Inner = styled.main`

@@ -42,7 +42,7 @@ const ChallengeTemplate2 = ({ title, ChallengeArray }) => {
                   <Div3>
                     <Div4>
                       {EachChallenge.tags.map((tag, index) => {
-                        return <Tags key={index}>{tag.tag_name}</Tags>;
+                        return <Tags key={index}>{tag}</Tags>;
                       })}
                     </Div4>
                     <LikeButton
