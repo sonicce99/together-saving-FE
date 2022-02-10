@@ -3,3 +3,4 @@
   to = "http://183.99.247.17:8881/:splat"
   status = 200
   force = true
+  headers = {X-From = "Netlify"}
