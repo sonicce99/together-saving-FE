@@ -5,4 +5,4 @@
   force = true
   [redirects.headers]
     X-From = "Netlify"
-    X-Api-Key = "some-api-key-string"
+    Authorization = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6NTI2LCJleHAiOjE2NDUxNTc4MjYsImVtYWlsIjoic2VjdXJpdHlUZXN0QHNhdmxlLmNvbSJ9.B9MXmr_YbAmQcVfrisN85PgByD9eyjVuloODxwoo4FYpgNJE-Vw9vzS0zQQu8cNlxaqiKcYP8P_VXx54CCMzeA"
