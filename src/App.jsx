@@ -12,7 +12,7 @@ import MoreShow from "./pages/more/MoreShow";
 import cookie from "react-cookies";
 
 const App = () => {
-  const accessToken = process.env.Token;
+  const accessToken = process.env.TOKEN;
 
   useEffect(() => {
     const expires = new Date();
