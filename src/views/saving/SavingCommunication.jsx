@@ -190,6 +190,7 @@ const Me = styled.div`
   padding: 16px;
   background: #3178ff;
   border-radius: 10px;
+  color: ${({ theme }) => theme.colors.colorWhite};
 `;
 
 const Date = styled.p`

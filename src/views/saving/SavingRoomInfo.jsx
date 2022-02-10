@@ -7,6 +7,7 @@ import useRemainWeek from "../../hooks/useRemainWeek";
 
 const SavingRoomInfo = ({ challengeInfo }) => {
   const {
+    challenge_id,
     thumbnail,
     challenge_name,
     challenge_frequency,
@@ -29,7 +30,7 @@ const SavingRoomInfo = ({ challengeInfo }) => {
     <InfoContainer>
       <InfoThumbnail src={thumbnail} alt="thumbnail" />
       <InfoTextContainer>
-        <Link to="/challenge/:id">
+        <Link to={`/challenge/${challenge_id}`}>
           <Title>{challenge_name}</Title>
         </Link>
         <Text>
