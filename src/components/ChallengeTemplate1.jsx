@@ -54,7 +54,8 @@ const Container = styled.div`
 `;
 
 const Title = styled(H3)`
-  font-family: SF Pro Text;
+  font-family: Apple SD Gothic Neo;
+  letter-spacing: -0.5px;
   font-weight: 600;
   line-height: 21px;
   margin-bottom: 16px;

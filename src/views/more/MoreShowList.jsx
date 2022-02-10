@@ -49,7 +49,7 @@ const MoreShowContainer = styled.div`
 const ChallengeTitle = styled.p`
   color: ${({ theme }) => theme.colors.colorBlack};
   font-size: ${({ theme }) => theme.fontSize.fontMideum};
-  font-family: SF Pro Text;
+  font-family: SF Pro Text, "Noto Sans KR", sans-serif;
   font-weight: 600;
   padding: 28px 0 16px 0;
 `;

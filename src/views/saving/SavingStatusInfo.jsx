@@ -77,9 +77,10 @@ const Text = styled.p`
   }
 
   &:last-child {
+    font-family: Apple SD Gothic Neo;
     color: ${({ theme }) => theme.colors.colorBlack};
     font-size: ${({ theme }) => theme.fontSize.fontXLarge};
-    font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
+    font-weight: ${({ theme }) => theme.fontWeights.weightBold};
     margin-bottom: 30px;
   }
 `;

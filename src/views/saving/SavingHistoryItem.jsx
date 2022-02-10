@@ -51,6 +51,7 @@ const HistoryDate = styled(Text)`
 
 const HistoryPrice = styled(Text)`
   color: ${({ theme }) => theme.colors.colorDarkGray1};
+  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
 `;
 
 export default SavingHistoryItem;

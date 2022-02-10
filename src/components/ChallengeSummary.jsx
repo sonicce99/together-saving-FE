@@ -104,7 +104,7 @@ const Title2 = styled(Title)`
 `;
 
 const BoldTitle = styled(Title)`
-  font-family: SF Pro;
+  font-family: Apple SD Gothic Neo;
   font-weight: ${({ theme }) => theme.fontWeights.weightBold};
   line-height: 14px;
   margin-top: 3px;
