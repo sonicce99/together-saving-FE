@@ -1,9 +1,0 @@
-[[redirects]]
-  from = "https://angry-archimedes-ab83f4.netlify.app/"
-  to = "http://183.99.247.17:8881/*"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
