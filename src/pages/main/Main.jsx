@@ -11,20 +11,14 @@ const Main = () => {
     <>
       <Time />
       <Header main />
-      <MainContainer>
-        <MainContentContainer>
-          <Event />
-          <MainTabs />
-        </MainContentContainer>
-        <BottomNav />
-      </MainContainer>
+      <MainContentContainer>
+        <Event />
+        <MainTabs />
+      </MainContentContainer>
+      <BottomNav />
     </>
   );
 };
-
-const MainContainer = styled.div`
-  height: 812px;
-`;
 
 const MainContentContainer = styled.div`
   padding-top: 96px;

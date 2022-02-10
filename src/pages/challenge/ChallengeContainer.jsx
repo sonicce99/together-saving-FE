@@ -113,6 +113,7 @@ const ChallengeContainer = () => {
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   position: relative;
+  margin-bottom: 130px;
 `;
 
 const Inner = styled.div`
