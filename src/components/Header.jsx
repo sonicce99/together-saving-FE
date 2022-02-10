@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../images/savle.png";
 import heart from "../images/heart.png";
@@ -7,6 +7,17 @@ import arrow from "../images/left_arrow.png";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ main, more, detail }) => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScrollY = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollY);
+    return () => handleScrollY();
+  });
+
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -14,7 +25,7 @@ const Header = ({ main, more, detail }) => {
   };
 
   return (
-    <Container>
+    <Container background={scrollY > 75 && true}>
       <Inner>
         <Left>
           {main ? (
@@ -46,7 +57,8 @@ const Container = styled.header`
   padding: 50px 16px;
   position: fixed;
   z-index: 999;
-  /* background-color: white; */
+
+  ${(props) => props.background && `background-color: white;`}
 `;
 
 const Inner = styled.main`
