@@ -8,5 +8,6 @@
   to = "/index.html"
   status = 200
 
-[context.production.environment]
-  Token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6NTI2LCJleHAiOjE2NDUyNjA0NTQsImVtYWlsIjoic2VjdXJpdHlUZXN0QHNhdmxlLmNvbSJ9.iSPvXDEnap4AtcWWcixAINifhnaiSB15UwH7Jr4qkrGFQFlBbArnGZ2Z0LbhBiV7Cih6tkPQeOF29GbtGVYR1w"
+[context.production]
+  environment = { Token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6NTI2LCJleHAiOjE2NDUyNjA0NTQsImVtYWlsIjoic2VjdXJpdHlUZXN0QHNhdmxlLmNvbSJ9.iSPvXDEnap4AtcWWcixAINifhnaiSB15UwH7Jr4qkrGFQFlBbArnGZ2Z0LbhBiV7Cih6tkPQeOF29GbtGVYR1w" }
+  
