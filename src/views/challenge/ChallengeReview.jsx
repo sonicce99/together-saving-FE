@@ -9,7 +9,7 @@ import ChallengeReviewItem from "./ChallengeReviewItem.jsx";
 const style = {
   position: "absolute",
   top: "45%",
-  left: "188px",
+  left: "50%",
   transform: "translate(-50%, -50%)",
   width: 343,
   bgcolor: "background.paper",
