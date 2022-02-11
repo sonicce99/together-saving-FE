@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Tabs, Tab, Typography, Box } from "@mui/material";
 import ChallengeTemplate1 from "../../components/ChallengeTemplate1.jsx";
@@ -8,16 +8,14 @@ import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 
 const MainTabs = () => {
-  const [value, setValue] = React.useState(0); // Tabs 관련
 
-  const [participatingChallenges, setParticipatingChallenges] = React.useState(
-    []
-  ); // 참여 중인 챌린지 Data
-  const [popularChallenges, setPopularChallenges] = React.useState([]); // 인기 챌린지 Data
-  const [DeadLineChallenge, setDeadLineChallenge] = React.useState([]); // 특정 그룹이 좋아하는 챌린지 Data
-  const [wholeChallenge, setWholeChallenge] = React.useState([]); // 전체 챌린지 Data
+  const [value, setValue] = useState(0); // Tabs 관련
+  const [participatingChallenges, setParticipatingChallenges] = useState([]); // 참여 중인 챌린지 Data
+  const [popularChallenges, setPopularChallenges] = useState([]); // 인기 챌린지 Data
+  const [DeadLineChallenge, setDeadLineChallenge] = useState([]); // 특정 그룹이 좋아하는 챌린지 Data
+  const [wholeChallenge, setWholeChallenge] = useState([]); // 전체 챌린지 Data
 
-  React.useEffect(() => {
+  useEffect(() => {
     (async () => {
       try {
         // 참여 중인 챌린지 가져오기

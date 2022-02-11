@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./pages/main/Main";
 import ChallengeContainer from "./pages/challenge/ChallengeContainer";
@@ -9,20 +9,8 @@ import SavingSuccess from "./views/deposit/SavingSuccess";
 import ChallengePaymentContainer from "./pages/challenge/ChallengePaymentContainer";
 import ChallengePaymentSuccess from "./pages/challenge/ChallengePaymentSuccess";
 import MoreShow from "./pages/more/MoreShow";
-import cookie from "react-cookies";
 
 const App = () => {
-  const TOKEN = process.env.TOKEN;
-
-  useEffect(() => {
-    const expires = new Date();
-    expires.setMinutes(expires.getMinutes() + 60);
-    cookie.save("TOKEN", TOKEN, {
-      path: "/",
-      expires,
-    });
-  }, []);
-
   return (
     <Wrapper>
       <Routes>
