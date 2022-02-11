@@ -142,7 +142,7 @@ const WarningLabel = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 export default DepositView;

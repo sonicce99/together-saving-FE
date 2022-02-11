@@ -41,9 +41,9 @@ const MoreShowTemplate = () => {
 };
 
 const MoreShowContainer = styled.div`
-  width: 343px;
-  padding-top: 96px;
+  width: ${({ theme }) => theme.viewSize.mobile};
   margin: ${({ theme }) => theme.margins.marginCenter};
+  padding-top: 68px;
 `;
 
 const ChallengeTitle = styled.p`
@@ -51,7 +51,7 @@ const ChallengeTitle = styled.p`
   font-size: ${({ theme }) => theme.fontSize.fontMideum};
   font-family: SF Pro Text, "Noto Sans KR", sans-serif;
   font-weight: 600;
-  padding: 28px 0 16px 0;
+  padding: 0 16px 16px;
 `;
 
 const ChallengeList = styled.ul`
@@ -60,6 +60,7 @@ const ChallengeList = styled.ul`
   flex-wrap: wrap;
   gap: 40px 15px;
   margin-bottom: 80px;
+  padding: 0 16px;
 `;
 
 export default MoreShowTemplate;

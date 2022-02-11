@@ -40,7 +40,7 @@ const SavingContainer = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
   display: flex;
   flex-direction: column;
-  padding-top: 96px;
+  padding-top: 68px;
 `;
 
 export default Saving;
