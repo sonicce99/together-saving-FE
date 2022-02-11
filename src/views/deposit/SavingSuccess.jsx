@@ -3,7 +3,6 @@ import styled from "styled-components";
 import success_boo from "../../images/success_boo.png";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
-import Time from "../../components/Time";
 
 const SavingSuccess = () => {
   return (

@@ -21,7 +21,7 @@ const SavingCommunication = ({ challenge_id }) => {
       setPage(0);
       setComments(array);
     } else {
-      if (data.data.comments.length === 0) setHasMore(false);
+      if (data.data.challenge_comments.length === 0) setHasMore(false);
       const array = [];
       array.push(data.data);
       setComments([...comments, ...array]);
@@ -76,10 +76,10 @@ const SavingCommunication = ({ challenge_id }) => {
                   return (
                     <div key={i}>
                       <Date>{EachDay.date}</Date>
-                      {EachDay.comments.length === 0 ? (
+                      {EachDay.challenge_comments.length === 0 ? (
                         <Nocomments>더 이상 내용이 없습니다.</Nocomments>
                       ) : (
-                        EachDay.comments.map((EachComment, index) => {
+                        EachDay.challenge_comments.map((EachComment, index) => {
                           return EachComment.written_by_me ? ( // 내가 쓴 글
                             <Div3 key={index}>
                               <Me>{EachComment.content}</Me>
