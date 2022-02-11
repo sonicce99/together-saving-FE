@@ -36,7 +36,11 @@ const ChallengeTemplate1 = ({ title, ChallengeArray }) => {
 
                   <Div2>
                     <Period>{EachChallenge.period}주 저축</Period>
-                    <Period>{EachChallenge.date}일 뒤 종료</Period>
+                    {title === "참여중인 챌린지" ? (
+                      <Period>{EachChallenge.date}일 뒤 종료</Period>
+                    ) : (
+                      <Period>{EachChallenge.remain_date}일 뒤 시작</Period>
+                    )}
                   </Div2>
                   <ChallengeName>{EachChallenge.title}</ChallengeName>
                 </Content>
