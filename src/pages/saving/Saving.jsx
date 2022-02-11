@@ -17,7 +17,7 @@ const Saving = () => {
 
   return (
     <>
-      <Time />
+      {/* <Time /> */}
       <Header sub />
       <SavingContainer>
         {currentTab === 0 && (
@@ -37,6 +37,7 @@ const Saving = () => {
 };
 
 const SavingContainer = styled.div`
+  width: ${({ theme }) => theme.viewSize.mobile};
   display: flex;
   flex-direction: column;
   padding-top: 96px;

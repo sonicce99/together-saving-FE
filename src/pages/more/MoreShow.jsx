@@ -8,7 +8,7 @@ import Header from "../../components/Header";
 const MoreShow = () => {
   return (
     <MoreShowContainer>
-      <Time />
+      {/* <Time /> */}
       <Header more />
       <MoreShowList />
       <BottomNav />
