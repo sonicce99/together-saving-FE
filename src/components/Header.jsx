@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../images/savle.png";
-import heart from "../images/heart.png";
-import bell from "../images/bell.png";
+import heart from "../images/heart.svg";
+import bell from "../images/bell.svg";
 import arrow from "../images/left_arrow.png";
 import { useNavigate } from "react-router-dom";
 
@@ -81,8 +81,8 @@ const LeftButton = styled.img`
 `;
 
 const Heart = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   margin-right: 10px;
 `;
 
