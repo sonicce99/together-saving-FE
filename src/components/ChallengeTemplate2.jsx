@@ -65,7 +65,7 @@ const Container = styled.div`
 `;
 
 const Title = styled(H3)`
-  font-family: Apple SD Gothic Neo;
+  font-family: Apple SD Gothic Neo, Noto Sans KR;
   font-weight: 600;
   line-height: 21px;
   margin-bottom: 16px;

@@ -28,7 +28,7 @@ const ChallengePayment = () => {
 
   return (
     <>
-      <Time />
+      {/* <Time /> */}
       <Header detail />
       <Container>
         <Thumbnail thumbnail={data.data.thumbnail} mode={data.data.mode} />

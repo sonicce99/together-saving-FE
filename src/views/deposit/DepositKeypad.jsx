@@ -35,7 +35,7 @@ const KeypadContainer = styled.div`
   width: 375px;
   height: 214px;
   padding: 3px 6px 5px;
-  position: absolute;
+  position: fixed;
   bottom: 94px;
   border-top: 1px solid ${({ theme }) => theme.colors.colorLightGray4};
   display: flex;

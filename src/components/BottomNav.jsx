@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Box, BottomNavigationAction, BottomNavigation } from "@mui/material";
 import Home from "../images/Home.png";
 import Contents from "../images/Contents.png";
@@ -8,7 +8,7 @@ import MyPage from "../images/MyPage.png";
 import styled from "styled-components";
 
 const BottomNav = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   return (
     <Container>

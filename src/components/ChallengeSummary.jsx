@@ -25,10 +25,14 @@ const ChallengeSummary = ({
       <Challenge_name>{challenge_name}</Challenge_name>
       <Div>
         <Title>저축 기간</Title>
-        <BoldTitle>{`${start_date} - ${end_date}`}</BoldTitle>
+        <BoldTitle>{`${start_date.replace(/-/g, ".")} - ${end_date.replace(
+          /-/g,
+          "."
+        )}`}</BoldTitle>
       </Div>
       <Div>
         <Title>저축 요일</Title>
+        <BoldTitle>매주</BoldTitle>
         {challenge_frequency &&
           challenge_frequency.map((day, index) => {
             return <BoldTitle key={index}>{dayObject[day]}</BoldTitle>;
@@ -36,17 +40,17 @@ const ChallengeSummary = ({
       </Div>
       <Div>
         <Title>저축 금액</Title>
-        <BoldTitle>{useNumberComma(challenge_payment)}</BoldTitle>
+        <BoldTitle>{useNumberComma(challenge_payment)}원</BoldTitle>
       </Div>
       <Div>
         <Div2>
           <Title2>참가비</Title2>
-          <BoldTitle>{useNumberComma(challenge_payment)}</BoldTitle>
+          <BoldTitle>{useNumberComma(challenge_entry_fee)}원</BoldTitle>
         </Div2>
         <Border></Border>
         <Div2>
           <Title2>참여 인원</Title2>
-          <BoldTitle>{useNumberComma(challenge_payment)}</BoldTitle>
+          <BoldTitle>{useNumberComma(challenge_members)}명</BoldTitle>
         </Div2>
       </Div>
     </>
@@ -104,10 +108,11 @@ const Title2 = styled(Title)`
 `;
 
 const BoldTitle = styled(Title)`
-  font-family: Apple SD Gothic Neo;
+  font-family: Apple SD Gothic Neo, Noto Sans KR;
   font-weight: ${({ theme }) => theme.fontWeights.weightBold};
   line-height: 14px;
   margin-top: 3px;
+  margin-right: 2px;
   color: ${({ theme }) => theme.colors.colorDarkGray1};
 
   &::before {

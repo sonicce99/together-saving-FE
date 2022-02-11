@@ -54,7 +54,7 @@ const Container = styled.div`
 `;
 
 const Title = styled(H3)`
-  font-family: Apple SD Gothic Neo;
+  font-family: Apple SD Gothic Neo, Noto Sans KR;
   letter-spacing: -0.5px;
   font-weight: 600;
   line-height: 21px;
@@ -103,10 +103,10 @@ const Image = styled.img`
 `;
 
 const ChallengeMode = styled.div`
-  width: 38px;
-  height: 22px;
-  line-height: 22px;
-  font-size: 12px;
+  width: 46px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 14px;
   background-color: ${({ theme }) => theme.colors.colorDarkGray1};
   color: ${({ theme }) => theme.colors.colorWhite};
   text-align: center;
@@ -114,6 +114,7 @@ const ChallengeMode = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
+  opacity: 0.8;
 `;
 
 const Div2 = styled.div`

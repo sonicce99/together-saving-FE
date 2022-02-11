@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../images/savle.png";
-import heart from "../images/heart.png";
-import bell from "../images/bell.png";
+import heart from "../images/heart.svg";
+import bell from "../images/bell.svg";
 import arrow from "../images/left_arrow.png";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ main, more, detail }) => {
   const [scrollY, setScrollY] = useState(0);
-
   const handleScrollY = () => {
     setScrollY(window.scrollY);
   };
@@ -25,7 +24,7 @@ const Header = ({ main, more, detail }) => {
   };
 
   return (
-    <Container background={scrollY > 75 && true}>
+    <Container background={scrollY > 150 && true}>
       <Inner>
         <Left>
           {main ? (
@@ -54,9 +53,11 @@ const Header = ({ main, more, detail }) => {
 const Container = styled.header`
   width: ${({ theme }) => theme.viewSize.mobile};
   height: 52px;
-  padding: 50px 16px;
+  padding: 0 16px;
   position: fixed;
+  top: -1px;
   z-index: 999;
+  transition: 0.6s ease-in;
 
   ${(props) => props.background && `background-color: white;`}
 `;
@@ -81,8 +82,8 @@ const LeftButton = styled.img`
 `;
 
 const Heart = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   margin-right: 10px;
 `;
 

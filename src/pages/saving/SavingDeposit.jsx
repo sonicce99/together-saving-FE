@@ -14,7 +14,7 @@ const SavingDeposit = () => {
 
   return (
     <>
-      <Time />
+      {/* <Time /> */}
       <Header sub />
       <DepositContainer>
         <SavingRoomInfoContainer id={id} />
@@ -28,7 +28,7 @@ const SavingDeposit = () => {
 const DepositContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 96px;
+  padding-top: 68px;
 `;
 
 export default SavingDeposit;
