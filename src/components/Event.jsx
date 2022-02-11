@@ -10,12 +10,7 @@ SwiperCore.use([Autoplay]);
 const Event = () => {
   return (
     <Container>
-      <Swiper
-        spaceBetween={10}
-        slidesPerView={1}
-        autoplay={{ delay: 3000 }}
-        loop={true}
-      >
+      <Swiper slidesPerView={1} autoplay={{ delay: 3000 }} loop={true}>
         {[1, 2, 3, 4].map((slide, index, origin) => {
           return (
             <SwiperSlide key={index}>
