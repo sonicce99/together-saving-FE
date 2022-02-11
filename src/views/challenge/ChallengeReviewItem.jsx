@@ -5,14 +5,10 @@ import GrayBackground from "../../components/GrayBackground.jsx";
 import { Avatar, Stack } from "@mui/material";
 import defaultImage from "../../images/default_profile.png";
 
-const ChallengeReviewItem = ({ reviews, index, isMore, onHandleMore }) => {
-  const handleShowMoreInfo = () => {
-    onHandleMore(isMore);
-  };
-
+const ChallengeReviewItem = ({ reviews }) => {
   return (
     <>
-      <GrayBackground key={index} review>
+      <GrayBackground review>
         <Profile>
           <Stack direction="row">
             <Avatar
@@ -26,16 +22,8 @@ const ChallengeReviewItem = ({ reviews, index, isMore, onHandleMore }) => {
           <NickName>{reviews.nickname}</NickName>
         </Profile>
         <Content>
-          {reviews.content.length > 70
-            ? !isMore
-              ? reviews.content.slice(0, 70)
-              : reviews.content
-            : reviews.content}
-          {reviews.content.length > 70 && (
-            <MoreButton onClick={handleShowMoreInfo} review>
-              {isMore ? "닫기" : "・・・더보기"}
-            </MoreButton>
-          )}
+          {reviews.content}
+          <MoreButton onClick={() => handleMoreText()}>버튼</MoreButton>
         </Content>
       </GrayBackground>
     </>

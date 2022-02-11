@@ -5,6 +5,7 @@ import H3 from "../../components/H3.jsx";
 import { Box, Typography, Modal } from "@mui/material";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 import ChallengeReviewItem from "./ChallengeReviewItem.jsx";
+import plusBtn from "../../images/plus_button.png";
 
 const style = {
   position: "absolute",
@@ -20,15 +21,10 @@ const style = {
 };
 
 const ChallengeReview = ({ participated, challenge_id, reviews }) => {
-  const [isMore, setIsMore] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [inputValue, setInputValue] = useState("");
-
-  const handleShowMoreInfo = (more) => {
-    setIsMore((isMore) => !isMore);
-  };
 
   const handleInputValue = (value) => {
     setInputValue(value);
@@ -51,18 +47,16 @@ const ChallengeReview = ({ participated, challenge_id, reviews }) => {
       <Div>
         {reviews &&
           reviews.map((review, index) => {
-            return (
-              <ChallengeReviewItem
-                reviews={review}
-                key={index}
-                isMore={isMore}
-                onHandleMore={handleShowMoreInfo}
-              />
-            );
+            return <ChallengeReviewItem reviews={review} key={index} />;
           })}
       </Div>
       {participated ? (
-        <ReviewAbleBtn onClick={handleOpen}>후기 작성하기</ReviewAbleBtn>
+        <ButtonContainer>
+          <ReviewAbleBtn onClick={handleOpen}>후기 작성하기</ReviewAbleBtn>
+          <PlusBtn>
+            <Image src={plusBtn} alt="button" />
+          </PlusBtn>
+        </ButtonContainer>
       ) : (
         <ReviewDisableBtn disabled>챌린지에 참여 해주세요</ReviewDisableBtn>
       )}
@@ -114,6 +108,7 @@ const ReviewAbleBtn = styled(Button2)`
   background-color: ${({ theme }) => theme.colors.colorWhite};
   border: 1px solid #3178ff;
   margin-bottom: 40px;
+  line-height: 22px;
 `;
 
 const ReviewDisableBtn = styled(Button2)`
@@ -147,6 +142,21 @@ const ReviewOutBtn = styled.button`
   padding: 10px;
   width: 170px;
   color: ${({ theme }) => theme.colors.colorBlue2};
+`;
+
+const ButtonContainer = styled.div`
+  position: relative;
+`;
+
+const PlusBtn = styled.div`
+  position: absolute;
+  top: 17.71px;
+  left: 50.35px;
+`;
+
+const Image = styled.img`
+  width: 14.69px;
+  height: 14.58px;
 `;
 
 export default ChallengeReview;
