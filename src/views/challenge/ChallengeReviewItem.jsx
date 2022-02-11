@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import H3 from "../../components/H3.jsx";
 import GrayBackground from "../../components/GrayBackground.jsx";
@@ -6,6 +6,14 @@ import { Avatar, Stack } from "@mui/material";
 import defaultImage from "../../images/default_profile.png";
 
 const ChallengeReviewItem = ({ reviews }) => {
+  const [isMore, setIsMore] = useState(false);
+
+  const preview = reviews.content.slice(0, 70);
+
+  const handleShowMoreText = () => {
+    setIsMore((isMore) => !isMore);
+  };
+
   return (
     <>
       <GrayBackground review>
@@ -22,8 +30,16 @@ const ChallengeReviewItem = ({ reviews }) => {
           <NickName>{reviews.nickname}</NickName>
         </Profile>
         <Content>
-          {reviews.content}
-          <MoreButton onClick={() => handleMoreText()}>버튼</MoreButton>
+          {reviews.content.length > 70
+            ? !isMore
+              ? preview
+              : reviews.content
+            : reviews.content}
+          {reviews.content.length > 70 && (
+            <MoreButton onClick={handleShowMoreText}>
+              {isMore ? "닫기" : "・・・더보기"}
+            </MoreButton>
+          )}
         </Content>
       </GrayBackground>
     </>
