@@ -56,7 +56,6 @@ const ChallengePayment = () => {
 
 const Container = styled.div`
   width: ${({ theme }) => theme.viewSize.mobile};
-  padding-top: 100px;
 `;
 
 const Inner = styled.div`

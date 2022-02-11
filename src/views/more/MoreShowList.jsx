@@ -32,7 +32,9 @@ const MoreShowTemplate = () => {
         <ChallengeList>
           {data &&
             Object.values(data).map((item, index) => {
-              return <MoreShowItem key={index} data={item} />;
+              return (
+                <MoreShowItem key={index} category={category} data={item} />
+              );
             })}
         </ChallengeList>
       </InfiniteScroll>
