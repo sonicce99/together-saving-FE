@@ -28,55 +28,57 @@ const SavingLanking = ({ challenge_id, challenge_name }) => {
   };
 
   return (
-    <div>
-      <Accordion expanded={expanded}>
-        <AccordionSummary
-          expandIcon={<IoIosArrowDown />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          onClick={() => handleToggleExpaned(expanded)}
-        >
-          <Typography component={"span"} variant={"body2"}>
-            {expanded ? (
-              <Div>
-                <Title>{challenge_name}</Title>
-                &nbsp;<P>랭킹</P>
-              </Div>
-            ) : (
-              <Div>
-                <Title>{challenge_name}</Title>
-                &nbsp;<P>랭킹 자세히</P>
-              </Div>
-            )}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Div2>
-            {lankingData &&
-              lankingData.map((user, index) => {
-                return (
-                  <Content key={index}>
-                    <Avatar
-                      alt="userPicture"
-                      src={`${user.profile_picture}`}
-                      sx={{ width: 64, height: 64, cursor: "pointer" }}
-                    />
-                    <NickName>{user.nick_name}</NickName>
-                    <Achievement>{user.saving_rate}%</Achievement>
-                  </Content>
-                );
-              })}
-          </Div2>
-        </AccordionDetails>
-      </Accordion>
-    </div>
+    <Accordion expanded={expanded}>
+      <AccordionSummary
+        expandIcon={<IoIosArrowDown />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        onClick={() => handleToggleExpaned(expanded)}
+      >
+        <Typography component={"span"} variant={"body2"}>
+          {expanded ? (
+            <Div>
+              <Title>{challenge_name}</Title>
+              &nbsp;<P>랭킹</P>
+            </Div>
+          ) : (
+            <Div>
+              <Title>{challenge_name}</Title>
+              &nbsp;<P>랭킹 자세히</P>
+            </Div>
+          )}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Div2>
+          {lankingData &&
+            lankingData.map((user, index) => {
+              return (
+                <Content key={index}>
+                  <Avatar
+                    alt="userPicture"
+                    src={`${user.profile_picture}`}
+                    sx={{
+                      width: 64,
+                      height: 64,
+                      cursor: "pointer",
+                    }}
+                  />
+                  <NickName>{user.nick_name}</NickName>
+                  <Achievement>{user.saving_rate}%</Achievement>
+                </Content>
+              );
+            })}
+        </Div2>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-  // border: `1px solid ${theme.palette.divider}`,
+  border: "1px solid red",
   "&:not(:last-child)": {
     borderBottom: 0,
   },
@@ -110,11 +112,11 @@ align-items: center;
 overflow-x: scroll;
 -ms-overflow-style: none;
 scrollbar-width: none;
+padding-left: 16px;
 
 &::-webkit-scrollbar {
   display: none;
 }
-margin-left : 16px;
 `;
 
 const Title = styles.p`
@@ -132,9 +134,17 @@ const P = styles.p`
 `;
 
 const Content = styles.div`
-  width: 88px;
-  height: 108px;
+  width: 64px;
+  height: 101px;
   margin-right : 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const NickName = styles.div`
