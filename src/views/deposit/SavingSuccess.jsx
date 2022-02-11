@@ -18,7 +18,7 @@ const SavingSuccess = () => {
         <SubText>앞으로 9번의 저축이 남았어요!</SubText>
       </SuccessContainer>
       <SuccessButtonContainer>
-        <Link to={`/saving/${id}`}>
+        <Link to={"/"}>
           <Button>확인</Button>
         </Link>
       </SuccessButtonContainer>
