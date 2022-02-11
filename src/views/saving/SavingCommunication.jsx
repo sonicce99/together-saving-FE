@@ -36,8 +36,6 @@ const SavingCommunication = ({ challenge_id }) => {
     setPage((page) => page + 1);
   };
 
-  console.log(comments);
-
   const handlePostComments = async () => {
     await axiosInstance.post(
       `/api/v1/users/challenges/${challenge_id}/comment`,
