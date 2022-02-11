@@ -145,7 +145,6 @@ text-align: center;
 letter-spacing: -0.463911px;
 color: #202021;
 margin-top : 10px;
-
 margin-bottom : 7px;
 cursor : pointer;
 `;
@@ -157,7 +156,6 @@ font-size: 12px;
 line-height: 9px;
 text-align: center;
 letter-spacing: -0.463911px;
-
 color: ${({ theme }) => theme.colors.colorGray3};
 
 `;
