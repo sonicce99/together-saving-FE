@@ -65,7 +65,7 @@ const Container = styled.div`
 `;
 
 const Title = styled(H3)`
-  font-family: SF Pro Text;
+  font-family: Apple SD Gothic Neo;
   font-weight: 600;
   line-height: 21px;
   margin-bottom: 16px;
@@ -96,7 +96,7 @@ const Div = styled.div`
 const Content = styled.div`
   width: 253px;
   margin-right: 16px;
-  margin-bottom: 140px;
+  /* margin-bottom: 140px; */
 `;
 
 const ThumbnailInfo = styled.div`

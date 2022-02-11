@@ -8,6 +8,7 @@ import ChallengeCreateAndEct from "./ChallengeCreateAndEct.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
 
 const MainTabs = () => {
+
   const [value, setValue] = useState(0); // Tabs 관련
   const [participatingChallenges, setParticipatingChallenges] = useState([]); // 참여 중인 챌린지 Data
   const [popularChallenges, setPopularChallenges] = useState([]); // 인기 챌린지 Data

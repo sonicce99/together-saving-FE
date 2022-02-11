@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Avatar, Stack } from "@mui/material";
 import Button2 from "../../components/Button.jsx";
 import H3 from "../../components/H3.jsx";
 import { Box, Typography, Modal } from "@mui/material";
-import GrayBackground from "../../components/GrayBackground.jsx";
 import { axiosInstance } from "../../utils/TokenApi.jsx";
-import defaultImage from "../../images/default_profile.png";
+import ChallengeReviewItem from "./ChallengeReviewItem.jsx";
 
 const style = {
   position: "absolute",
@@ -28,7 +26,7 @@ const ChallengeReview = ({ participated, challenge_id, reviews }) => {
   const handleClose = () => setOpen(false);
   const [inputValue, setInputValue] = useState("");
 
-  const handleShowMoreInfo = () => {
+  const handleShowMoreInfo = (more) => {
     setIsMore((isMore) => !isMore);
   };
 
@@ -54,34 +52,12 @@ const ChallengeReview = ({ participated, challenge_id, reviews }) => {
         {reviews &&
           reviews.map((review, index) => {
             return (
-              <GrayBackground key={index} reviews>
-                <Profile>
-                  <Stack direction="row">
-                    <Avatar
-                      sx={{ width: 32, height: 32 }}
-                      alt="Remy Sharp"
-                      src={
-                        review.profile_picture
-                          ? review.profile_picture
-                          : defaultImage
-                      }
-                    />
-                  </Stack>
-                  <NickName>{review.nickname}</NickName>
-                </Profile>
-                <Content>
-                  {review.content.length > 70
-                    ? !isMore
-                      ? review.content.slice(0, 70)
-                      : review.content
-                    : review.content}
-                  {review.content.length > 70 && (
-                    <MoreButton onClick={handleShowMoreInfo} review>
-                      {isMore ? "닫기" : "・・・더보기"}
-                    </MoreButton>
-                  )}
-                </Content>
-              </GrayBackground>
+              <ChallengeReviewItem
+                reviews={review}
+                key={index}
+                isMore={isMore}
+                onHandleMore={handleShowMoreInfo}
+              />
             );
           })}
       </Div>
@@ -133,32 +109,6 @@ const Div = styled.div`
   }
 `;
 
-const Profile = styled.div`
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.colorDarkGray1};
-  margin-top: 16px;
-`;
-
-const NickName = styled.span`
-  margin-left: 10px;
-  font-style: normal;
-  font-weight: ${({ theme }) => theme.fontWeights.weightBold};
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.colorDarkGray1};
-`;
-
-const Content = styled(H3)`
-  font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
-  font-size: 12px;
-  margin: 0 10px 28px 14px;
-  width: 234px;
-`;
-
 const ReviewAbleBtn = styled(Button2)`
   color: ${({ theme }) => theme.colors.colorBlue2};
   background-color: ${({ theme }) => theme.colors.colorWhite};
@@ -197,14 +147,6 @@ const ReviewOutBtn = styled.button`
   padding: 10px;
   width: 170px;
   color: ${({ theme }) => theme.colors.colorBlue2};
-`;
-
-const MoreButton = styled.button`
-  font-size: ${({ theme }) => theme.fontSize.fontSmall};
-  color: ${({ theme }) => theme.colors.colorGray3};
-  margin-left: 5px;
-
-  ${(props) => props.review && `font-size: 12px`}
 `;
 
 export default ChallengeReview;

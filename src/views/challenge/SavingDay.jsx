@@ -78,4 +78,5 @@ const Div2 = styled(Div)`
   margin-bottom: 0;
   text-align: center;
 `;
+
 export default SavingDay;
