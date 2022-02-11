@@ -77,7 +77,7 @@ const Text = styled.p`
   }
 
   &:last-child {
-    font-family: Apple SD Gothic Neo;
+    font-family: Apple SD Gothic Neo, Noto Sans KR;
     color: ${({ theme }) => theme.colors.colorBlack};
     font-size: ${({ theme }) => theme.fontSize.fontXLarge};
     font-weight: ${({ theme }) => theme.fontWeights.weightBold};
