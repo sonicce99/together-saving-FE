@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 const MODE = ["자율", "경쟁"];
 
-const MoreShowItem = ({ data }) => {
+const MoreShowItem = ({ category, data }) => {
   const navigate = useNavigate();
-  const { id, thumbnail, mode, period, date, title, tags } = data;
+  const { id, thumbnail, mode, period, date, title, tags, remain_date } = data;
 
   const handleNavigate = () => {
     navigate(`/challenge/${id}`);
@@ -21,7 +21,11 @@ const MoreShowItem = ({ data }) => {
       </ThumbnailInfo>
       <ChallengeInfo>
         <Period>{period}주 저축</Period>
-        <Period>{date}일 뒤 종료</Period>
+        {category === "참여중인 챌린지" ? (
+          <Period>{date}일 뒤 종료</Period>
+        ) : (
+          <Period>{remain_date}일 뒤 시작</Period>
+        )}
       </ChallengeInfo>
       <ChallengeName>{title}</ChallengeName>
       <TagsContainer>
