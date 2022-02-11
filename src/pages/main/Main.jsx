@@ -4,12 +4,12 @@ import Header from "../../components/Header.jsx";
 import Event from "../../components/Event.jsx";
 import MainTabs from "../../views/main/MainTabs.jsx";
 import BottomNav from "../../components/BottomNav.jsx";
-import Time from "../../components/Time.jsx";
+// import Time from "../../components/Time.jsx";
 
 const Main = () => {
   return (
     <>
-      <Time />
+      {/* <Time /> */}
       <Header main />
       <MainContentContainer>
         <Event />
@@ -21,7 +21,7 @@ const Main = () => {
 };
 
 const MainContentContainer = styled.div`
-  padding-top: 96px;
+  padding-top: 52px;
 `;
 
 export default Main;
