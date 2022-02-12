@@ -10,6 +10,7 @@ const SavingCommunication = ({ challenge_id }) => {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
   const [message, setMessage] = useState("");
+  const [click, setClick] = useState(false);
 
   const getConversation = async (page) => {
     const { data } = await axiosInstance.get(
@@ -49,6 +50,8 @@ const SavingCommunication = ({ challenge_id }) => {
   const handleComments = (e) => {
     setMessage(e.target.value);
   };
+
+  const handleMessage = () => setMessage("");
 
   return (
     <Container>
@@ -110,11 +113,12 @@ const SavingCommunication = ({ challenge_id }) => {
         </Conversation>
         <Div>
           <Input
+            value={message}
             placeholder="메세지 입력"
             onChange={(e) => handleComments(e)}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                e.target.value = "";
+                handleMessage();
                 handlePostComments();
               }
             }}
@@ -122,6 +126,7 @@ const SavingCommunication = ({ challenge_id }) => {
           <Img
             src={SendImage}
             onClick={() => {
+              handleMessage();
               handlePostComments();
             }}
           />
