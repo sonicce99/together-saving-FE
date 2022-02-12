@@ -10,7 +10,6 @@ const SavingCommunication = ({ challenge_id }) => {
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
   const [message, setMessage] = useState("");
-  const [click, setClick] = useState(false);
 
   const getConversation = async (page) => {
     const { data } = await axiosInstance.get(
