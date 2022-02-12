@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import EventImg from "../images/EventImage.png";
+import EventImage1 from "../images/EventImage1.png";
+import EventImage2 from "../images/EventImage2.png";
+import EventImage3 from "../images/EventImage3.png";
+import EventImage4 from "../images/EventImage4.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import "swiper/css";
-// import "swiper/css/pagination";
 
 SwiperCore.use([Autoplay]);
 
@@ -14,19 +16,19 @@ const Event = () => {
 
   return (
     <Container>
-      <Swiper
-        slidesPerView={1}
-        autoplay={{ delay: 3000 }}
-        loop={true}
-        // modules={[Pagination]}
-        // pagination={{
-        //   type: "fraction",
-        // }}
-      >
+      <Swiper slidesPerView={1} autoplay={{ delay: 3000 }} loop={true}>
         {EventList.map((slide, index) => {
+          const image =
+            index === 0
+              ? EventImage1
+              : index === 1
+              ? EventImage2
+              : index === 2
+              ? EventImage3
+              : EventImage4;
           return (
             <SwiperSlide key={index}>
-              <Image src={EventImg} />
+              <Image src={image} alt="EventImage" />
               <NumberingTag>{`${slide} / ${EventNum}`}</NumberingTag>
             </SwiperSlide>
           );
