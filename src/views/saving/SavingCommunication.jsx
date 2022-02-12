@@ -50,6 +50,8 @@ const SavingCommunication = ({ challenge_id }) => {
     setMessage(e.target.value);
   };
 
+  const handleMessage = () => setMessage("");
+
   return (
     <Container>
       <Inner>
@@ -110,11 +112,12 @@ const SavingCommunication = ({ challenge_id }) => {
         </Conversation>
         <Div>
           <Input
+            value={message}
             placeholder="메세지 입력"
             onChange={(e) => handleComments(e)}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                e.target.value = "";
+                handleMessage();
                 handlePostComments();
               }
             }}
@@ -122,6 +125,7 @@ const SavingCommunication = ({ challenge_id }) => {
           <Img
             src={SendImage}
             onClick={() => {
+              handleMessage();
               handlePostComments();
             }}
           />
