@@ -105,7 +105,7 @@ const MainTabs = () => {
 
         <TabPanel value={value} index={0}>
           <ChallengeTemplate2
-            title="마감 임박 챌린지"
+            title="20대 여성이 좋아하는 챌린지"
             ChallengeArray={DeadLineChallenge}
           />
         </TabPanel>

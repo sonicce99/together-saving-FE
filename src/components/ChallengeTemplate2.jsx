@@ -160,6 +160,7 @@ const Tags = styled.div`
   font-weight: ${({ theme }) => theme.fontWeights.weightNormal};
   font-size: 14px;
   color: ${({ theme }) => theme.colors.colorGray1};
+  margin-right: 2px;
 `;
 
 export default ChallengeTemplate2;
