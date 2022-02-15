@@ -13,8 +13,8 @@
 
 http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 
-저축과 재테크를 시작하고, 저축의 긍정적인 경험을 쌓아갈 수 있도록 도와주는 **웰스테크 플랫폼**인 세이블 앱 내에서 저축 경험과 
-목표 달성률을 높일 수 있는 락인 포인트를 개발했습니다. **저축 챌린지**라는 재미 요소를 더해 다양한 사용자들과 경쟁하며 
+저축과 재테크를 시작하고, 저축의 긍정적인 경험을 쌓아갈 수 있도록 도와주는 **웰스테크 플랫폼**인 세이블 앱 내에서 저축 경험과
+목표 달성률을 높일 수 있는 락인 포인트를 개발했습니다. **저축 챌린지**라는 재미 요소를 더해 다양한 사용자들과 경쟁하며
 자연스럽게 저축 습관을 기를 수 있습니다.
 
 ## 주요 서비스 미리보기
@@ -91,7 +91,12 @@ FE 팀 내에서 정한 규칙입니다.
 
 <details>
 <summary>PR Template</summary>
-  <img width="900" alt="스크린샷 2022-02-15 오후 9 28 35" src="https://user-images.githubusercontent.com/87749134/154062493-6510c89f-caed-4cd6-80d0-a32d9a346928.png">
+  <img width="800" alt="스크린샷 2022-02-15 오후 9 28 35" src="https://user-images.githubusercontent.com/87749134/154062493-6510c89f-caed-4cd6-80d0-a32d9a346928.png">
+</details>
+
+<details>
+<summary>Error Handling</summary>
+<img width="800" alt="스크린샷 2022-02-15 오후 10 19 18" src="https://user-images.githubusercontent.com/87749134/154070019-49a2ceba-99dc-4b10-9630-0784d89166b5.png">
 </details>
 
 ## 실행 방법
