@@ -21,6 +21,7 @@
 
 <details>
   <summary>메인 페이지</summary>
+  <img src="https://user-images.githubusercontent.com/56878724/154066742-51e318ac-f161-41a8-b9e4-0db47557bd69.gif" width="300px" height="600px"/>
 </details>
 <details>
   <summary>챌린지 상세 보기</summary>
@@ -36,6 +37,7 @@
 </details>
 <details>
   <summary>사람들과 소통하기</summary>
+  <img src="https://user-images.githubusercontent.com/56878724/154065767-ecfda021-29d6-4801-b541-682a8a628f92.gif" width="600px" height="600px"/>
 </details>
 
 ## 기술 스택
