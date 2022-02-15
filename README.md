@@ -17,6 +17,27 @@
 
 ## 주요 서비스 미리보기
 
+저희 서비스는 앱 내 서비스 개발이라는 특성 상 로그인과 회원가입 절차가 따로 없이 로그인 된 사용자입니다.
+
+<details>
+  <summary>메인 페이지</summary>
+</details>
+<details>
+  <summary>챌린지 상세 보기</summary>
+</details>
+<details>
+  <summary>챌린지 결제하기</summary>
+</details>
+<details>
+  <summary>내 저축 현황 보기</summary>
+</details>
+<details>
+  <summary>저축하기</summary>
+</details>
+<details>
+  <summary>사람들과 소통하기</summary>
+</details>
+
 ## 기술 스택
 
 ## 팀원 소개
