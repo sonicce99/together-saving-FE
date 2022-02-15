@@ -13,10 +13,6 @@
 
 http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 
-- 챌린지 상세페이지
-
--
-
 프로젝트 설명 들어갑니다.
 
 # 주요 서비스 미리보기
