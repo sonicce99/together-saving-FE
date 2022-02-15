@@ -13,10 +13,6 @@
 
 http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 
-- 챌린지 상세페이지
-
--
-
 프로젝트 설명 들어갑니다.
 
 # 주요 서비스 미리보기
@@ -43,16 +39,17 @@ http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 # FE 컨벤션
 
 ## 💻 Git
+
 - 작업 시작하기 전에 issue 카드를 생성
 - Commit message Template 에 맞춰 작성한다
 - Issue Template 에 맞춰 작성한다
 - PR Template 에 맞춰 작성한다.
 - git-flow 를 사용하여 branch 명을 명확히 한다
 
-
 ## 💅🏻 Code style : react/recommended
+
 - 익명 함수는 화살표 함수로 생성한다
-- setState를 움직이는 함수 이름은 handle__ 로 짓는다
+- setState를 움직이는 함수 이름은 handle\_\_ 로 짓는다
 
 ## ISSUE Template
 
