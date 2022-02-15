@@ -13,9 +13,30 @@
 
 http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 
-프로젝트 설명 들어갑니다.
-
 # 주요 서비스 미리보기
+
+<details>
+  <summary>메인 페이지</summary>
+  <img src="https://user-images.githubusercontent.com/56878724/154066742-51e318ac-f161-41a8-b9e4-0db47557bd69.gif" width="300px" height="600px"/>
+</details>
+<details>
+  <summary>챌린지 상세 보기</summary>
+  <img src="https://user-images.githubusercontent.com/87749134/154067439-9ae6cd68-5dea-4825-b601-65b1b00706cf.gif" width="300" height="600" />
+</details>
+<details>
+  <summary>챌린지 결제하기</summary>
+  <img src="https://user-images.githubusercontent.com/87749134/154067429-f4ea2782-9463-47a2-b50e-20750eb74187.gif" width="300" height="600" />
+</details>
+<details>
+  <summary>내 저축 현황 보기</summary>
+</details>
+<details>
+  <summary>저축하기</summary>
+</details>
+<details>
+  <summary>사람들과 소통하기</summary>
+  <img src="https://user-images.githubusercontent.com/56878724/154065767-ecfda021-29d6-4801-b541-682a8a628f92.gif" width="600px" height="600px"/>
+</details>
 
 # 기술 스택
 
@@ -53,11 +74,15 @@ http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 
 ## ISSUE Template
 
-<img width="900" alt="스크린샷 2022-02-15 오후 9 27 05" src="https://user-images.githubusercontent.com/87749134/154062487-c8618580-daa0-407f-a37d-013e09e53644.png">
+<details>
+  <img width="900" alt="스크린샷 2022-02-15 오후 9 27 05" src="https://user-images.githubusercontent.com/87749134/154062487-c8618580-daa0-407f-a37d-013e09e53644.png">
+</details>
 
 ## PR Template
 
-<img width="900" alt="스크린샷 2022-02-15 오후 9 28 35" src="https://user-images.githubusercontent.com/87749134/154062493-6510c89f-caed-4cd6-80d0-a32d9a346928.png">
+<details>
+  <img width="900" alt="스크린샷 2022-02-15 오후 9 28 35" src="https://user-images.githubusercontent.com/87749134/154062493-6510c89f-caed-4cd6-80d0-a32d9a346928.png">
+</details>
 
 # 실행 방법
 
