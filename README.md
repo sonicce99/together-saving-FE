@@ -72,15 +72,13 @@ http://dongsu.s3-website.ap-northeast-2.amazonaws.com
 - 익명 함수는 화살표 함수로 생성한다
 - setState를 움직이는 함수 이름은 handle\_\_ 로 짓는다
 
-## ISSUE Template
-
 <details>
+<summary>ISSUE Template</summary>
   <img width="900" alt="스크린샷 2022-02-15 오후 9 27 05" src="https://user-images.githubusercontent.com/87749134/154062487-c8618580-daa0-407f-a37d-013e09e53644.png">
 </details>
 
-## PR Template
-
 <details>
+<summary>PR Template</summary>
   <img width="900" alt="스크린샷 2022-02-15 오후 9 28 35" src="https://user-images.githubusercontent.com/87749134/154062493-6510c89f-caed-4cd6-80d0-a32d9a346928.png">
 </details>
 
