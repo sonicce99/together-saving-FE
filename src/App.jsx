@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Main from "./pages/main/Main";
+import MainContainer from "./pages/main/MainContainer";
 import ChallengeContainer from "./pages/challenge/ChallengeContainer";
 import Saving from "./pages/saving/Saving";
 import styled from "styled-components";
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Wrapper>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<MainContainer />} />
         <Route path="/challenge/:id" element={<ChallengeContainer />} />
         <Route
           path="/challenge/:id/payment"
